@@ -25,14 +25,18 @@ public static class SubmissionInfo
 
     // This may be a "working title" to begin with, but ensure it is final by
     // the video milestone deadline (plain text, no more than 50 chars).
-    public static readonly string GameName = "Replace with your game name";
+    public static readonly string GameName = "Laksa Mania";
 
     // Write a brief blurb of your game, no more than 200 words. Again, ensure
     // this is final by the video milestone deadline.
     public static readonly string GameBlurb =
-@"Write a blurb of your game here in plain text. This is a
-multiline verbatim string,
-so don't worry about keeping it to one line, just be sure not to indent it.
+@"With the high demand of Laksa in the modern world, people are all craving to have their hunger sated, some with different needs
+ and hangry tolerance. With enemies coming in all shapes and sizes, eg Sumos, Food Critiques, 'That' Korean MukBang Influencer, or the
+ average Joe. Tower defense but with the emergence of gacha, you must wish for your chefs, will you risk it all in the premium gacha or the
+ standard gacha to summon your chefs on the field. Upon Choosing a map, you will have a choice to spend your starting coins on 4 standard pulls,
+ or 1 premium and 1 standard to protect your kitchen from the waves of hungry citizens. You can place your chefs on the map and upgrade them to
+ take them closer to their potentials. Save the kitchen for as long as you can as the waves won't stop until they are sated! Be careful for the
+ Rich tourists, or even the rush hour... See you in the laksa kitchen!@
 ";
 
     // By the gameplay video milestone deadline this should be a direct link
