@@ -9,11 +9,15 @@
 
 <!-- Fill this section by Milestone 1 (see specification for details) -->
 
-Here you should be discussing how you will be delegating tasks among team members, as well
-as protocols and processes you will use to keep the project organised. Keep it updated 
-throughout the duration of the project. By the final submission it should contain 
-a summary of who completed what. (You should of course remove and replace this paragraph!)
+13/9 
 
+Team meeting : Monday and Thursday through discord
+
+Yuji : Populate chefs (chef classes), standardise Waves, finding assets for graphics and sounds
+
+Caroline : Implement MapClasses (Parent - map1 & map2 & map3) with different themes, finding assets for graphics and sounds
+
+Livya : Main menu and populating the enemies(initially as cubes and enemy classes), finding assets for graphics and sounds 
 <!-- [[EndTeamworkPlan]] PLEASE LEAVE THIS LINE UNTOUCHED -->
 
 ## Final report
@@ -31,7 +35,13 @@ For more details you can find a guide [here](https://docs.github.com/en/github/w
 * [Code Snipets](#code-snippets)
 
 ### Game Summary
-_Exciting title_ is a first-person shooter (FPS) set in...
+With the high demand of Laksa in the modern world, people are all craving to have their hunger sated, some with different needs
+ and hangry tolerance. With enemies coming in all shapes and sizes, eg Sumos, Food Critiques, 'That' Korean MukBang Influencer, or the
+ average Joe. Tower defense but with the emergence of gacha, you must wish for your chefs, will you risk it all in the premium gacha or the
+ standard gacha to summon your chefs on the field. Upon Choosing a map, you will have a choice to spend your starting coins on 4 standard pulls,
+ or 1 premium and 1 standard to protect your kitchen from the waves of hungry citizens. You can place your chefs on the map and upgrade them to
+ take them closer to their potentials. Save the kitchen for as long as you can as the waves won't stop until they are sated! Be careful for the
+ Rich tourists, or even the rush hour... See you in the laksa kitchen!
 
 ### Technologies
 Project is created with:
