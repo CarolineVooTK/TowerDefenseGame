@@ -5,8 +5,8 @@ public class Sumo : Enemy
 {
     public Sumo()
     {
-        hunger = 500;
-        speed = 10;
-        tokensDropped = 5;
+        startingHunger *= 4;
+        speed *= 0.4;
+        tokensDropped *= 4;
     }
 }
