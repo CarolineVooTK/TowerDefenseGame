@@ -17,6 +17,7 @@ public class Enemy : MonoBehaviour
         set
         {
             _currentHunger = value;
+            Debug.Log(_currentHunger);
 
             // destroy object when full
             if (CurrentHunger <= 0)

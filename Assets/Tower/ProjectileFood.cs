@@ -5,7 +5,7 @@ public class ProjectileFood : MonoBehaviour
 {
     [SerializeField] private Vector3 velocity;
 
-    [SerializeField] private int damageAmount = 50;
+    [SerializeField] private int damageAmount = 10;
     [SerializeField] private string tagToDamage = "Enemy";
 
     private void Update()
