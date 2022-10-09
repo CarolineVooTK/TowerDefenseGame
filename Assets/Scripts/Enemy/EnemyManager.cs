@@ -16,5 +16,6 @@ public class EnemyManager : MonoBehaviour
     private void GenerateEnemy()
     {
         var enemyTransform = Instantiate(this.enemyTemplate).transform;
+        enemyTransform.transform.position = transform.position;
     }
 }

@@ -24,6 +24,7 @@ public class Enemy : MonoBehaviour
             {
                 // Create collision particles in opposite direction to movement.
                 var particles = Instantiate(this.collisionParticles);
+                particles.transform.position = transform.position;
 
                 Destroy(gameObject);
             }
