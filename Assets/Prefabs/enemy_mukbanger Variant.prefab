@@ -13,6 +13,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7381101576f0e416f894dc554e68a84a, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7381101576f0e416f894dc554e68a84a, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7381101576f0e416f894dc554e68a84a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -95,6 +103,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingHunger: 50
-  speed: 50
+  speed: 5
   tokensDropped: 0
+  rotationSpeed: 100
   collisionParticles: {fileID: 204727921537119581, guid: 599dec2fc6e4d4ae5b39910078070643, type: 3}

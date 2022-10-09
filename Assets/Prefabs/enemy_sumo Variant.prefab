@@ -78,10 +78,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.007051578
-  m_Height: 0.015300352
+  m_Radius: 0.007779204
+  m_Height: 0.015558408
   m_Direction: 2
-  m_Center: {x: -0.000035699573, y: -0.0002481797, z: 0.003205499}
+  m_Center: {x: 0.00035514522, y: -0.0002481797, z: 0.0028913207}
 --- !u!114 &2553178110188370701
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -95,6 +95,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingHunger: 50
-  speed: 50
+  speed: 1
   tokensDropped: 0
   collisionParticles: {fileID: 204727921537119581, guid: 599dec2fc6e4d4ae5b39910078070643, type: 3}
