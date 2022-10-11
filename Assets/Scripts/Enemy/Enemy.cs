@@ -52,7 +52,7 @@ public class Enemy : MonoBehaviour
     public void ResetEnemy()
     {
         startingHunger = 50;
-        speed = 1;
+        speed = 5;
         tokensDropped = 1;
 
         // Switch based on the type chosen and assign its respected values
