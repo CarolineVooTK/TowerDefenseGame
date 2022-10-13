@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 // Class for enemy object
 public class Enemy : MonoBehaviour
@@ -15,6 +16,7 @@ public class Enemy : MonoBehaviour
     public int tokensDropped;
     public float rotationSpeed;
     [SerializeField] private ParticleSystem collisionParticles;
+
 
     private int wavePointIndex = 0;
     private Transform target;
@@ -36,6 +38,7 @@ public class Enemy : MonoBehaviour
                 var particles = Instantiate(this.collisionParticles);
                 particles.transform.position = transform.position + new Vector3(0f, 1.6f, 0f);
 
+                // REDUCE
                 Destroy(gameObject);
             }
         }
