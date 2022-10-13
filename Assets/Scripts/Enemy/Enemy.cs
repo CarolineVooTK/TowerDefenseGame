@@ -10,7 +10,7 @@ public class Enemy : MonoBehaviour
     }
 
     public OPTIONS type;
-    public int startingHunger;
+    public float startingHunger;
     public float speed;
     public int tokensDropped;
     public float rotationSpeed;
@@ -18,10 +18,10 @@ public class Enemy : MonoBehaviour
 
     private int wavePointIndex = 0;
     private Transform target;
-    private int _currentHunger;
+    private float _currentHunger;
 
     // Check current hunger
-    private int CurrentHunger
+    private float CurrentHunger
     {
         get => _currentHunger;
         set
@@ -61,29 +61,29 @@ public class Enemy : MonoBehaviour
             case OPTIONS.averageJoe:
                 break;
             case OPTIONS.marathonRunner:
-                startingHunger *= 2;
+                startingHunger *= 1.5f;
                 speed *= 3;
-                tokensDropped *= 1;
+                tokensDropped *= 2;
                 break;
             case OPTIONS.mukbanger:
                 startingHunger *= 2;
-                speed *= 3;
-                tokensDropped *= 1;
+                speed *= 2;
+                tokensDropped *= 3;
                 break;
             case OPTIONS.foodCritic:
-                startingHunger *= 2;
-                speed *= 3;
-                tokensDropped *= 1;
+                startingHunger *= 2.5f;
+                speed *= 1.5f;
+                tokensDropped *= 4;
                 break;
             case OPTIONS.sumo:
-                startingHunger *= 2;
-                speed *= 3;
-                tokensDropped *= 1;
+                startingHunger *= 3;
+                speed *= 0.25f;
+                tokensDropped *= 5;
                 break;
             case OPTIONS.aristocrat:
-                startingHunger *= 2;
-                speed *= 3;
-                tokensDropped *= 1;
+                startingHunger *= 3.5f;
+                speed *= 0.5f;
+                tokensDropped *= 6;
                 break;
         }
 

@@ -66,7 +66,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 10d3cf4d01aa140c0a495b1c519dc7c5, type: 3}
       propertyPath: m_Name
-      value: food_donut Variant
+      value: food_donut
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
@@ -129,7 +129,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cd8434be2e554037951b8f34a8c42f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocity: {x: 1, y: 0, z: 0}
-  damageAmount: 10
-  tagToDamage: Enemy
+  type: 0
+  velocity: {x: 0, y: 0, z: 0}
+  damageAmount: 0
   collisionParticles: {fileID: 863899079453766310, guid: 599dec2fc6e4d4ae5b39910078070643, type: 3}
