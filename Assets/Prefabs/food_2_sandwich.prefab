@@ -113,7 +113,7 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
@@ -145,5 +145,4 @@ MonoBehaviour:
   type: 1
   velocity: {x: 0, y: 0, z: 0}
   damageAmount: 0
-  tagToDamage: Enemy
   collisionParticles: {fileID: 863899079453766310, guid: 599dec2fc6e4d4ae5b39910078070643, type: 3}

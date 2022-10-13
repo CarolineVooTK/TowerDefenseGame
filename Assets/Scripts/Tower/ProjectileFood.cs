@@ -25,7 +25,7 @@ public class ProjectileFood : MonoBehaviour
     // Reset the statistics of foods
     public void ResetStats()
     {
-        velocity = new Vector3(1f, 1f, 1f);
+        velocity = new Vector3(3f, 0, 0);
         damageAmount = 10;
 
         // Switch based on the type chosen and assign its respected values
