@@ -29,7 +29,6 @@ public class Enemy : MonoBehaviour
         set
         {
             _currentHunger = value;
-            Debug.Log(_currentHunger);
 
             // Destroy object when full
             if (CurrentHunger <= 0)
@@ -38,6 +37,8 @@ public class Enemy : MonoBehaviour
                 var particles = Instantiate(this.collisionParticles);
                 particles.transform.position = transform.position + new Vector3(0f, 1.6f, 0f);
 
+
+                // Add token from death
                 GameManager.AddToken(tokensDropped);
                 Destroy(gameObject);
             }
