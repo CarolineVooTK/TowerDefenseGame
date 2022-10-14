@@ -112,3 +112,6 @@ MonoBehaviour:
   tokensDropped: 0
   rotationSpeed: 0
   collisionParticles: {fileID: 863899079453766310, guid: 14c9ef49a970944e483955e7eb1c9263, type: 3}
+  OnReachEnd:
+    m_PersistentCalls:
+      m_Calls: []

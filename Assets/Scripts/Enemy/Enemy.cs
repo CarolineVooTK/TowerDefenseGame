@@ -18,7 +18,6 @@ public class Enemy : MonoBehaviour
     public float rotationSpeed;
     [SerializeField] private ParticleSystem collisionParticles;
 
-
     private int wavePointIndex = 0;
     private Transform target;
     private float _currentHunger;

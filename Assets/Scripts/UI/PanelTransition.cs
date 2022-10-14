@@ -16,6 +16,7 @@ public class PanelTransition : MonoBehaviour
 
         // Then set first to the active panel (if applicable).
         SwitchTo(this.panels.Length > 0 ? this.panels[0] : null);
+        Time.timeScale = 0f;
     }
 
     public void SwitchTo(RectTransform panel)
