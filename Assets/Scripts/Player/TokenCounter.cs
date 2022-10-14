@@ -10,7 +10,6 @@ public class TokenCounter : MonoBehaviour
     {
         _token = startingToken;
         GameManager.ResetToken(_token);
-        //print(GameManager.tokenBank);
     }
 
 }
