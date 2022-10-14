@@ -39854,7 +39854,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingToken: 10
-  textDisplay: {fileID: 0}
   prefix: "\u2752  "
   lerpSpeed: 0
 --- !u!1001 &1079584559
@@ -49306,10 +49305,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1311842828}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc193005c67fb470496eb0ac744a5b65, type: 3}
+  m_Script: {fileID: 11500000, guid: fefb9d6ca432c47f7b31e1c69981e840, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingToken: 10
   textDisplay: {fileID: 1311842830}
   prefix: "\u2752  "
   lerpSpeed: 0

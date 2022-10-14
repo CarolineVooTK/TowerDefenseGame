@@ -62071,10 +62071,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1742917558}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc193005c67fb470496eb0ac744a5b65, type: 3}
+  m_Script: {fileID: 11500000, guid: fefb9d6ca432c47f7b31e1c69981e840, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingToken: 10
   textDisplay: {fileID: 1742917560}
   prefix: "\u2752  "
   lerpSpeed: 0
@@ -72479,6 +72478,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2044447441}
   - component: {fileID: 2044447440}
+  - component: {fileID: 2044447442}
   m_Layer: 0
   m_Name: Player
   m_TagString: GameController
@@ -72499,7 +72499,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingToken: 10
-  textDisplay: {fileID: 0}
   prefix: 
   lerpSpeed: 0
 --- !u!4 &2044447441
@@ -72517,6 +72516,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2044447442
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2044447439}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 741a38fcfd6a44f8b984a3d3a9f11d39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2048648702
 PrefabInstance:
   m_ObjectHideFlags: 0

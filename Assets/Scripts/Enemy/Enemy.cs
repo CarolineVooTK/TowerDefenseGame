@@ -38,7 +38,7 @@ public class Enemy : MonoBehaviour
                 var particles = Instantiate(this.collisionParticles);
                 particles.transform.position = transform.position + new Vector3(0f, 1.6f, 0f);
 
-                // REDUCE
+                GameManager.AddToken(tokensDropped);
                 Destroy(gameObject);
             }
         }

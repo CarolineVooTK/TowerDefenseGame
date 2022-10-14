@@ -7,7 +7,6 @@ public class UITokenCounter : MonoBehaviour
     [SerializeField] private Text textDisplay; 
     [SerializeField] private string prefix;
     [SerializeField] private int lerpSpeed;
-    [SerializeField] private GameObject eaaa;
     private int _target;
 
     private void Awake()
@@ -17,16 +16,18 @@ public class UITokenCounter : MonoBehaviour
 
     public void UpdateValue()
     {
-        //_target = PlayerManager.Token;
+        _target = GameManager.tokenBank;
     }
 
     private IEnumerator Animate()
     {
-        //int current = this._target = PlayerManager.Token;
+        int current = this._target = GameManager.tokenBank;
         while (true)
         {
             //current = (int)Mathf.Lerp(current, this._target, this.lerpSpeed);
-            //UpdateText(Mathf.RoundToInt(current));
+            current = GameManager.tokenBank;
+            //print(current);
+            UpdateText(Mathf.RoundToInt(current));
 
             yield return new WaitForSeconds(0.05f);
         }
