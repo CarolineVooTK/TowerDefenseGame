@@ -19,7 +19,7 @@ public class ControllerTower : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             var projectile = Instantiate(this.projectilePrefab);
-            projectile.transform.position = gameObject.transform.position;
+            projectile.transform.position = gameObject.transform.position + new Vector3(0f, 1.6f, 0f);
         }
     }
 }

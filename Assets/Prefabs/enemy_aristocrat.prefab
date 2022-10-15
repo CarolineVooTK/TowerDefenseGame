@@ -14,15 +14,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2975446b3cbb743c695216056fd04704, type: 3}
       propertyPath: m_LocalScale.x
-      value: 100
+      value: 280
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2975446b3cbb743c695216056fd04704, type: 3}
       propertyPath: m_LocalScale.y
-      value: 100
+      value: 280
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2975446b3cbb743c695216056fd04704, type: 3}
       propertyPath: m_LocalScale.z
-      value: 100
+      value: 280
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2975446b3cbb743c695216056fd04704, type: 3}
       propertyPath: m_LocalPosition.x
@@ -66,7 +66,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 2975446b3cbb743c695216056fd04704, type: 3}
       propertyPath: m_Name
-      value: enemy_aristocrat Variant
+      value: enemy_aristocrat
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 2975446b3cbb743c695216056fd04704, type: 3}
       propertyPath: m_TagString
@@ -90,10 +90,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.0070816563
-  m_Height: 0.020081442
+  m_Radius: 0.005748387
+  m_Height: 0.0210238
   m_Direction: 1
-  m_Center: {x: 0.0001722604, y: 0.009360986, z: 0.0006755006}
+  m_Center: {x: -0.00022674288, y: 0.009287756, z: 0.00034157123}
 --- !u!114 &9027648222043306791
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -112,3 +112,6 @@ MonoBehaviour:
   tokensDropped: 0
   rotationSpeed: 0
   collisionParticles: {fileID: 863899079453766310, guid: 14c9ef49a970944e483955e7eb1c9263, type: 3}
+  OnReachEnd:
+    m_PersistentCalls:
+      m_Calls: []

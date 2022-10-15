@@ -1,26 +1,66 @@
 ﻿using UnityEngine;
-using System.Collections;
 
+// Class for food to feed enemy
 public class ProjectileFood : MonoBehaviour
 {
-    [SerializeField] private Vector3 velocity;
+    // Level of food
+    public enum OPTIONS
+    {
+        level1, level2, level3, level4
+    }
 
-    [SerializeField] private int damageAmount = 10;
-    [SerializeField] private string tagToDamage = "Enemy";
+    public OPTIONS type;
+    public Vector3 velocity;
+    public int damageAmount;
     [SerializeField] private ParticleSystem collisionParticles;
 
+    private readonly string tagToDamage = "Enemy";
+
+    // Reset values when start
+    private void Start()
+    {
+        ResetStats();
+    }
+
+    // Reset the statistics of foods
+    public void ResetStats()
+    {
+        velocity = new Vector3(3f, 0, 0);
+        damageAmount = 10;
+
+        // Switch based on the type chosen and assign its respected values
+        switch (type)
+        {
+            case OPTIONS.level1:
+                break;
+            case OPTIONS.level2:
+                velocity *= 0.75f;
+                damageAmount *= 2;
+                break;
+            case OPTIONS.level3:
+                velocity *= 0.5f;
+                damageAmount *= 3;
+                break;
+            case OPTIONS.level4:
+                velocity *= 0.25f;
+                damageAmount *= 4;
+                break;
+        }
+    }
+
+    // Move food based on velocity
     private void Update()
     {
         transform.Translate(this.velocity * Time.deltaTime);
     }
 
+    // Check if collide with enemy then attack
     private void OnTriggerEnter(Collider col)
     {
         
         if (col.gameObject.CompareTag(this.tagToDamage))
         {
-            // Damage object with relevant tag. Note that this assumes the 
-            // HealthManager component is attached to the respective object.
+            // Damage enemy
             var enemyHealth = col.gameObject.GetComponent<Enemy>();
             enemyHealth.ApplyFood(this.damageAmount);
 
@@ -28,7 +68,7 @@ public class ProjectileFood : MonoBehaviour
             var particles = Instantiate(this.collisionParticles);
             particles.transform.position = transform.position;
 
-            // Destroy self.
+            // Destroy item
             Destroy(gameObject);
         }
     }
