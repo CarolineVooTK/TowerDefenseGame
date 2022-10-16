@@ -23,7 +23,7 @@ public class PanelTransition : MonoBehaviour
     private IEnumerator Wait()
     {
         yield return new WaitForSeconds(1f);
-        Time.timeScale = 0.1f;
+        Time.timeScale = 0f;
     }
 
     public void SwitchTo(RectTransform panel)
