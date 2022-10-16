@@ -50,8 +50,8 @@ public class ProjectileFood : MonoBehaviour
     // Move food based on velocity
     private void Update()
     {
-        float distanceThisFrame = speed * Time.deltaTime;
-        transform.Translate(this.velocity.normalized * distanceThisFrame);
+        // float distanceThisFrame = speed * Time.deltaTime;
+        // transform.Translate(this.velocity.normalized * distanceThisFrame);
     }
 
     // Check if collide with enemy then attack

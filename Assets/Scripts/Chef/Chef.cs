@@ -1,5 +1,5 @@
 using UnityEngine;
-using System;
+using System.Collections;
 public class Chef : MonoBehaviour{
     public Transform target;
 
@@ -11,6 +11,8 @@ public class Chef : MonoBehaviour{
     public string enemyTag = "Enemy";
     public Transform partToRotate;
     public GameObject bulletPrefab;
+    public GameObject bulletPrefab2;
+    public GameObject bulletPrefab3;
     public Transform firePoint;
 
 
@@ -45,21 +47,40 @@ public class Chef : MonoBehaviour{
 
 
         if (fireCountdown <= 0f){
-                Debug.Log("shooot");
-
             Shoot();
             fireCountdown = 1f / fireRate;
         }
         fireCountdown -= Time.deltaTime;
     }
     void Shoot()
-    {
-        GameObject bulletGO = (GameObject)Instantiate(bulletPrefab, firePoint.position,firePoint.rotation);
-        Bullet bullet = bulletGO.GetComponent<Bullet>();
+    {   
 
-        if (bullet!=null){
-            bullet.Seek(target);
+        // GameObject[] bullets = new GameObject[(GameObject)Instantiate(bulletPrefab, firePoint.position,firePoint.rotation),
+        //                             (GameObject)Instantiate(bulletPrefab2, firePoint.position,firePoint.rotation),
+        //                             (GameObject)Instantiate(bulletPrefab3, firePoint.position,firePoint.rotation)]; 
+        int index = Random.Range(0, 3);
+
+        switch(index){
+            case 1:
+            GameObject bullet2 = Instantiate(bulletPrefab2, firePoint.position,firePoint.rotation);
+            bullet2.GetComponent<Bullet>().Seek(target,transform.position,range);
+            // bullet;
+            return;
+            case 2:
+            GameObject bullet3 = Instantiate(bulletPrefab3, firePoint.position,firePoint.rotation);
+            bullet3.GetComponent<Bullet>().Seek(target,transform.position,range);
+            // bullet;
+            return;
+            default:
+            GameObject bullet1 = Instantiate(bulletPrefab, firePoint.position,firePoint.rotation);
+            bullet1.GetComponent<Bullet>().Seek(target,transform.position,range);
+            // bullet;
+           
+            return;
         }
+
+        // if (bullet!=null){
+        // }
     }
     void OnDrawGizmoSelected () {
         Gizmos.color = Color.red;

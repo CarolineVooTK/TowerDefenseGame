@@ -26,7 +26,6 @@ public class UITokenCounter : MonoBehaviour
         {
             //current = (int)Mathf.Lerp(current, this._target, this.lerpSpeed);
             current = GameManager.tokenBank;
-            print(current);
             UpdateText(Mathf.RoundToInt(current));
 
             yield return new WaitForSeconds(0.05f);

@@ -143,8 +143,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
-  velocity: {x: 0, y: 0, z: 0}
-  damageAmount: 10
+  speed: 10
+  damageAmount: 5
   collisionParticles: {fileID: 863899079453766310, guid: 599dec2fc6e4d4ae5b39910078070643, type: 3}
 --- !u!82 &8994198240668387993
 AudioSource:
