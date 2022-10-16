@@ -55,7 +55,7 @@ public class Enemy : MonoBehaviour
     // Reset the statistics of the enemies
     public void ResetEnemy()
     {
-        startingHunger = 50;
+        startingHunger = 30;
         speed = 5;
         tokensDropped = 1;
 

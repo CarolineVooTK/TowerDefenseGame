@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 4366695841405998123}
   - component: {fileID: 3086184175246838085}
   - component: {fileID: -5724761039248011}
+  - component: {fileID: -7759047599773019223}
   - component: {fileID: -1114710534371807253}
   - component: {fileID: 8994198240668387993}
   m_Layer: 0
@@ -130,6 +131,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4532cc6f0f214b27af27f39a45dc0b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-7759047599773019223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4302844978948419585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36f8c246950b3f8439df9f0dc5ca0f02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 10
+  collisionParticles: {fileID: 863899079453766310, guid: 599dec2fc6e4d4ae5b39910078070643, type: 3}
 --- !u!114 &-1114710534371807253
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -143,8 +158,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
-  velocity: {x: 0, y: 0, z: 0}
-  damageAmount: 10
+  speed: 10
+  damageAmount: 5
   collisionParticles: {fileID: 863899079453766310, guid: 599dec2fc6e4d4ae5b39910078070643, type: 3}
 --- !u!82 &8994198240668387993
 AudioSource:

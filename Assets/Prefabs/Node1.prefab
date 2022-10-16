@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 806404965064558790}
   - component: {fileID: 5632583306058672763}
+  - component: {fileID: -4663727048270976223}
   - component: {fileID: 1853465890666815585}
   - component: {fileID: 5325983020440778210}
   m_Layer: 0
@@ -42,6 +43,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6779032402633132632}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &-4663727048270976223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6779032402633132632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76d86b6d7b631804dbf2cb4235fc0e24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverColor: {r: 0.61923575, g: 0.9528302, b: 0.56181026, a: 0}
+  positionOffset: {x: 0, y: 0.5, z: 0}
 --- !u!23 &1853465890666815585
 MeshRenderer:
   m_ObjectHideFlags: 0

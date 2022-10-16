@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7036297780133426649}
   - component: {fileID: -7728685825767357762}
   - component: {fileID: -9165865293114914213}
+  - component: {fileID: -4964260827261664095}
   - component: {fileID: -8395395841464877045}
   - component: {fileID: -1221439771335516407}
   m_Layer: 0
@@ -136,8 +137,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 2
-  velocity: {x: 0, y: 0, z: 0}
-  damageAmount: 10
+  speed: 10
+  damageAmount: 50
+  collisionParticles: {fileID: 863899079453766310, guid: 599dec2fc6e4d4ae5b39910078070643, type: 3}
+--- !u!114 &-4964260827261664095
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8328124353864360407}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36f8c246950b3f8439df9f0dc5ca0f02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 7
   collisionParticles: {fileID: 863899079453766310, guid: 599dec2fc6e4d4ae5b39910078070643, type: 3}
 --- !u!114 &-8395395841464877045
 MonoBehaviour:

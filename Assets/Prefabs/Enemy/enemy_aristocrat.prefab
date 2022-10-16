@@ -14,7 +14,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2975446b3cbb743c695216056fd04704, type: 3}
       propertyPath: m_LocalScale.x
-      value: 280
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2975446b3cbb743c695216056fd04704, type: 3}
       propertyPath: m_LocalScale.y
@@ -112,6 +112,3 @@ MonoBehaviour:
   tokensDropped: 0
   rotationSpeed: 0
   collisionParticles: {fileID: 863899079453766310, guid: 14c9ef49a970944e483955e7eb1c9263, type: 3}
-  OnReachEnd:
-    m_PersistentCalls:
-      m_Calls: []
