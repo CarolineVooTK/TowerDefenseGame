@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6539172511197666825}
   - component: {fileID: -5159325350572126540}
   - component: {fileID: -3870240166322658070}
+  - component: {fileID: -7468358695828028126}
   - component: {fileID: 1312925130152568975}
   - component: {fileID: -9162297095623263316}
   - component: {fileID: 1670833726542379557}
@@ -120,6 +121,20 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.00597019
   m_Center: {x: -0.00004922156, y: -0.00016522936, z: 0.00000037765128}
+--- !u!114 &-7468358695828028126
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4737561066798596060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36f8c246950b3f8439df9f0dc5ca0f02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 3
+  collisionParticles: {fileID: 863899079453766310, guid: 599dec2fc6e4d4ae5b39910078070643, type: 3}
 --- !u!114 &1312925130152568975
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -133,7 +148,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 2
-  velocity: {x: 0, y: 0, z: 0}
+  speed: 10
   damageAmount: 10
   collisionParticles: {fileID: 863899079453766310, guid: 599dec2fc6e4d4ae5b39910078070643, type: 3}
 --- !u!114 &-9162297095623263316

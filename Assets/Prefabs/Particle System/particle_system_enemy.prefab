@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 863899079453766310}
   - component: {fileID: 616547713876480193}
   - component: {fileID: -6038643516118863781}
+  - component: {fileID: 371195529356454336}
   - component: {fileID: 8604998195564048276}
   m_Layer: 0
   m_Name: particle_system_enemy
@@ -4887,6 +4888,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetParticleSystem: {fileID: 863899079453766310}
+--- !u!114 &371195529356454336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9008844554979015241}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4532cc6f0f214b27af27f39a45dc0b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!82 &8604998195564048276
 AudioSource:
   m_ObjectHideFlags: 0

@@ -5,11 +5,22 @@ public class Bullet : MonoBehaviour {
     private Vector3 shootPosition;
     private float shootRange;
     private Vector3 dir;
-    public float speed = 7f;
+    private float shelfLife = 3f;
+    public float speed = 3f;
     // Level of food
 
     [SerializeField] private ParticleSystem collisionParticles;
-
+    void Start () {
+        InvokeRepeating ("ShelfLife",0f,1f);
+    }
+    public void ShelfLife(){
+        if (shelfLife<1){
+            Debug.Log("DELETED");
+            Destroy(gameObject);
+            return;
+        }
+        shelfLife-=1;
+    }
     public void Seek(Transform _target,Vector3 _shootPosition,float _range) {
         target = _target;
         shootPosition = _shootPosition;

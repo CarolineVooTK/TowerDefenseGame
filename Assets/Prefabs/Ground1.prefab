@@ -48,6 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hoverColor: {r: 0.7830189, g: 0.5993202, b: 0.48384658, a: 0}
+  turret: {fileID: 4398272844514848389, guid: 68dfdac735df4e44f83a79a714359cbc, type: 3}
   positionOffset: {x: 0, y: 0.5, z: 0}
 --- !u!33 &6257737277255653977
 MeshFilter:
