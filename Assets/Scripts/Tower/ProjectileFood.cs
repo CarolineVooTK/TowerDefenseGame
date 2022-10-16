@@ -10,12 +10,12 @@ public class ProjectileFood : MonoBehaviour
     }
 
     public OPTIONS type;
-    public Vector3 velocity;
+    public float speed = 10f;
+    private Vector3 velocity;
     public int damageAmount;
     [SerializeField] private ParticleSystem collisionParticles;
 
     private readonly string tagToDamage = "Enemy";
-
     // Reset values when start
     private void Start()
     {
@@ -26,7 +26,6 @@ public class ProjectileFood : MonoBehaviour
     public void ResetStats()
     {
         velocity = new Vector3(3f, 0, 0);
-        damageAmount = 10;
 
         // Switch based on the type chosen and assign its respected values
         switch (type)
@@ -34,15 +33,15 @@ public class ProjectileFood : MonoBehaviour
             case OPTIONS.level1:
                 break;
             case OPTIONS.level2:
-                velocity *= 0.75f;
+                velocity *= 1.25f;
                 damageAmount *= 2;
                 break;
             case OPTIONS.level3:
-                velocity *= 0.5f;
+                velocity *= 1.5f;
                 damageAmount *= 3;
                 break;
             case OPTIONS.level4:
-                velocity *= 0.25f;
+                velocity *= 1.75f;
                 damageAmount *= 4;
                 break;
         }
@@ -51,7 +50,8 @@ public class ProjectileFood : MonoBehaviour
     // Move food based on velocity
     private void Update()
     {
-        transform.Translate(this.velocity * Time.deltaTime);
+        float distanceThisFrame = speed * Time.deltaTime;
+        transform.Translate(this.velocity.normalized * distanceThisFrame);
     }
 
     // Check if collide with enemy then attack

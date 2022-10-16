@@ -45,7 +45,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4670503097043263913}
-  m_Mesh: {fileID: 7163139704722639416, guid: 10d3cf4d01aa140c0a495b1c519dc7c5, type: 3}
+  m_Mesh: {fileID: -6844675630007580400, guid: b28bde1a192e547fd8a467a62c66bb72, type: 3}
 --- !u!23 &6615798445927006332
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -142,9 +142,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cd8434be2e554037951b8f34a8c42f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  type: 0
   velocity: {x: 1, y: 0, z: 0}
   damageAmount: 50
-  tagToDamage: Enemy
   collisionParticles: {fileID: 863899079453766310, guid: 599dec2fc6e4d4ae5b39910078070643, type: 3}
 --- !u!114 &-4752283885287123190
 MonoBehaviour:

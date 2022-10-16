@@ -1,5 +1,5 @@
 using UnityEngine;
-using System.Collections;
+using System;
 public class Chef : MonoBehaviour{
     public Transform target;
 
@@ -42,7 +42,11 @@ public class Chef : MonoBehaviour{
         Quaternion lookRotation = Quaternion.LookRotation(dir);
         Vector3 rotation = lookRotation.eulerAngles;
         partToRotate.rotation = Quaternion.Euler(0f,rotation.y,0f); 
+
+
         if (fireCountdown <= 0f){
+                Debug.Log("shooot");
+
             Shoot();
             fireCountdown = 1f / fireRate;
         }
