@@ -15,7 +15,7 @@ public class EnemyManager : MonoBehaviour
     public Transform point;
     public int waveNum = 3;
 
-    private float countdown = 2;
+    private float countdown = 10;
 
     // Generate enemies when update
     private void Update()
@@ -31,7 +31,7 @@ public class EnemyManager : MonoBehaviour
     }
 
     // Generate enemies per wave
-    IEnumerator GenerateWave()
+    private IEnumerator GenerateWave()
     {
         waveNum++;
 

@@ -22,10 +22,10 @@ public class BuildManager : MonoBehaviour {
             return;
         }
 
-        GameManager.tokenBank =- turretToBuild.cost;
+        GameManager.ReduceToken(turretToBuild.cost);
         GameObject turret = (GameObject)Instantiate(turretToBuild.prefab,node.GetBuildPosition(),Quaternion.identity);
         node.turret = turret;
-        Debug.Log("Money Left" + GameManager.tokenBank);
+        Debug.Log("Money Left " + GameManager.tokenBank);
     }
     public bool CanBuild { get {return turretToBuild != null;}}
     public void SetTurretToBuild(TurretBluePrint turret){
