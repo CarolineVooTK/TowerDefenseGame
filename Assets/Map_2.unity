@@ -1870,9 +1870,9 @@ MonoBehaviour:
   e_sumo: {fileID: 2926515711035631924, guid: ee00c6c2b5a2349be9ce8144bdddf581, type: 3}
   e_foodCritic: {fileID: 8436333213019761649, guid: 411a10d354be24ea3a464b0cd7058820, type: 3}
   e_aristocrat: {fileID: 6106238358865474613, guid: 9927866069e50449091b81575fdb124a, type: 3}
-  waveTime: 10
+  waveTime: 7
   point: {fileID: 920626448}
-  waveNum: 3
+  waveNum: 0
 --- !u!4 &48299602
 Transform:
   m_ObjectHideFlags: 0
@@ -34426,7 +34426,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "\u2752  150"
+  m_Text: "\u2752 200"
 --- !u!222 &829187718
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -86240,7 +86240,7 @@ MonoBehaviour:
     prefab: {fileID: 410522211146819710, guid: 8f23de5958048e44daad0a2e2845379f, type: 3}
     cost: 0
   premiumCost: 400
-  standardCost: 150
+  standardCost: 200
   farmer:
     prefab: {fileID: 6590973383277379816, guid: ba2ab113ae0be4576bef119c564440e9, type: 3}
     cost: 0
@@ -89283,7 +89283,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "\u2752  400"
+  m_Text: "\u2752 400"
 --- !u!222 &2119053319
 CanvasRenderer:
   m_ObjectHideFlags: 0
