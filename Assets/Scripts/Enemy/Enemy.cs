@@ -57,7 +57,7 @@ public class Enemy : MonoBehaviour
     {
         startingHunger = 30;
         speed = 5;
-        tokensDropped = 1;
+        tokensDropped = 10;
 
         // Switch based on the type chosen and assign its respected values
         switch (type)
@@ -67,27 +67,27 @@ public class Enemy : MonoBehaviour
             case OPTIONS.marathonRunner:
                 startingHunger *= 1.5f;
                 speed *= 3;
-                tokensDropped *= 2;
+                tokensDropped *= 3;
                 break;
             case OPTIONS.mukbanger:
                 startingHunger *= 2;
                 speed *= 2;
-                tokensDropped *= 3;
+                tokensDropped *= 7;
                 break;
             case OPTIONS.foodCritic:
                 startingHunger *= 2.5f;
                 speed *= 1.5f;
-                tokensDropped *= 4;
+                tokensDropped *= 20;
                 break;
             case OPTIONS.sumo:
-                startingHunger *= 3;
+                startingHunger *= 4;
                 speed *= 0.25f;
-                tokensDropped *= 5;
+                tokensDropped *= 80;
                 break;
             case OPTIONS.aristocrat:
                 startingHunger *= 3.5f;
                 speed *= 0.5f;
-                tokensDropped *= 6;
+                tokensDropped *= 60;
                 break;
         }
 

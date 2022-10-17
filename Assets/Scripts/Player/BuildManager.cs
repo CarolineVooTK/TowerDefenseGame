@@ -10,7 +10,7 @@ public class BuildManager : MonoBehaviour {
     public TurretBluePrint turretToBuild;
     [Header ("COST")]
     public int premiumCost=400;
-    public int standardCost=150;
+    public int standardCost=200;
     [Header("TURRETS")]
     public TurretBluePrint farmer;
     public TurretBluePrint indomie;
@@ -31,7 +31,6 @@ public class BuildManager : MonoBehaviour {
     }
     public string placeTag = "Placeable";
     public void BuildTurretOn (Node node){
-        Debug.Log(scrollInt);
         if (scrollInt==1) PurchasePremiumChest();
         if (scrollInt==0) PurchaseStandardChest();       
         if (node.tag!=placeTag){
