@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657838, g: 0.49641234, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -34426,7 +34426,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "\u2752  100"
+  m_Text: "\u2752  150"
 --- !u!222 &829187718
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -71895,12 +71895,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6997d0ccc5831947a970e80bde3a934, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  standardTurret:
-    prefab: {fileID: 4398272844514848389, guid: 68dfdac735df4e44f83a79a714359cbc, type: 3}
-    cost: 100
-  anotherTurret:
-    prefab: {fileID: 5775072716447027322, guid: 556344fd4c7d8ed48ab718a163cf5301, type: 3}
-    cost: 400
 --- !u!1001 &1706230110
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -86245,8 +86239,39 @@ MonoBehaviour:
   turretToBuild:
     prefab: {fileID: 410522211146819710, guid: 8f23de5958048e44daad0a2e2845379f, type: 3}
     cost: 0
-  standardTurretPrefab: {fileID: 410522211146819710, guid: 8f23de5958048e44daad0a2e2845379f, type: 3}
-  anotherTurretPrefab: {fileID: 4398272844514848389, guid: 68dfdac735df4e44f83a79a714359cbc, type: 3}
+  premiumCost: 400
+  standardCost: 150
+  farmer:
+    prefab: {fileID: 6590973383277379816, guid: ba2ab113ae0be4576bef119c564440e9, type: 3}
+    cost: 0
+  indomie:
+    prefab: {fileID: 2626925722187396428, guid: b52d3a55de82c444f9679971ff010cf5, type: 3}
+    cost: 0
+  laksa:
+    prefab: {fileID: 1396926703817609915, guid: 9b23f4e2b6c1247e78d85943b615534b, type: 3}
+    cost: 0
+  sushi:
+    prefab: {fileID: 7576470060150570639, guid: 2686a01acb88f4700ac362a66c836a86, type: 3}
+    cost: 0
+  coffee:
+    prefab: {fileID: 4075594444268873286, guid: 6390a1799096d4fcdba5af28e9589236, type: 3}
+    cost: 0
+  doughnuts:
+    prefab: {fileID: 2675918117088817132, guid: 65099c91914a44dfa8bd306d8a539cb0, type: 3}
+    cost: 0
+  sandwich:
+    prefab: {fileID: 5991364318117334091, guid: 7279cd82cc8584ef7b21ade3b1429aff, type: 3}
+    cost: 0
+  boba:
+    prefab: {fileID: 6139540965776891255, guid: ba3d9de752ad14c28b68a5be93121fcd, type: 3}
+    cost: 0
+  korean:
+    prefab: {fileID: 4237310837705628951, guid: 9064eda6f2a6f47b8a3002d7283407ac, type: 3}
+    cost: 0
+  pizza:
+    prefab: {fileID: 7679606943554126444, guid: 3e761a000efbe4821bd8f3881cb208a7, type: 3}
+    cost: 0
+  scrollInt: 0
   placeTag: Placeable
 --- !u!4 &2047903997 stripped
 Transform:

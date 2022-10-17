@@ -2,19 +2,22 @@ using UnityEngine;
 
 public class Shop : MonoBehaviour {
     BuildManager buildManager;
-    public TurretBluePrint standardTurret;
-    public TurretBluePrint anotherTurret;
+    private TurretBluePrint standardTurret;
     void Start(){
         buildManager = BuildManager.instance;
     }
     public void PurchaseStandardChest(){
         Debug.Log("Standard Purchase");
-        buildManager.SetTurretToBuild(standardTurret);
+        // standardTurret.SetCost(10);
+        buildManager.SetScroll(0);
+        // buildManager.SetTurretToBuild(standardTurret);
     }
 
     public void PurchasePremiumChest(){
         Debug.Log("Premium Purchase");
-        buildManager.SetTurretToBuild(anotherTurret);
+        // standardTurret.SetCost(40);
+        buildManager.SetScroll(1);
+        // buildManager.SetTurretToBuild(standardTurret);
 
     }
 }
