@@ -57,7 +57,7 @@ public class Enemy : MonoBehaviour
     {
         startingHunger = 30;
         speed = 5;
-        tokensDropped = 1;
+        tokensDropped = 5;
 
         // Switch based on the type chosen and assign its respected values
         switch (type)
@@ -65,29 +65,29 @@ public class Enemy : MonoBehaviour
             case OPTIONS.averageJoe:
                 break;
             case OPTIONS.marathonRunner:
-                startingHunger *= 1.5f;
-                speed *= 3;
-                tokensDropped *= 2;
+                startingHunger *= 0.8f;
+                speed *= 1.4f;
+                tokensDropped += 2;
                 break;
             case OPTIONS.mukbanger:
-                startingHunger *= 2;
-                speed *= 2;
-                tokensDropped *= 3;
+                startingHunger *= 2f;
+                speed *= 0.9f;
+                tokensDropped += 20;
                 break;
             case OPTIONS.foodCritic:
                 startingHunger *= 2.5f;
-                speed *= 1.5f;
-                tokensDropped *= 4;
+                speed *= 0.8f;
+                tokensDropped += 25;
                 break;
             case OPTIONS.sumo:
-                startingHunger *= 3;
+                startingHunger *= 4f;
                 speed *= 0.25f;
-                tokensDropped *= 5;
+                tokensDropped += 70;
                 break;
             case OPTIONS.aristocrat:
                 startingHunger *= 3.5f;
                 speed *= 0.5f;
-                tokensDropped *= 6;
+                tokensDropped += 60;
                 break;
         }
 
@@ -110,7 +110,8 @@ public class Enemy : MonoBehaviour
 
         // Rotate object to a direction
         Quaternion rotation = Quaternion.LookRotation(dir);
-        transform.rotation = Quaternion.Lerp(transform.rotation, rotation, speed * Time.deltaTime);
+        //transform.rotation = Quaternion.Lerp(transform.rotation, rotation, speed * Time.deltaTime);
+        transform.rotation = rotation;
 
         // If distance is close as 0.2, assume it already reach the waypoint and update
         if (Vector3.Distance(transform.position, target.position) <= 0.2f)

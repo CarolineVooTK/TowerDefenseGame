@@ -3,6 +3,7 @@
 public class GameManager : MonoBehaviour
 {
     public static int tokenBank;
+    public static int waveNum;
 
     // Add token to bank
     public static void AddToken(int token)
@@ -20,5 +21,15 @@ public class GameManager : MonoBehaviour
     public static void ResetToken(int token)
     {
         tokenBank = token;
+    }
+
+    public static void ResetWave()
+    {
+        waveNum = 0;
+    }
+
+    public static void NextWave()
+    {
+        waveNum++;
     }
 }

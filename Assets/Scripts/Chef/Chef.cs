@@ -58,7 +58,10 @@ public class Chef : MonoBehaviour{
         // GameObject[] bullets = new GameObject[(GameObject)Instantiate(bulletPrefab, firePoint.position,firePoint.rotation),
         //                             (GameObject)Instantiate(bulletPrefab2, firePoint.position,firePoint.rotation),
         //                             (GameObject)Instantiate(bulletPrefab3, firePoint.position,firePoint.rotation)]; 
-        int index = Random.Range(0, 3);
+        int index=0;
+        if (bulletPrefab2 == null && bulletPrefab3 == null) index=0;
+        if (bulletPrefab3 == null && bulletPrefab3)  index = Random.Range(0,1);
+        if (bulletPrefab2 && bulletPrefab3) index = Random.Range(0,2);
 
         switch(index){
             case 1:
