@@ -17,14 +17,8 @@ public class PanelTransition : MonoBehaviour
 
         // Then set first to the active panel (if applicable).
         SwitchTo(this.panels.Length > 0 ? this.panels[0] : null);
-        //StartCoroutine(Wait());
+        Time.timeScale = 0f;
     }
-
-    //private IEnumerator Wait()
-    //{
-    //    yield return new WaitForSeconds(0.1f);
-    //    Time.timeScale = 0.00001f;
-    //}
 
     public void SwitchTo(RectTransform panel)
     {
