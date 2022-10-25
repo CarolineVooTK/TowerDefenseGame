@@ -3,7 +3,52 @@ guid: 1b9174fa9ee194d188f28d27fbf4922a
 ModelImporter:
   serializedVersion: 22103
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: black
+    second: {fileID: 2100000, guid: 7d4d1381bfa3245d7b2488d63f7f58b9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: black_brown
+    second: {fileID: 2100000, guid: d8012c69439a04b11a0c6a70981374bf, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: blue_very_dark
+    second: {fileID: 2100000, guid: befe831d70d8f41cfad2f3495be38e45, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: brown
+    second: {fileID: 2100000, guid: 398dd3b2daf2440e7868744b3e1177b0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: brown_metal
+    second: {fileID: 2100000, guid: 5a9e11756a9e04055b15e20e75bcebf3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: sage_green
+    second: {fileID: 2100000, guid: 692d97ffd2b6a40909a2ba12f55ef1a3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: skin
+    second: {fileID: 2100000, guid: 4c236667ee276456898f47c9fd22f505, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: stripes_blue_dark
+    second: {fileID: 2100000, guid: 51157d90f0eb54c6aa084e39068432d8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: white
+    second: {fileID: 2100000, guid: adb34bb4ef234434cb7bebe08b3859ce, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

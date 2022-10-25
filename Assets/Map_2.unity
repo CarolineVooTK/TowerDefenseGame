@@ -86531,7 +86531,7 @@ MonoBehaviour:
   premiumCost: 400
   standardCost: 200
   farmer:
-    prefab: {fileID: 6590973383277379816, guid: ba2ab113ae0be4576bef119c564440e9, type: 3}
+    prefab: {fileID: 3411410210775256848, guid: d1d0e6e27ff834240b0e77125b182a5f, type: 3}
     cost: 0
   indomie:
     prefab: {fileID: 2626925722187396428, guid: b52d3a55de82c444f9679971ff010cf5, type: 3}
