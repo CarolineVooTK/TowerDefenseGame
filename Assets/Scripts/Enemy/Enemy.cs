@@ -19,7 +19,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private ParticleSystem collisionParticles;
 
     private int wavePointIndex = 0;
-    private Transform target;
+    public Transform target;
     private float _currentHunger;
 
     // Check current hunger
@@ -46,7 +46,7 @@ public class Enemy : MonoBehaviour
     }
 
     // Reset values when start
-    private void Start()
+    void Start()
     {
         ResetEnemy();
         target = WayPoints.points[0];
@@ -65,29 +65,29 @@ public class Enemy : MonoBehaviour
             case OPTIONS.averageJoe:
                 break;
             case OPTIONS.marathonRunner:
-                startingHunger *= 0.8f;
+                startingHunger = 40;
                 speed *= 1.4f;
-                tokensDropped += 2;
+                tokensDropped += 3;
                 break;
             case OPTIONS.mukbanger:
-                startingHunger *= 2f;
-                speed *= 0.9f;
+                startingHunger = 2500;
+                speed *= 0.6f;
                 tokensDropped += 20;
                 break;
             case OPTIONS.foodCritic:
-                startingHunger *= 2.5f;
+                startingHunger = 7000;
                 speed *= 0.8f;
-                tokensDropped += 25;
+                tokensDropped = 1250;
                 break;
             case OPTIONS.sumo:
-                startingHunger *= 4f;
+                startingHunger = 2250;
                 speed *= 0.25f;
-                tokensDropped += 70;
+                tokensDropped = 100;
                 break;
             case OPTIONS.aristocrat:
-                startingHunger *= 3.5f;
+                startingHunger = 5000;
                 speed *= 0.5f;
-                tokensDropped += 60;
+                tokensDropped = 2000;
                 break;
         }
 
@@ -104,6 +104,9 @@ public class Enemy : MonoBehaviour
     // Move enemy to another waypoint
     private void Update()
     {
+        if (target==null){
+            target = WayPoints.points[wavePointIndex];
+        }
         // Move object to a direction
         Vector3 dir = target.position - transform.position;
         transform.Translate(speed * Time.deltaTime * dir.normalized, Space.World);

@@ -1,25 +1,110 @@
 using UnityEngine;
 using System.Collections;
 public class Chef : MonoBehaviour{
+
     public Transform target;
 
-    [Header ("Attribute")]
-    public float range = 15f;
-    public float fireRate = 1f;
-    public float fireCountdown = 0f;
-    [Header ("UnitySetup")]
-    public string enemyTag = "Enemy";
-    public Transform partToRotate;
+    [Header ("Chef Attributes")]
+    
+    // characters range
+    public float range;
+    // bullets per second
+    public float fireRate;
+   
+    // shoooting interval
+    public float fireCountdown;
+    [Header ("Ammo Types")]
     public GameObject bulletPrefab;
     public GameObject bulletPrefab2;
     public GameObject bulletPrefab3;
+    
+    [Header ("UnitySetup")]
+    public string enemyTag = "Enemy";
+    public Transform partToRotate;
     public Transform firePoint;
-
-
+    public enum OPTIONS{
+        farmer,coffee,sushi,laksa,indomie,boba,pizza,korean,sandwich,doughnut
+    }
+  
+    public OPTIONS type;
     void Start () {
         InvokeRepeating ("UpdateTarget",0f,0.5f);
+        ResetChef();
     }
-
+public void ResetChef()
+    {
+        this.range = 15f;
+        this.fireRate = 3f;
+        this.fireCountdown = 0f;
+        // Switch based on the type chosen and assign its respected values
+        switch (type)
+        {
+            // Basic (dps ~50)
+            case OPTIONS.farmer:
+                // Attributes
+                range = 15f;
+                fireRate = 3f;
+                fireCountdown = 0f;
+                break;
+            // Rare (dps ~150)
+            case OPTIONS.coffee:
+                // Attributes
+                range = 25f;
+                fireRate = 3f;
+                fireCountdown = 1f;
+                break;
+            case OPTIONS.doughnut:
+                // Attributes
+                range = 25f;
+                fireRate = 1f;
+                fireCountdown = 1f;
+                break;
+            case OPTIONS.sandwich:
+                // Attributes
+                range = 25f;
+                fireRate = 4f;
+                fireCountdown = 1f;
+                break;
+            // Super Rare (dps ~350)
+            case OPTIONS.korean:
+                // Attributes
+                range = 35f;
+                fireRate = 5f;
+                fireCountdown = 2f;
+                break;
+            case OPTIONS.pizza:
+                // Attributes
+                range = 50f;
+                fireRate = 1f;
+                fireCountdown = 0f;
+                break;
+            case OPTIONS.boba:
+                // Attributes
+                range = 55f;
+                fireRate = 2f;
+                fireCountdown = 1f;
+                break;
+            // Legendary (dps ~550)
+            case OPTIONS.indomie:
+                // Attributes
+                range = 45f;
+                fireRate = 10f;
+                fireCountdown = 0f;
+                break;
+            case OPTIONS.laksa:
+                // Attributes
+                range = 150f;
+                fireRate = 1f;
+                fireCountdown = 3f;
+                break;
+            case OPTIONS.sushi:
+                // Attributes
+                range = 70f;
+                fireRate = 3f;
+                fireCountdown = 0f;
+                break;
+        }
+    }
     void UpdateTarget () {
         GameObject[] enemies = GameObject.FindGameObjectsWithTag(enemyTag);
         float shortestDistance = Mathf.Infinity;
@@ -55,9 +140,6 @@ public class Chef : MonoBehaviour{
     void Shoot()
     {   
 
-        // GameObject[] bullets = new GameObject[(GameObject)Instantiate(bulletPrefab, firePoint.position,firePoint.rotation),
-        //                             (GameObject)Instantiate(bulletPrefab2, firePoint.position,firePoint.rotation),
-        //                             (GameObject)Instantiate(bulletPrefab3, firePoint.position,firePoint.rotation)]; 
         int index=0;
         if (bulletPrefab2 == null && bulletPrefab3 == null) index=0;
         if (bulletPrefab3 == null && bulletPrefab3)  index = Random.Range(0,1);

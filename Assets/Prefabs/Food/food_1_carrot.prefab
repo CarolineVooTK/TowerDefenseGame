@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 8642659840581636312}
   - component: {fileID: -53158912108670622}
   - component: {fileID: 9036108572995157566}
-  - component: {fileID: 4775911994366766709}
   - component: {fileID: -3931059936063664180}
   - component: {fileID: 4331688860102752797}
   - component: {fileID: -3702517190213643822}
@@ -120,22 +119,6 @@ CapsuleCollider:
   m_Height: 0.00660543
   m_Direction: 1
   m_Center: {x: 0.00015655618, y: 0.00025214368, z: 0.000015593365}
---- !u!114 &4775911994366766709
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7849801800009429261}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9cd8434be2e554037951b8f34a8c42f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  type: 0
-  speed: 10
-  damageAmount: 10
-  collisionParticles: {fileID: 863899079453766310, guid: 599dec2fc6e4d4ae5b39910078070643, type: 3}
 --- !u!114 &-3931059936063664180
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -160,8 +143,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36f8c246950b3f8439df9f0dc5ca0f02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  chef: {fileID: 6054309548071570752, guid: d1d0e6e27ff834240b0e77125b182a5f, type: 3}
+  fireSpeed: 6
+  damage: 45
   collisionParticles: {fileID: 863899079453766310, guid: 599dec2fc6e4d4ae5b39910078070643, type: 3}
+  type: 0
 --- !u!82 &-3702517190213643822
 AudioSource:
   m_ObjectHideFlags: 0
