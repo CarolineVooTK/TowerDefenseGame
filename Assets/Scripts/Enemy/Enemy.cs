@@ -80,7 +80,7 @@ public class Enemy : MonoBehaviour
                 tokensDropped += 25;
                 break;
             case OPTIONS.sumo:
-                startingHunger *= 4f;
+                startingHunger *= 10f;
                 speed *= 0.25f;
                 tokensDropped += 70;
                 break;
