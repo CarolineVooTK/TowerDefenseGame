@@ -144,7 +144,7 @@ public class EnemyManager : MonoBehaviour
         switch (wave)
         {
             case (0): // total credits == 1000
-                yield return StartCoroutine(GenerateAristocrat(1, 1f));
+                yield return StartCoroutine(GenerateJoe(10, 1f));
                 break;
             case (1):
                 yield return StartCoroutine(GenerateJoe(15, 0.5f));
