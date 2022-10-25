@@ -21,12 +21,14 @@ public class UITokenCounter : MonoBehaviour
 
     private IEnumerator Animate()
     {
-        int current = this._target = GameManager.tokenBank;
+        print(GameManager.tokenBank);
+        //int current = this._target = GameManager.tokenBank;
         while (true)
         {
             //current = (int)Mathf.Lerp(current, this._target, this.lerpSpeed);
-            current = GameManager.tokenBank;
+            int current = GameManager.tokenBank;
             UpdateText(Mathf.RoundToInt(current));
+            //print(GameManager.tokenBank);
 
             yield return new WaitForSeconds(0.05f);
         }
