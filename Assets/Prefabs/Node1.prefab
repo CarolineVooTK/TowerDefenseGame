@@ -56,6 +56,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hoverColor: {r: 0.61923575, g: 0.9528302, b: 0.56181026, a: 0}
+  turret: {fileID: 0}
   positionOffset: {x: 0, y: 0.5, z: 0}
 --- !u!23 &1853465890666815585
 MeshRenderer:
