@@ -2,6 +2,7 @@
 
 public class GameManager : MonoBehaviour
 {
+    public static int totalEarned;
     public static int tokenBank;
     public static int waveNum;
 
@@ -9,6 +10,7 @@ public class GameManager : MonoBehaviour
     public static void AddToken(int token)
     {
         tokenBank += token;
+        totalEarned += token;
     }
 
     // Reduce token to bank
@@ -21,6 +23,7 @@ public class GameManager : MonoBehaviour
     public static void ResetToken(int token)
     {
         tokenBank = token;
+        totalEarned = token;
     }
 
     public static void ResetWave()

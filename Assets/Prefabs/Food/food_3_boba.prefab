@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 7535521123907321858}
   - component: {fileID: 7036297780133426649}
   - component: {fileID: -7728685825767357762}
-  - component: {fileID: -9165865293114914213}
   - component: {fileID: -4964260827261664095}
   - component: {fileID: -8395395841464877045}
   - component: {fileID: -1221439771335516407}
@@ -124,22 +123,6 @@ CapsuleCollider:
   m_Height: 0.007233271
   m_Direction: 1
   m_Center: {x: 0.00005083193, y: 0.0012714129, z: -0.00007192662}
---- !u!114 &-9165865293114914213
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8328124353864360407}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9cd8434be2e554037951b8f34a8c42f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  type: 2
-  speed: 10
-  damageAmount: 50
-  collisionParticles: {fileID: 863899079453766310, guid: 599dec2fc6e4d4ae5b39910078070643, type: 3}
 --- !u!114 &-4964260827261664095
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -152,8 +135,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36f8c246950b3f8439df9f0dc5ca0f02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 12
+  chef: {fileID: -509782255747887358, guid: ba3d9de752ad14c28b68a5be93121fcd, type: 3}
+  fireSpeed: 6
+  damage: 45
   collisionParticles: {fileID: 863899079453766310, guid: 599dec2fc6e4d4ae5b39910078070643, type: 3}
+  type: 5
 --- !u!114 &-8395395841464877045
 MonoBehaviour:
   m_ObjectHideFlags: 0

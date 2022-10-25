@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 2466932005348722021}
   - component: {fileID: 8181911408729851484}
   - component: {fileID: 8675996881088928029}
-  - component: {fileID: -8707170622352967892}
   - component: {fileID: -3615812832173038912}
   - component: {fileID: 4095506500915181433}
   - component: {fileID: -6546591148968134892}
@@ -46,7 +45,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4124366962605548720}
-  m_Mesh: {fileID: -4552492216758032069, guid: 39c7c759835b64c7f9be11839b0148e4, type: 3}
+  m_Mesh: {fileID: 739416473338937393, guid: 39c7c759835b64c7f9be11839b0148e4, type: 3}
 --- !u!23 &2466932005348722021
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -123,22 +122,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &-8707170622352967892
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4124366962605548720}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9cd8434be2e554037951b8f34a8c42f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  type: 3
-  speed: 10
-  damageAmount: 120
-  collisionParticles: {fileID: 863899079453766310, guid: 599dec2fc6e4d4ae5b39910078070643, type: 3}
 --- !u!114 &-3615812832173038912
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -151,8 +134,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36f8c246950b3f8439df9f0dc5ca0f02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 8
+  chef: {fileID: -2074005988188689895, guid: b52d3a55de82c444f9679971ff010cf5, type: 3}
+  fireSpeed: 6
+  damage: 45
   collisionParticles: {fileID: 863899079453766310, guid: 599dec2fc6e4d4ae5b39910078070643, type: 3}
+  type: 4
 --- !u!114 &4095506500915181433
 MonoBehaviour:
   m_ObjectHideFlags: 0
