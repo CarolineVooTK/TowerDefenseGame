@@ -109,9 +109,12 @@ public class Enemy : MonoBehaviour
         transform.Translate(speed * Time.deltaTime * dir.normalized, Space.World);
 
         // Rotate object to a direction
-        Quaternion rotation = Quaternion.LookRotation(dir);
-        //transform.rotation = Quaternion.Lerp(transform.rotation, rotation, speed * Time.deltaTime);
-        transform.rotation = rotation;
+        if (dir != Vector3.zero)
+        {
+            Quaternion rotation = Quaternion.LookRotation(dir);
+            //transform.rotation = Quaternion.Lerp(transform.rotation, rotation, speed * Time.deltaTime);
+            transform.rotation = rotation;
+        }
 
         // If distance is close as 0.2, assume it already reach the waypoint and update
         if (Vector3.Distance(transform.position, target.position) <= 0.2f)
