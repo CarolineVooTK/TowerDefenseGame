@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class BuildManager : MonoBehaviour {
 
@@ -32,14 +33,31 @@ public class BuildManager : MonoBehaviour {
     }
     public string placeTag = "Placeable";
     public UnityEvent OnNoMoney;
+    public UnityEvent OnPurchase;
+    public UnityEvent OnNoPlace;
+    [SerializeField] private Text textDisplay;
+    [SerializeField] private string prefix;
+    [SerializeField] private string sufix;
     public void BuildTurretOn (Node node){
-        if (scrollInt==1) PurchasePremiumChest();
-        if (scrollInt==0) PurchaseStandardChest();       
+        if (scrollInt == 2) return;
+        if (scrollInt == 1)
+        {
+            PurchasePremiumChest();
+        }
+        if (scrollInt == 0)
+        {
+            PurchaseStandardChest();
+        }    
         if (node.tag!=placeTag){
+            scrollInt = 2;
             Debug.Log("Cannot Place!");
+            OnNoPlace.Invoke();
             return;
-        } 
-        if (GameManager.tokenBank < turretToBuild.cost){
+        }
+
+        if (GameManager.tokenBank < turretToBuild.cost)
+        {
+            scrollInt = 2;
             Debug.Log("not enough money");
             OnNoMoney.Invoke();
             return;
@@ -48,6 +66,7 @@ public class BuildManager : MonoBehaviour {
 
         GameManager.ReduceToken(turretToBuild.cost);
         GameObject turret = (GameObject)Instantiate(turretToBuild.prefab,node.GetBuildPosition(),Quaternion.identity);
+        OnPurchase.Invoke();
         node.turret = turret;
         Debug.Log("Money Left " + GameManager.tokenBank);
     }
@@ -63,16 +82,20 @@ public class BuildManager : MonoBehaviour {
         int roll = Random.Range(0,100);
         switch(roll){
             case (<10):
-                 turretToBuild=farmer;
+                turretToBuild=farmer;
+                UpdateText("Common");
                 break;
             case (<40):
-                 turretToBuild=ChooseRareTurret();
+                turretToBuild=ChooseRareTurret();
+                UpdateText("Rare");
                 break;
             case (<75):
-                 turretToBuild=ChooseUltraRareTurret();
+                turretToBuild=ChooseUltraRareTurret();
+                UpdateText("Ultra Rare");
                 break;
             default:
-                 turretToBuild=ChooseLegendaryTurret();
+                turretToBuild=ChooseLegendaryTurret();
+                UpdateText("Legendary");
                 break;
         }
         Debug.Log("Premium Purchased");
@@ -84,15 +107,19 @@ public class BuildManager : MonoBehaviour {
         switch(roll){
             case (<60):
                 turretToBuild=farmer;
+                UpdateText("Common");
                 break;
             case (<85):
                 turretToBuild=ChooseRareTurret();
+                UpdateText("Rare");
                 break;
             case (<95):
                 turretToBuild=ChooseUltraRareTurret();
+                UpdateText("Ultra Rare");
                 break;
             default:
                 turretToBuild=ChooseLegendaryTurret();
+                UpdateText("Legendary");
                 break;
         }
         Debug.Log("Standard Purchased");
@@ -117,5 +144,9 @@ public class BuildManager : MonoBehaviour {
         if (roll==1) return sushi;
         return indomie;
     }
-    
+    private void UpdateText(string displayText)
+    {
+        textDisplay.text = this.prefix + displayText + this.sufix;
+    }
+
 }
