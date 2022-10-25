@@ -5,7 +5,6 @@ public class Bullet : MonoBehaviour {
     private Vector3 shootPosition;
     private float shootRange;
     private Vector3 dir;
-    [SerializeField] private Chef chef;
     private float shelfLife = 5f;
     [Header ("Ammo Attributes")]
 
