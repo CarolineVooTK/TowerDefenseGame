@@ -12,7 +12,7 @@ public class UIWarning: MonoBehaviour
 
     private IEnumerator Wait()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
         panel.SetActive(false);
     }
 }

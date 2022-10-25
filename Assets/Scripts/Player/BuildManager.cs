@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class BuildManager : MonoBehaviour {
 
@@ -30,6 +31,7 @@ public class BuildManager : MonoBehaviour {
         scrollInt=_set;
     }
     public string placeTag = "Placeable";
+    public UnityEvent OnNoMoney;
     public void BuildTurretOn (Node node){
         if (scrollInt==1) PurchasePremiumChest();
         if (scrollInt==0) PurchaseStandardChest();       
@@ -39,6 +41,7 @@ public class BuildManager : MonoBehaviour {
         } 
         if (GameManager.tokenBank < turretToBuild.cost){
             Debug.Log("not enough money");
+            OnNoMoney.Invoke();
             return;
         }
 
