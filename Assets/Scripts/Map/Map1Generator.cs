@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MapGenerator : MonoBehaviour
+public class Map1Generator : MonoBehaviour
 {
     public GameObject mapTile;
     public GameObject pathTile;
