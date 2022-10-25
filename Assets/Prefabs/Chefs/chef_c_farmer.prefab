@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5781504764998965842}
   - component: {fileID: 7463551342405146103}
   - component: {fileID: 4645229021869777213}
-  - component: {fileID: 7886993319088964291}
+  - component: {fileID: 6054309548071570752}
   - component: {fileID: 8367044879957029551}
   m_Layer: 0
   m_Name: chef_c_farmer
@@ -99,7 +99,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &7886993319088964291
+--- !u!114 &6054309548071570752
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -112,14 +112,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  range: 15
-  fireRate: 4
-  fireCountdown: 2
-  enemyTag: Enemy
-  partToRotate: {fileID: 5781504764998965842}
+  type: 0
+  range: 25
+  fireRate: 2
+  fireCountdown: 0
   bulletPrefab: {fileID: 7849801800009429261, guid: 1ca9f98ad90e34323aade44a71dec96e, type: 3}
   bulletPrefab2: {fileID: 4302844978948419585, guid: 9573a3d0ed4f64d6a9034a5c811c10ef, type: 3}
   bulletPrefab3: {fileID: 3362472646014816488, guid: 4397a9c349a66431096f1ecf8087e3e2, type: 3}
+  enemyTag: Enemy
+  partToRotate: {fileID: 5781504764998965842}
   firePoint: {fileID: 5781504764998965842}
 --- !u!82 &8367044879957029551
 AudioSource:

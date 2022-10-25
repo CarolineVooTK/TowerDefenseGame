@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 4985026914490716691}
   - component: {fileID: 7331201314372358714}
   - component: {fileID: 8471284650196378688}
-  - component: {fileID: -9004296238688325944}
   - component: {fileID: -8676910894771494686}
   - component: {fileID: 3890062748607087654}
   m_Layer: 0
@@ -131,22 +130,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4532cc6f0f214b27af27f39a45dc0b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &-9004296238688325944
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5130287061891347839}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9cd8434be2e554037951b8f34a8c42f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  type: 0
-  speed: 10
-  damageAmount: 20
-  collisionParticles: {fileID: 863899079453766310, guid: 599dec2fc6e4d4ae5b39910078070643, type: 3}
 --- !u!114 &-8676910894771494686
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -159,8 +142,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36f8c246950b3f8439df9f0dc5ca0f02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 9
+  chef: {fileID: -3650548578924503681, guid: 65099c91914a44dfa8bd306d8a539cb0, type: 3}
+  fireSpeed: 6
+  damage: 45
   collisionParticles: {fileID: 863899079453766310, guid: 599dec2fc6e4d4ae5b39910078070643, type: 3}
+  type: 9
 --- !u!82 &3890062748607087654
 AudioSource:
   m_ObjectHideFlags: 0

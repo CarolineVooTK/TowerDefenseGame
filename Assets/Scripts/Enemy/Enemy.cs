@@ -46,7 +46,7 @@ public class Enemy : MonoBehaviour
     }
 
     // Reset values when start
-    private void Start()
+    void Start()
     {
         ResetEnemy();
         target = WayPoints.points[0];
@@ -65,29 +65,29 @@ public class Enemy : MonoBehaviour
             case OPTIONS.averageJoe:
                 break;
             case OPTIONS.marathonRunner:
-                startingHunger *= 0.8f;
+                startingHunger = 40;
                 speed *= 1.4f;
-                tokensDropped += 2;
+                tokensDropped += 3;
                 break;
             case OPTIONS.mukbanger:
-                startingHunger *= 2f;
-                speed *= 0.9f;
+                startingHunger = 2500;
+                speed *= 0.6f;
                 tokensDropped += 20;
                 break;
             case OPTIONS.foodCritic:
-                startingHunger *= 2.5f;
+                startingHunger = 7000;
                 speed *= 0.8f;
-                tokensDropped += 25;
+                tokensDropped = 1250;
                 break;
             case OPTIONS.sumo:
-                startingHunger *= 10f;
+                startingHunger = 2250;
                 speed *= 0.25f;
-                tokensDropped += 70;
+                tokensDropped = 100;
                 break;
             case OPTIONS.aristocrat:
-                startingHunger *= 3.5f;
+                startingHunger = 5000;
                 speed *= 0.5f;
-                tokensDropped += 60;
+                tokensDropped = 2000;
                 break;
         }
 
@@ -113,7 +113,7 @@ public class Enemy : MonoBehaviour
 
         // Rotate object to a direction
         Quaternion rotation = Quaternion.LookRotation(dir);
-        //transform.rotation = Quaternion.Lerp(transform.rotation, rotation, speed * Time.deltaTime);
+        transform.rotation = Quaternion.Lerp(transform.rotation, rotation, speed * Time.deltaTime);
         transform.rotation = rotation;
 
         // If distance is close as 0.2, assume it already reach the waypoint and update

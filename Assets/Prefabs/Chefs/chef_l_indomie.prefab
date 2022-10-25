@@ -112,12 +112,13 @@ MonoBehaviour:
   range: 15
   fireRate: 1
   fireCountdown: 0
-  enemyTag: Enemy
-  partToRotate: {fileID: 3404553823709081590}
   bulletPrefab: {fileID: 4124366962605548720, guid: 435fa9a30f8f042d9b64c2b0338bafd2, type: 3}
   bulletPrefab2: {fileID: 0}
   bulletPrefab3: {fileID: 0}
+  enemyTag: Enemy
+  partToRotate: {fileID: 3404553823709081590}
   firePoint: {fileID: 3404553823709081590}
+  type: 4
 --- !u!82 &8076619116953600983
 AudioSource:
   m_ObjectHideFlags: 0

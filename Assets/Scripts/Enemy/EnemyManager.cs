@@ -20,25 +20,28 @@ public class EnemyManager : MonoBehaviour
     [SerializeField] private GameObject e_aristocrat;
 
     Dictionary<int,  int> enemyList = new Dictionary<int,int>();
+    Dictionary<int,  float> enemySpacingList = new Dictionary<int,float>();
     public int enemyWaveCost = 150;
     public int waveTime = 10;
     public Transform point;
 
     private float countdown = 5;
-
     private enum enemy{
         Joe,Cindy,Sumo,MukBang,Aristocrat,Critic
     };
+    private enum spacing{
+        Wide,Close,Closer,SuperTight
+    };
 
     private void start(){
-        // Debug.Log(enemyList["averageJoe"]);
+        enemySpacingList.Add((int)spacing.Wide,0.6f);
+        enemySpacingList.Add((int)spacing.Close,0.4f);
+        enemySpacingList.Add((int)spacing.Closer,0.3f);
+        enemyList.Add((int)enemy.Joe,10);
     }
     // Generate enemies when update
 
     private void updateEnemyAvailability(int waveNum){
-        if (waveNum == 0 ){
-            enemyList.Add((int)enemy.Joe,10);
-        }
         if (waveNum == 3 ){
             enemyList.Add((int)enemy.Cindy,20);
         }
@@ -48,17 +51,26 @@ public class EnemyManager : MonoBehaviour
         if (waveNum == 10 ){
             enemyList.Add((int)enemy.MukBang,100);
         }
-        if (waveNum == 20 ){
+        if (waveNum == 15 ){
             enemyList.Add((int)enemy.Aristocrat,200);
         }
-        if (waveNum == 30 ){
+        if (waveNum == 20 ){
             enemyList.Add((int)enemy.Critic,300);
+        }
+    }
+    
+    private void updateEnemySpacing(int waveNum){
+        if (waveNum == 10 ){
+            enemySpacingList.Add((int)spacing.SuperTight,0.1f);
         }
     }
     private void Update()
     {
-        if (countdown <= 0)
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        if (countdown <= 0 && enemies.Length==0)
         {
+            updateEnemyAvailability(GameManager.waveNum);
+            updateEnemySpacing(GameManager.waveNum);
             StartCoroutine(GenerateWave());
             countdown = waveTime;
         }
@@ -70,12 +82,12 @@ public class EnemyManager : MonoBehaviour
     // Generate enemies per wave
     private IEnumerator GenerateWave()
     {
-        Debug.Log("NUMBER  WAVE " + GameManager.waveNum);
-        updateEnemyAvailability(GameManager.waveNum);
+        Debug.Log("NUMBER  WAVE " + (GameManager.waveNum+1));
         yield return StartCoroutine(GenerateWaveFor(GameManager.waveNum));
-        GameManager.NextWave();
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(5f);
         StopAllCoroutines();
+        GameManager.NextWave();
+
     }
 
     // Generate enemy based on waves
@@ -127,48 +139,15 @@ public class EnemyManager : MonoBehaviour
         }
     }
 
-    private IEnumerator GenerateRandom(int wave)
-    {
-        int cost = wave * (100) + GameManager.totalEarned*(wave)*20;
-        while (cost > 0){
-            int rand;
-            int rand2;
-            rand = UnityEngine.Random.Range(0, enemyList.Count);
-            if (enemyList[rand]-cost>0){
-                switch (rand)
-                {
-                    case (0):
-                        yield return StartCoroutine(GenerateJoe(1, 0.4f));
-                        break;
-                    case (1):
-                        yield return StartCoroutine(GenerateMarathonRunner(1, 0.4f));
-                        break;
-                    case (2):
-                        yield return StartCoroutine(GenerateSumo(1 , 0.4f));
-                        break;
-                    case (3):
-                        yield return StartCoroutine(GenerateMukBanger(1, 0.4f));
-                        break;
-                    case (4):
-                        yield return StartCoroutine(GenerateAristocrat(1, 0.4f));
-                        break;
-                    case (5):
-                        yield return StartCoroutine(GenerateCritic(1, 0.4f));
-                        break;
-                }
-                cost-=enemyList[rand];
-            }
-        }
-    }
 
     private IEnumerator GenerateWaveFor(int wave){
         switch (wave)
         {
-            case (0):
-                yield return StartCoroutine(GenerateJoe(10, 1f));
+            case (0): // total credits == 1000
+                yield return StartCoroutine(GenerateAristocrat(1, 1f));
                 break;
             case (1):
-                yield return StartCoroutine(GenerateJoe(20, 0.5f));
+                yield return StartCoroutine(GenerateJoe(15, 0.5f));
                 break;            
             case (2):
                 yield return StartCoroutine(GenerateJoe(7, 0.3f));
@@ -176,15 +155,76 @@ public class EnemyManager : MonoBehaviour
                 yield return StartCoroutine(GenerateJoe(7, 0.3f));
                 break;            
             case (3):
-                yield return  StartCoroutine(GenerateSumo(1, 0.3f));
                 yield return  StartCoroutine(GenerateJoe(7, 0.5f));
                 yield return  StartCoroutine(GenerateMarathonRunner(2, 0.5f));
-                yield return  StartCoroutine(GenerateSumo(1, 0.3f));
                 yield return  StartCoroutine(GenerateJoe(7, 0.3f));
                 yield return  StartCoroutine(GenerateMarathonRunner(2, 0.5f));
                 break;
+            case (4):
+                yield return  StartCoroutine(GenerateJoe(10, 0.3f));
+                yield return  StartCoroutine(GenerateSumo(1, 0.6f));
+                yield return  StartCoroutine(GenerateJoe(10, 0.3f));
+                break;
+            case (5):
+                yield return  StartCoroutine(GenerateSumo(1, 0.3f));
+                yield return  StartCoroutine(GenerateJoe(10, 0.5f));
+                yield return  StartCoroutine(GenerateMarathonRunner(7, 0.5f));
+                yield return  StartCoroutine(GenerateSumo(1, 0.3f));
+                yield return  StartCoroutine(GenerateJoe(10, 0.3f));
+                yield return  StartCoroutine(GenerateMarathonRunner(10, 0.5f));
+                break;
+            case (6):
+                yield return  StartCoroutine(GenerateMarathonRunner(10, 0.3f));
+                yield return  StartCoroutine(GenerateSumo(1, 0.4f));
+                yield return  StartCoroutine(GenerateJoe(20, 0.2f));
+                yield return  StartCoroutine(GenerateSumo(1, 0.4f));
+                yield return  StartCoroutine(GenerateMarathonRunner(10, 0.5f));
+                yield return  StartCoroutine(GenerateJoe(10, 0.2f));
+                yield return  StartCoroutine(GenerateSumo(2, 0.6f));
+                yield return  StartCoroutine(GenerateMarathonRunner(10, 0.8f));
+                break;
+            case (10):
+                yield return  StartCoroutine(GenerateMukBanger(5, 1f));
+                yield return  StartCoroutine(GenerateSumo(3, 0.4f));
+                yield return  StartCoroutine(GenerateJoe(20, 0.2f));
+                yield return  StartCoroutine(GenerateMarathonRunner(10, 0.5f));
+                yield return  StartCoroutine(GenerateJoe(10, 0.2f));
+                yield return  StartCoroutine(GenerateSumo(3, 0.6f));
+                yield return  StartCoroutine(GenerateMarathonRunner(10, 0.8f));
+                break;
             default:
-                yield return StartCoroutine(GenerateRandom(wave));
+                int cost = wave * (250);
+                int rand;
+                int rand2;
+                while (cost > 0){
+                    rand = UnityEngine.Random.Range(0, enemyList.Count);
+                    rand2 = UnityEngine.Random.Range(0, enemySpacingList.Count);
+                    Debug.Log(cost + "IS LEFTTTTTTTT");
+                    if ((cost-500)>0){
+                        switch (rand)
+                        {
+                            case (0):
+                                yield return GenerateJoe(15+wave, enemySpacingList[rand2]);
+                                break;
+                            case (1):
+                                yield return GenerateMarathonRunner(7+((int)Math.Ceiling((double)wave/3)), enemySpacingList[rand2]);
+                                break;
+                            case (2):
+                                yield return GenerateSumo(1 +((int)Math.Ceiling((double)wave/4)), enemySpacingList[rand2]);
+                                break;
+                            case (3):
+                                yield return GenerateMukBanger(1+((int)Math.Ceiling((double)wave/4)), enemySpacingList[rand2]);
+                                break;
+                            case (4):
+                                yield return GenerateAristocrat(1+((int)Math.Ceiling((double)wave/4)), enemySpacingList[rand2]);
+                                break;
+                            case (5):
+                                yield return GenerateCritic(1+((int)Math.Ceiling((double)wave/4)), enemySpacingList[rand2]);
+                                break;
+                        }
+                    }
+                    cost-=500;
+                }
                 break;
         }
 
