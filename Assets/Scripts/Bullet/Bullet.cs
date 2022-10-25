@@ -34,7 +34,7 @@ public class Bullet : MonoBehaviour {
                 fireSpeed = 7f;
                 damage = 17;
                 break;
-            // Rare (dps ~150)
+            // Rare (dps ~100)
             case OPTIONS.coffee:
                 fireSpeed = 10f;
                 damage = 50;
@@ -45,9 +45,9 @@ public class Bullet : MonoBehaviour {
                 break;
             case OPTIONS.sandwich:
                 fireSpeed = 10f;
-                damage = 38;
+                damage = 25;
                 break;
-            // Super Rare (dps ~350)
+            // Super Rare (dps ~150)
             case OPTIONS.korean:
                 fireSpeed = 6f;
                 damage = 50;
@@ -58,12 +58,12 @@ public class Bullet : MonoBehaviour {
                 break;
             case OPTIONS.boba:
                 fireSpeed = 6f;
-                damage = 150;
+                damage = 75;
                 break;
-            // Legendary (dps ~550)
+            // Legendary (dps ~210)
             case OPTIONS.indomie:
                 fireSpeed = 8f;
-                damage = 55;
+                damage = 35;
                 break;
             case OPTIONS.laksa:
                 fireSpeed = 6f;
@@ -71,7 +71,7 @@ public class Bullet : MonoBehaviour {
                 break;
             case OPTIONS.sushi:
                 fireSpeed = 8f;
-                damage = 175;
+                damage = 105;
                 break;
         }
     }

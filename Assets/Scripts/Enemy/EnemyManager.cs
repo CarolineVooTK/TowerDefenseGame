@@ -37,27 +37,8 @@ public class EnemyManager : MonoBehaviour
         enemySpacingList.Add((int)spacing.Wide,0.6f);
         enemySpacingList.Add((int)spacing.Close,0.4f);
         enemySpacingList.Add((int)spacing.Closer,0.3f);
-        enemyList.Add((int)enemy.Joe,10);
     }
     // Generate enemies when update
-
-    private void updateEnemyAvailability(int waveNum){
-        if (waveNum == 3 ){
-            enemyList.Add((int)enemy.Cindy,20);
-        }
-        if (waveNum == 5 ){
-            enemyList.Add((int)enemy.Sumo,80);
-        }
-        if (waveNum == 10 ){
-            enemyList.Add((int)enemy.MukBang,100);
-        }
-        if (waveNum == 15 ){
-            enemyList.Add((int)enemy.Aristocrat,200);
-        }
-        if (waveNum == 20 ){
-            enemyList.Add((int)enemy.Critic,300);
-        }
-    }
     
     private void updateEnemySpacing(int waveNum){
         if (waveNum == 10 ){
@@ -67,9 +48,15 @@ public class EnemyManager : MonoBehaviour
     private void Update()
     {
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+
+        if (GameManager.waveNum == 0 ) enemyList.TryAdd((int)enemy.Joe,10);
+        if (GameManager.waveNum == 3 ) enemyList.TryAdd((int)enemy.Cindy,20);
+        if (GameManager.waveNum == 5 ) enemyList.TryAdd((int)enemy.Sumo,80);
+        if (GameManager.waveNum == 10 ) enemyList.TryAdd((int)enemy.MukBang,100);
+        if (GameManager.waveNum == 15) enemyList.TryAdd((int)enemy.Aristocrat,200);
+        if (GameManager.waveNum == 20 ) enemyList.TryAdd((int)enemy.Critic,300);
         if (countdown <= 0 && enemies.Length==0)
         {
-            updateEnemyAvailability(GameManager.waveNum);
             updateEnemySpacing(GameManager.waveNum);
             StartCoroutine(GenerateWave());
             countdown = waveTime;
@@ -147,18 +134,18 @@ public class EnemyManager : MonoBehaviour
                 yield return StartCoroutine(GenerateJoe(10, 1f));
                 break;
             case (1):
-                yield return StartCoroutine(GenerateJoe(15, 0.5f));
+                yield return StartCoroutine(GenerateJoe(25, 0.5f));
                 break;            
             case (2):
-                yield return StartCoroutine(GenerateJoe(7, 0.3f));
+                yield return StartCoroutine(GenerateJoe(10, 0.3f));
                 yield return StartCoroutine(GenerateMarathonRunner(2, 0.5f));
-                yield return StartCoroutine(GenerateJoe(7, 0.3f));
+                yield return StartCoroutine(GenerateJoe(10, 0.3f));
                 break;            
             case (3):
-                yield return  StartCoroutine(GenerateJoe(7, 0.5f));
-                yield return  StartCoroutine(GenerateMarathonRunner(2, 0.5f));
-                yield return  StartCoroutine(GenerateJoe(7, 0.3f));
-                yield return  StartCoroutine(GenerateMarathonRunner(2, 0.5f));
+                yield return  StartCoroutine(GenerateJoe(14, 0.5f));
+                yield return  StartCoroutine(GenerateMarathonRunner(4, 0.5f));
+                yield return  StartCoroutine(GenerateJoe(14, 0.3f));
+                yield return  StartCoroutine(GenerateMarathonRunner(4, 0.5f));
                 break;
             case (4):
                 yield return  StartCoroutine(GenerateJoe(10, 0.3f));
@@ -196,6 +183,12 @@ public class EnemyManager : MonoBehaviour
                 int cost = wave * (250);
                 int rand;
                 int rand2;
+                if (GameManager.waveNum < 0 ) enemyList.TryAdd((int)enemy.Joe,10);
+                if (GameManager.waveNum < 3 ) enemyList.TryAdd((int)enemy.Cindy,20);
+                if (GameManager.waveNum < 5 ) enemyList.TryAdd((int)enemy.Sumo,80);
+                if (GameManager.waveNum < 10 ) enemyList.TryAdd((int)enemy.MukBang,100);
+                if (GameManager.waveNum < 15) enemyList.TryAdd((int)enemy.Aristocrat,200);
+                if (GameManager.waveNum < 20 ) enemyList.TryAdd((int)enemy.Critic,300);
                 while (cost > 0){
                     rand = UnityEngine.Random.Range(0, enemyList.Count);
                     rand2 = UnityEngine.Random.Range(0, enemySpacingList.Count);

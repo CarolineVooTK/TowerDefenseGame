@@ -44,13 +44,13 @@ public void ResetChef()
                 // Attributes
                 range = 15f;
                 fireRate = 3f;
-                fireCountdown = 0f;
+                fireCountdown = 2f;
                 break;
-            // Rare (dps ~150)
+            // Rare (dps ~100)
             case OPTIONS.coffee:
                 // Attributes
                 range = 25f;
-                fireRate = 3f;
+                fireRate = 2f;
                 fireCountdown = 1f;
                 break;
             case OPTIONS.doughnut:
@@ -62,21 +62,21 @@ public void ResetChef()
             case OPTIONS.sandwich:
                 // Attributes
                 range = 25f;
-                fireRate = 4f;
+                fireRate = 3f;
                 fireCountdown = 1f;
                 break;
-            // Super Rare (dps ~350)
+            // Super Rare (dps ~150)
             case OPTIONS.korean:
                 // Attributes
                 range = 35f;
-                fireRate = 5f;
+                fireRate = 3f;
                 fireCountdown = 2f;
                 break;
             case OPTIONS.pizza:
                 // Attributes
                 range = 50f;
                 fireRate = 1f;
-                fireCountdown = 0f;
+                fireCountdown = 1f;
                 break;
             case OPTIONS.boba:
                 // Attributes
@@ -84,11 +84,11 @@ public void ResetChef()
                 fireRate = 2f;
                 fireCountdown = 1f;
                 break;
-            // Legendary (dps ~550)
+            // Legendary (dps ~210)
             case OPTIONS.indomie:
                 // Attributes
                 range = 45f;
-                fireRate = 10f;
+                fireRate = 3f;
                 fireCountdown = 0f;
                 break;
             case OPTIONS.laksa:
@@ -100,8 +100,8 @@ public void ResetChef()
             case OPTIONS.sushi:
                 // Attributes
                 range = 70f;
-                fireRate = 3f;
-                fireCountdown = 0f;
+                fireRate = 2f;
+                fireCountdown = 4f;
                 break;
         }
     }
@@ -143,7 +143,7 @@ public void ResetChef()
         int index=0;
         if (bulletPrefab2 == null && bulletPrefab3 == null) index=0;
         if (bulletPrefab3 == null && bulletPrefab3)  index = Random.Range(0,1);
-        if (bulletPrefab2 && bulletPrefab3) index = Random.Range(0,2);
+        if (bulletPrefab2 && bulletPrefab3) index = Random.Range(0,3);
 
         switch(index){
             case 1:

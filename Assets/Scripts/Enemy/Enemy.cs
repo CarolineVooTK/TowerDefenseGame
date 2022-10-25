@@ -55,7 +55,7 @@ public class Enemy : MonoBehaviour
     // Reset the statistics of the enemies
     public void ResetEnemy()
     {
-        startingHunger = 30;
+        startingHunger = 50;
         speed = 5;
         tokensDropped = 5;
 
@@ -65,9 +65,9 @@ public class Enemy : MonoBehaviour
             case OPTIONS.averageJoe:
                 break;
             case OPTIONS.marathonRunner:
-                startingHunger = 40;
+                startingHunger = 70;
                 speed *= 1.4f;
-                tokensDropped += 3;
+                tokensDropped = 15;
                 break;
             case OPTIONS.mukbanger:
                 startingHunger = 2500;
@@ -80,9 +80,9 @@ public class Enemy : MonoBehaviour
                 tokensDropped = 1250;
                 break;
             case OPTIONS.sumo:
-                startingHunger = 2250;
+                startingHunger = 2000;
                 speed *= 0.25f;
-                tokensDropped = 100;
+                tokensDropped = 200;
                 break;
             case OPTIONS.aristocrat:
                 startingHunger = 5000;
