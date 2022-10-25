@@ -19,7 +19,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private ParticleSystem collisionParticles;
 
     private int wavePointIndex = 0;
-    private Transform target;
+    public Transform target;
     private float _currentHunger;
 
     // Check current hunger
@@ -104,6 +104,9 @@ public class Enemy : MonoBehaviour
     // Move enemy to another waypoint
     private void Update()
     {
+        if (target==null){
+            target = WayPoints.points[wavePointIndex];
+        }
         // Move object to a direction
         Vector3 dir = target.position - transform.position;
         transform.Translate(speed * Time.deltaTime * dir.normalized, Space.World);

@@ -29,7 +29,7 @@ public class UIWaveNumber : MonoBehaviour
             //current = (int)Mathf.Lerp(current, this._target, this.lerpSpeed);
             current = GameManager.waveNum + 1;
             UpdateText(current);
-            print(current);
+            // print(current);
             yield return new WaitForSeconds(1f);
         }
     }

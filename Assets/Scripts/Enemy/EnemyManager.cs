@@ -21,7 +21,7 @@ public class EnemyManager : MonoBehaviour
 
     Dictionary<int,  int> enemyList = new Dictionary<int,int>();
     public int enemyWaveCost = 150;
-    public int waveTime = 15;
+    public int waveTime = 10;
     public Transform point;
 
     private float countdown = 5;
@@ -60,7 +60,7 @@ public class EnemyManager : MonoBehaviour
         if (countdown <= 0)
         {
             StartCoroutine(GenerateWave());
-            countdown = waveTime * (GameManager.waveNum + 1);
+            countdown = waveTime;
         }
 
         countdown -= Time.deltaTime;
@@ -134,30 +134,29 @@ public class EnemyManager : MonoBehaviour
             int rand;
             int rand2;
             rand = UnityEngine.Random.Range(0, enemyList.Count);
-            rand2 = UnityEngine.Random.Range(0, GameManager.waveNum + 5);
-            if (enemyList[rand]*rand2-cost>0){
+            if (enemyList[rand]-cost>0){
                 switch (rand)
                 {
                     case (0):
-                        yield return StartCoroutine(GenerateJoe((int)Math.Ceiling(rand2 / 3.0f), 0.4f));
+                        yield return StartCoroutine(GenerateJoe(1, 0.4f));
                         break;
                     case (1):
-                        yield return StartCoroutine(GenerateMarathonRunner((int)Math.Ceiling(rand2 / 3.0f) / 3, 0.4f));
+                        yield return StartCoroutine(GenerateMarathonRunner(1, 0.4f));
                         break;
                     case (2):
-                        yield return StartCoroutine(GenerateSumo((int)Math.Ceiling(rand2 / 3.0f) / 3, 0.4f));
+                        yield return StartCoroutine(GenerateSumo(1 , 0.4f));
                         break;
                     case (3):
-                        yield return StartCoroutine(GenerateMukBanger((int)Math.Ceiling(rand2 / 3.0f) / 3, 0.4f));
+                        yield return StartCoroutine(GenerateMukBanger(1, 0.4f));
                         break;
                     case (4):
-                        yield return StartCoroutine(GenerateAristocrat((int)Math.Ceiling(rand2 / 3.0f) / 3, 0.4f));
+                        yield return StartCoroutine(GenerateAristocrat(1, 0.4f));
                         break;
                     case (5):
-                        yield return StartCoroutine(GenerateCritic((int)Math.Ceiling(rand2 / 3.0f) / 3, 0.4f));
+                        yield return StartCoroutine(GenerateCritic(1, 0.4f));
                         break;
                 }
-                cost-=enemyList[rand]*rand2;
+                cost-=enemyList[rand];
             }
         }
     }
