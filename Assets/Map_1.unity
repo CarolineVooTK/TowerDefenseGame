@@ -1256,6 +1256,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mapTile: {fileID: 6779032402633132632, guid: 3fc0ace90f1960447960fb20abf6297b, type: 3}
   pathTile: {fileID: 6474365257706775561, guid: a77e4d01bb0a2ee4794c4b74ce6242db, type: 3}
+  attackTile: {fileID: 3443052467361187990, guid: 30ed9ee1fb0376f48a6b02a92f2e1c77, type: 3}
   mapWidth: 144
   mapLength: 144
 --- !u!4 &32587698
