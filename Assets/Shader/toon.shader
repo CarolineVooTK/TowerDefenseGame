@@ -7,7 +7,7 @@ Shader "LaksaMania/toon"
         [HDR]
         _AmbientColor("Ambient Color", Color) = (0.74,0.74,0.74,1) // light grey as ambient color
         [HDR]
-        _SpecularColor("Specular Color", Color) = (0.32,0.32,0.32,1) // super light grey as tint reflection   
+        _SpecularColor("Specular Color", Color) = (0.32,0.32,0.32,1) // dark grey as tint reflection   
         _Glossiness("Glossiness", Float) = 20 // control size of reflection
         [HDR]
         _RimColor("Rim Color", Color) = (1,1,1,1) // white rim color
@@ -82,12 +82,11 @@ Shader "LaksaMania/toon"
                 float lightIntensity = smoothstep(0, 0.01, NdotL * shadow); // Toonify blend intensity color from light and dark    
                 float4 light = lightIntensity * _LightColor0; // Calculate light color from directional light
 
-
                 // Calculate Blinn-Phong specular reflection  
                 float3 viewDir = normalize(i.viewDir);
                 float3 halfVector = normalize(_WorldSpaceLightPos0 + viewDir); // Vector between the viewing direction and the light source; normalizing the result
                 float NdotH = dot(normal, halfVector); // Normal of the surface and the half vector
-                float specularIntensity = pow(NdotH * lightIntensity, _Glossiness * _Glossiness); // Control the size of the specular reflection 
+                float specularIntensity = pow(NdotH * lightIntensity, _Glossiness * _Glossiness); // Control the size of the specular reflection  
                 float specularIntensitySmooth = smoothstep(0.005, 0.01, specularIntensity); // Toonify reflection  
                 float4 specular = specularIntensitySmooth * _SpecularColor;
 

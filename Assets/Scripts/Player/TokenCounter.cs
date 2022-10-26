@@ -12,4 +12,9 @@ public class TokenCounter : MonoBehaviour
         GameManager.ResetToken(_token);
     }
 
+    public void ResetToken()
+    {
+        _token = startingToken;
+        GameManager.ResetToken(_token);
+    }
 }

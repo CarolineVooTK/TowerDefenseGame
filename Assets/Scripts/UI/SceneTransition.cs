@@ -31,7 +31,7 @@ public class SceneTransition : MonoBehaviour
 
     public void RestartGame()
     {
-        string currentScene = SceneManager.GetActiveScene().name;
+        int currentScene = SceneManager.GetActiveScene().buildIndex;
         SceneManager.LoadScene(currentScene);
     }
 }

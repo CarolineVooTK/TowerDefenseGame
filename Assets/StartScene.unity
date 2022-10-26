@@ -415,6 +415,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: -1574611008336849029, guid: d1d0e6e27ff834240b0e77125b182a5f, type: 3}
+    - {fileID: 8367044879957029551, guid: d1d0e6e27ff834240b0e77125b182a5f, type: 3}
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: d1d0e6e27ff834240b0e77125b182a5f, type: 3}
 --- !u!1 &95707796
@@ -4599,7 +4600,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Ocean
+  m_Text: Shore
 --- !u!222 &1227380484
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4759,7 +4760,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Forest
+  m_Text: 'Castle
 
 '
 --- !u!222 &1325517814
