@@ -116,3 +116,8 @@ MonoBehaviour:
   tokensDropped: 0
   rotationSpeed: 0
   collisionParticles: {fileID: 863899079453766310, guid: 14c9ef49a970944e483955e7eb1c9263, type: 3}
+  explosive: {fileID: 6028843709792365407, guid: b0a68b39061bc44119416967355deffa, type: 3}
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls: []
+  target: {fileID: 0}

@@ -17,10 +17,12 @@ public class Enemy : MonoBehaviour
     public int tokensDropped;
     public float rotationSpeed;
     [SerializeField] private ParticleSystem collisionParticles;
+    public GameObject explosive;
 
     private int wavePointIndex = 0;
     public Transform target;
     private float _currentHunger;
+    private int level;
 
     // Check current hunger
     private float CurrentHunger
@@ -32,12 +34,18 @@ public class Enemy : MonoBehaviour
 
             // Destroy object when full
             if (CurrentHunger <= 0)
-            {
+            { 
+                // Seperate sound effect 
+                var soundEffect = Instantiate(this.explosive);
+                soundEffect.transform.position = transform.position + new Vector3(0f, 1.6f, 0f);
+
                 // Create collision particles in opposite direction to movement.
-                var particles = Instantiate(this.collisionParticles);
-                particles.transform.position = transform.position + new Vector3(0f, 1.6f, 0f);
-
-
+                for (int i=0; i<level; i++)
+                {
+                    var particles = Instantiate(this.collisionParticles);
+                    particles.transform.position = transform.position + new Vector3(0f, 1.6f, 0f);
+                }
+               
                 // Add token from death
                 GameManager.AddToken(tokensDropped);
                 Destroy(gameObject);
@@ -58,6 +66,7 @@ public class Enemy : MonoBehaviour
         startingHunger = 50;
         speed = 5;
         tokensDropped = 5;
+        level = 1;
 
         // Switch based on the type chosen and assign its respected values
         switch (type)
@@ -68,26 +77,31 @@ public class Enemy : MonoBehaviour
                 startingHunger = 70;
                 speed *= 1.4f;
                 tokensDropped = 15;
+                level = 2;
                 break;
             case OPTIONS.mukbanger:
                 startingHunger = 2500;
                 speed *= 0.6f;
                 tokensDropped += 20;
+                level = 3;
                 break;
             case OPTIONS.foodCritic:
                 startingHunger = 7000;
                 speed *= 0.8f;
                 tokensDropped = 1250;
+                level = 15;
                 break;
             case OPTIONS.sumo:
                 startingHunger = 2000;
                 speed *= 0.25f;
                 tokensDropped = 200;
+                level = 5;
                 break;
             case OPTIONS.aristocrat:
                 startingHunger = 5000;
                 speed *= 0.5f;
                 tokensDropped = 2000;
+                level = 20;
                 break;
         }
 

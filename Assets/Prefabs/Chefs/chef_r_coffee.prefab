@@ -115,7 +115,7 @@ MonoBehaviour:
   enemyTag: Enemy
   partToRotate: {fileID: 3730312142340226300}
   firePoint: {fileID: 3730312142340226300}
-  type: 2
+  type: 1
 --- !u!82 &6190759755695574901
 AudioSource:
   m_ObjectHideFlags: 0
