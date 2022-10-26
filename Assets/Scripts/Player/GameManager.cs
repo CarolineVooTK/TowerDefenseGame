@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 
+// Class to manage static variables in game
 public class GameManager : MonoBehaviour
 {
     public static int totalEarned;
@@ -26,11 +27,13 @@ public class GameManager : MonoBehaviour
         totalEarned = token;
     }
 
+    // Reset wave number
     public static void ResetWave()
     {
         waveNum = 0;
     }
 
+    // Add to next wave
     public static void NextWave()
     {
         waveNum++;

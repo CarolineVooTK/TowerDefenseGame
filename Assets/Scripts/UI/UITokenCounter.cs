@@ -2,40 +2,33 @@
 using System.Collections;
 using UnityEngine.UI;
 
+// Class to update UI of token  
 public class UITokenCounter : MonoBehaviour
 {
     [SerializeField] private Text textDisplay; 
     [SerializeField] private string prefix;
-    [SerializeField] private int lerpSpeed;
-    private int _target;
 
+    // At the start, start coroutine to update values
     private void Start()
     {
         StartCoroutine(Animate());
     }
 
-    public void UpdateValue()
-    {
-        _target = GameManager.tokenBank;
-    }
-
+    // Iterate function on a certain second
     private IEnumerator Animate()
     {
-        print(GameManager.tokenBank);
-        //int current = this._target = GameManager.tokenBank;
         while (true)
         {
-            //current = (int)Mathf.Lerp(current, this._target, this.lerpSpeed);
+            // Constantly update text
             int current = GameManager.tokenBank;
             UpdateText(Mathf.RoundToInt(current));
-            //print(GameManager.tokenBank);
-
             yield return new WaitForSeconds(0.05f);
         }
     }
 
+    // Update text to the new value
     private void UpdateText(int displayValue)
     {
-        textDisplay.text = this.prefix + displayValue;
+        textDisplay.text = prefix + displayValue;
     }
 }

@@ -1,6 +1,4 @@
-using System.Collections;
 using UnityEngine;
-using UnityEngine.Events;
 
 // Class for enemy object
 public class Enemy : MonoBehaviour
@@ -39,7 +37,7 @@ public class Enemy : MonoBehaviour
                 var soundEffect = Instantiate(this.explosive);
                 soundEffect.transform.position = transform.position + new Vector3(0f, 1.6f, 0f);
 
-                // Create collision particles in opposite direction to movement.
+                // Create collision particles in opposite direction to movement
                 for (int i=0; i<level; i++)
                 {
                     var particles = Instantiate(this.collisionParticles);
@@ -129,7 +127,6 @@ public class Enemy : MonoBehaviour
         if (dir != Vector3.zero)
         {
             Quaternion rotation = Quaternion.LookRotation(dir);
-            //transform.rotation = Quaternion.Lerp(transform.rotation, rotation, speed * Time.deltaTime);
             transform.rotation = rotation;
         }
 

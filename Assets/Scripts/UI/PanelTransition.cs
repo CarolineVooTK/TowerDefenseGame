@@ -1,36 +1,36 @@
-using System.Collections;
 using System.Linq;
 using UnityEngine;
 
+// Class to set active child panels aside from the first onee
 public class PanelTransition : MonoBehaviour
 {
     [SerializeField] private RectTransform[] panels;
-
     private RectTransform _currentPanel;
 
+    // Only set first panel as active
     private void Awake()
     {
-        // Ensure only one panel in switch group is active (first by default).
-        // First deactivate all panels.
-        foreach (var panel in this.panels)
+        // Deactivate all panels
+        foreach (var panel in panels)
             panel.gameObject.SetActive(false);
 
-        // Then set first to the active panel (if applicable).
-        SwitchTo(this.panels.Length > 0 ? this.panels[0] : null);
+        // Set first to the active panel
+        SwitchTo(panels.Length > 0 ? panels[0] : null);
         Time.timeScale = 0f;
     }
 
+    // Switch to other panel
     public void SwitchTo(RectTransform panel)
     {
-        if (!this.panels.Contains(panel))
+        if (!panels.Contains(panel))
         {
             Debug.LogWarning("Cannot switch to untracked panel.");
             return;
         }
 
-        if (this._currentPanel)
-            this._currentPanel.gameObject.SetActive(false);
-        this._currentPanel = panel;
-        this._currentPanel.gameObject.SetActive(true);
+        if (_currentPanel)
+            _currentPanel.gameObject.SetActive(false);
+        _currentPanel = panel;
+        _currentPanel.gameObject.SetActive(true);
     }
 }
