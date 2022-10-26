@@ -6,7 +6,7 @@ public class WayPoints : MonoBehaviour
     public static Transform[] points;
 
     // Assign child waypoints when instance is called
-    private void Awake()
+    public void AddWayPoints()
     {
         points = new Transform[transform.childCount];
 

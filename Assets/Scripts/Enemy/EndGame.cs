@@ -12,6 +12,7 @@ public class EndGame : MonoBehaviour
     {
         if (col.gameObject.CompareTag(this.tagToDamage))
         {
+            Time.timeScale = 0f;
             OnEndGame.Invoke();
         }
     }
