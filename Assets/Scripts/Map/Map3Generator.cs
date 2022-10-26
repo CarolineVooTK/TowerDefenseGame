@@ -171,18 +171,31 @@ public class Map3Generator : MonoBehaviour
             if(loopCount > 400){
                 break;
             }
-            if(currentTile.transform.position.x <=105 && currentTile.transform.position.x > 9){
+
+
+            if(currentTile.transform.position.x <=105 && currentTile.transform.position.x > 5){
                 moveLeft();
             }
-            if(currentTile.transform.position.x >= 5 &&  currentTile.transform.position.x <101){
-                moveRight();
+            if(currentTile.transform.position.x >= 5 &&  currentTile.transform.position.x <=105 ) {
+                if(currentTile.transform.position.x <= 105 && currentTile.transform.position.z >= 4){
+                    moveLeft();
+                }
+                else{
+                    moveRight();
+                }
             }
-            if(currentTile.transform.position.z <= 8 && currentTile.transform.position.z >-61){
-                moveDown();
+            if(currentTile.transform.position.z <= 4 && currentTile.transform.position.z >-56){
+                if(currentTile.transform.position.x >= 60 && currentTile.transform.position.z <= -20){
+                    moveUp();
+                }
+                else{
+                    moveDown();
+                }
             }
-            if(currentTile.transform.position.z >=-64 && currentTile.transform.position.z < 4){
-                moveUp();
+            if(currentTile.transform.position.z >=-56 && currentTile.transform.position.z < 8){
+                    moveUp();
             }
+            
             if(currentTile.transform.position.z == endTile.transform.position.z && currentTile.transform.position.x == endTile.transform.position.x){
                 reachedX = true;
             }
