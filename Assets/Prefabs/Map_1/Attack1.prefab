@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 3052951721876271759}
   - component: {fileID: 9063012528726128606}
   - component: {fileID: 6467153205642063457}
+  - component: {fileID: 4774083841589773261}
   m_Layer: 0
-  m_Name: Path
-  m_TagString: Untagged
+  m_Name: Attack1
+  m_TagString: Placeable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -62,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6a8dd6b779ebd9b43800de9ca5bff82a, type: 2}
+  - {fileID: 2100000, guid: 1bf3befbf01a233458f175e32131d9d2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -97,3 +98,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4774083841589773261
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3443052467361187990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76d86b6d7b631804dbf2cb4235fc0e24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverColor: {r: 0.67523587, g: 1, b: 0.6179246, a: 0.85882354}
+  turret: {fileID: 0}
+  positionOffset: {x: 0, y: 0.5, z: 0}

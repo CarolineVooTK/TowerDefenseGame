@@ -32,6 +32,7 @@ public class EnemyManager : MonoBehaviour
     private enum spacing{
         Wide,Close,Closer,SuperTight
     };
+    public Transform ParentEnemy;
 
     private void start(){
         enemySpacingList.Add((int)spacing.Wide,0.6f);
@@ -81,7 +82,7 @@ public class EnemyManager : MonoBehaviour
     private IEnumerator GenerateJoe(int multiple, float gap)
     {
         for (int i = 0; i < multiple; i++){
-            Instantiate(this.e_averageJoe, point.position, point.rotation);
+            Instantiate(this.e_averageJoe, point.position, point.rotation, ParentEnemy);
             yield return new WaitForSeconds(gap);
         }
     }
@@ -89,7 +90,7 @@ public class EnemyManager : MonoBehaviour
     private IEnumerator GenerateMarathonRunner(int multiple, float gap)
     {
         for (int i = 0; i < multiple; i++){
-            Instantiate(this.e_marathonRunner, point.position, point.rotation);
+            Instantiate(this.e_marathonRunner, point.position, point.rotation, ParentEnemy);
             yield return new WaitForSeconds(gap);
         }
     }
@@ -97,7 +98,7 @@ public class EnemyManager : MonoBehaviour
     private IEnumerator GenerateMukBanger(int multiple, float gap)
     {
         for (int i = 0; i < multiple; i++){
-            Instantiate(this.e_mukbanger, point.position, point.rotation);
+            Instantiate(this.e_mukbanger, point.position, point.rotation, ParentEnemy);
             yield return new WaitForSeconds(gap);
         }
     }
@@ -105,7 +106,7 @@ public class EnemyManager : MonoBehaviour
     private IEnumerator GenerateSumo(int multiple, float gap)
     {
         for (int i = 0; i < multiple; i++){
-            Instantiate(this.e_sumo, point.position, point.rotation);
+            Instantiate(this.e_sumo, point.position, point.rotation, ParentEnemy);
             yield return new WaitForSeconds(gap);
         }
     }
@@ -113,7 +114,7 @@ public class EnemyManager : MonoBehaviour
     private IEnumerator GenerateCritic(int multiple, float gap)
     {
         for (int i = 0; i < multiple; i++){
-            Instantiate(this.e_foodCritic, point.position, point.rotation);
+            Instantiate(this.e_foodCritic, point.position, point.rotation, ParentEnemy);
             yield return new WaitForSeconds(gap);
         }
     }
@@ -121,7 +122,7 @@ public class EnemyManager : MonoBehaviour
     private IEnumerator GenerateAristocrat(int multiple, float gap)
     {
         for (int i = 0; i < multiple; i++){
-            Instantiate(this.e_aristocrat, point.position, point.rotation);
+            Instantiate(this.e_aristocrat, point.position, point.rotation, ParentEnemy);
             yield return new WaitForSeconds(gap);
         }
     }

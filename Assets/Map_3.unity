@@ -24102,7 +24102,8 @@ MonoBehaviour:
   e_sumo: {fileID: 2926515711035631924, guid: ee00c6c2b5a2349be9ce8144bdddf581, type: 3}
   e_foodCritic: {fileID: 8436333213019761649, guid: 411a10d354be24ea3a464b0cd7058820, type: 3}
   e_aristocrat: {fileID: 6106238358865474613, guid: 9927866069e50449091b81575fdb124a, type: 3}
-  waveTime: 15
+  enemyWaveCost: 150
+  waveTime: 10
   point: {fileID: 683812245}
 --- !u!4 &505776800
 Transform:
