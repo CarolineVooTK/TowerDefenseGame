@@ -9,7 +9,7 @@ public class UITokenCounter : MonoBehaviour
     [SerializeField] private int lerpSpeed;
     private int _target;
 
-    private void Awake()
+    private void Start()
     {
         StartCoroutine(Animate());
     }

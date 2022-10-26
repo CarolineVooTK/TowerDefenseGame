@@ -104,6 +104,11 @@ Use coins to purchase more scroll and test your luck to defend the kitchen!
 
 The citizens, chefs, and foods are customly modeled and rendered through Blender version 3.3.0. Initially we wanted to create a 3D cartoon game which has an overhead camera. Therefore, we took heavy inspiration on the models based on the game Overcooked 2. It has the foods, people, and chefs that is very similar to our concept. Additionally, it has a overhead camera point of view so when designing we knew already  roughly how our model would look in Unity. The baseframe of the people are similar to Overcooked 2, round head and a cone with half sphere as a base body. These models only have solid colors without any texture. We wanted to keep it clean and simple.
 
+<p align="center">
+    <img src="Assets/Images/5.jpg" width="500">
+     <img src="Assets/Images/4.jpg" width="500">
+</p>
+
 Design  Inspirations:
 * Citizen
     * Average Joe: Overcooked 2 chefs without chef attributes
@@ -140,6 +145,49 @@ Design  Inspirations:
 ### Graphics Pipeline
 
 #### Toon Shader
+
+As our concept is a 3D cartoonish game, we decided to create Toon Shader. This shader deliberately create 3D objects to appear toonish. Final color of each pixel is calculated using Blinn-Phong, with threshold value creating a cartoon effect.
+
+For the light, we calculate if the pixel is lit or its a shadow by doing dot product on the light source and normal of the item. Additionally, we need to take into account other items, if light source is covered by them. By using "smoothstep", it would intensify the color of light and dark.
+
+```C#
+// Calculate item's light to be distinct
+float3 normal = normalize(i.worldNormal);
+float NdotL = dot(_WorldSpaceLightPos0, normal);
+float shadow = SHADOW_ATTENUATION(i); 
+float lightIntensity = smoothstep(0, 0.01, NdotL * shadow);
+float4 light = lightIntensity * _LightColor0; 
+```
+
+For specular reflection of the pixel, we implemented Blinn-Phong reflection model. Calculating the half vector between the light vector and the view vector, using the formula $H = {L + V \over || L + V ||}$. Then dot product the result with the normal of the item to calculate intensity of specular reflection. After calculate the size of the specular by multipy the result with light intensity of the pixel and power it to the glossiness variable. Lastly utilize "smoothstep" again to intensify the difference between pixel colors.
+
+```c#
+// Calculate Blinn-Phong specular reflection  
+float3 viewDir = normalize(i.viewDir);
+float3 halfVector = normalize(_WorldSpaceLightPos0 + viewDir); 
+float NdotH = dot(normal, halfVector); 
+float specularIntensity = pow(NdotH * lightIntensity, _Glossiness * _Glossiness); 
+float specularIntensitySmooth = smoothstep(0.005, 0.01, specularIntensity);
+float4 specular = specularIntensitySmooth * _SpecularColor;
+```
+
+For rim lighting, it gives an illumination effect at the edges of the item. Firstly calculate surfaces that are facing away from the camera. Then multiply it with the normal of light intensity power a certain threshold (how far rim extends). Lastly, using "smoothstep" to give the cartoon effect.
+
+```c#
+// Illumination to the edges (rim lighting)
+float4 rimDot = 1 - dot(viewDir, normal); 
+float rimIntensity = rimDot * pow(NdotL, _RimThreshold);
+float rimIntensitySmooth = smoothstep(_RimAmount - 0.01, _RimAmount + 0.01, rimIntensity);
+float4 rim = rimIntensitySmooth * _RimColor;
+```
+
+Lastly, sum everything to produce the pixel color.
+
+```c#
+return _Color * col * (_AmbientColor + light + specular + rim);
+```
+
+ \* Code snippets from <https://github.com/COMP30019/project-2-laksa-novona/blob/main/Assets/Shader/toon.shader>
 
 #### Water Shader
 
@@ -216,6 +264,16 @@ We utilized randomisation using the feature "Random Between Two Constants" on th
 * Wood Plank Prefab: <https://assetstore.unity.com/packages/2d/textures-materials/wood/plank-textures-pbr-72318>
 * Water Material: <https://assetstore.unity.com/packages/2d/textures-materials/floors/five-seamless-tileable-ground-textures-57060>
 * Sand Material: <https://assetstore.unity.com/packages/2d/textures-materials/free-stylized-pbr-textures-pack-111778>
+
+#### Toon Shader
+* Blinn-Phong Reflection: <https://en.wikipedia.org/wiki/Blinn%E2%80%93Phong_reflection_model>
+* Cel Shading: <https://www.youtube.com/watch?v=mnxs6CR6Zrk>
+* Basic Shader Information: <https://docs.unity3d.com/Manual/SL-VertexFragmentShaderExamples.html>
+* Toon Shading Steps:  <https://roystan.net/articles/toon-shader/>
+* Toon Shading Information: <https://en.wikibooks.org/wiki/Cg_Programming/Unity/Toon_Shading>
+* Toon Shader in HLSL Language: <https://gist.github.com/JSandusky/4f9a4f00110691eb45104f69abd32f75>
+* Inspiration: <https://docs.unity3d.com/Packages/com.unity.toonshader@0.6/manual/index.html>
+* Analysis on Toon Shader: <https://www.youtube.com/watch?v=HD85S4TYVjg>
 
 #### Others
 
