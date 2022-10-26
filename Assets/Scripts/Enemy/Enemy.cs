@@ -43,7 +43,7 @@ public class Enemy : MonoBehaviour
                 for (int i=0; i<level; i++)
                 {
                     var particles = Instantiate(this.collisionParticles);
-                    particles.transform.position = transform.position + new Vector3(0f, 1.6f, 0f);
+                    particles.transform.position = transform.position + new Vector3(0f, 2f, 0f);
                 }
                
                 // Add token from death
