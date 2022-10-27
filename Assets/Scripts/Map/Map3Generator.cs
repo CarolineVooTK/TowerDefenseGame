@@ -189,7 +189,6 @@ public class Map3Generator : MonoBehaviour
 
                 if(currentTile.transform.position.x >8&&  currentTile.transform.position.x <84) {
                     if (sandTiles.Contains(currentTile)){
-                        Debug.Log("its Sabd");
                     }
                     else{   
                         moveLeft();
@@ -225,7 +224,6 @@ public class Map3Generator : MonoBehaviour
             newPoint.transform.position = new Vector3(obj.transform.position.x, obj.transform.position.y, obj.transform.position.z);
 
         }
-        Destroy((endTile));
         foreach(GameObject obj in attackTiles){
             if(pathTiles.Contains(obj)){
 
