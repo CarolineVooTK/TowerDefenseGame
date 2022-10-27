@@ -138,10 +138,7 @@ public class Map3Generator : MonoBehaviour
             countSand++;
         }
         GameObject endTile = mapTiles[617];
-        GameObject startTile = mapTiles[1579];
-        //Destroy(endTile);
-        //Destroy(startTile);
-        
+        GameObject startTile = mapTiles[1580];
 
         currentTile = startTile;
 
