@@ -192,14 +192,9 @@ public class Map3Generator : MonoBehaviour
                     }
                 }
                 if(currentTile.transform.position.z <= 22&& currentTile.transform.position.z >-42 &&currentTile.transform.position.x > -19 ){
-                    if(currentTile.transform.position.x >12&&  currentTile.transform.position.x <85){
                         moveDown();
-                    }
 
                 }
-                //if(currentTile.transform.position.z >=-31&& currentTile.transform.position.z < 22){
-                //     moveUp();
-                // }
             
                 if(currentTile.transform.position.z == endTile.transform.position.z && currentTile.transform.position.x == endTile.transform.position.x){
                     reachedX = true;
