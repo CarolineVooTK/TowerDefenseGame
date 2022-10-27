@@ -62,7 +62,7 @@ public class Enemy : MonoBehaviour
     public void ResetEnemy()
     {
         startingHunger = 50;
-        speed = 5;
+        speed = 50;
         tokensDropped = 5;
         level = 1;
 

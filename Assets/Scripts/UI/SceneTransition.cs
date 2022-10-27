@@ -9,6 +9,7 @@ public class SceneTransition : MonoBehaviour
     {
         Time.timeScale = 1f;
         SceneManager.LoadScene(0);
+        GameManager.ResetWave();
     }
 
     // Quiz application
@@ -40,5 +41,6 @@ public class SceneTransition : MonoBehaviour
     {
         int currentScene = SceneManager.GetActiveScene().buildIndex;
         SceneManager.LoadScene(currentScene);
+        GameManager.ResetWave();
     }
 }
