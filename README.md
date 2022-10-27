@@ -10,15 +10,15 @@
 <!-- Fill this section by Milestone 1 (see specification for details) -->
 
 | Name            | Responsibility                |
-| :-------------- | :----------------------- |
-| Caroline Voo     | Procedural Generation Map        |
-|                 | Evaluation |
-| Livya Riany     | Heads Up Display (HUD)  |
-|                 | Model Chefs, Citizen, Foods |
-|                 | Audio and Sound Effect |
-|                 | Implement Citizens |
-| Yuji Nojima | Procedural Generation Citizen       |
-|                 | Implement Chefs and Gacha |
+| :-------------- | :---------------------------- |
+| Caroline Voo    | Procedural Generation Map     |
+|                 | Evaluation                    |
+| Livya Riany     | Heads Up Display (HUD)        |
+|                 | Model Chefs, Citizen, Foods   |
+|                 | Audio and Sound Effect        |
+|                 | Implement Citizens            |
+| Yuji Nojima     | Procedural Generation Citizen |
+|                 | Implement Chefs and Gacha     |
 
 <!-- [[EndTeamworkPlan]] PLEASE LEAVE THIS LINE UNTOUCHED -->
 
@@ -110,37 +110,38 @@ The citizens, chefs, and foods are customly modeled and rendered through Blender
 </p>
 
 Design  Inspirations:
+
 * Citizen
-    * Average Joe: Overcooked 2 chefs without chef attributes
-    * Marathon Cindy: Sinead Diver, an Australian long distance runner
-    * Sumo Miyama: Wakatakakage Atsushi, a Japanese professional sumo wrestler
-    * Mukbanger Kim Jong Duos: Teenagers with baseball hat
-    * Food Critic Anton Ego: Anton Ego from movie Ratatouille
-    * Rich Man Bill Fences: Aristocrat with a top hat
+  * Average Joe: Overcooked 2 chefs without chef attributes
+  * Marathon Cindy: Sinead Diver, an Australian long distance runner
+  * Sumo Miyama: Wakatakakage Atsushi, a Japanese professional sumo wrestler
+  * Mukbanger Kim Jong Duos: Teenagers with baseball hat
+  * Food Critic Anton Ego: Anton Ego from movie Ratatouille
+  * Rich Man Bill Fences: Aristocrat with a top hat
 * Chef
-    * Sushiherro Yuji: Sushi chefs with traditional headband
-    * Laksa Mania Caroline: Normal chef from Overcooked 2
-    * Indomie Ivy: Indonesian with traditional ricefield hat
-    * Coco's Rosie: Basic person
-    * Pizza Izza: Normal chef from Overcooked 2
-    * Kami's Chungen: Sushi chefs with traditional headband
-    * Dunkin Dougie: Dunkin Doughnut staff
-    * Sunbucks Bucky: Starbucks staff
-    * Trainway Bucky: Subway staff
-    * Farmer Dan: American farmer
+  * Sushiherro Yuji: Sushi chefs with traditional headband
+  * Laksa Mania Caroline: Normal chef from Overcooked 2
+  * Indomie Ivy: Indonesian with traditional ricefield hat
+  * Coco's Rosie: Basic person
+  * Pizza Izza: Normal chef from Overcooked 2
+  * Kami's Chungen: Sushi chefs with traditional headband
+  * Dunkin Dougie: Dunkin Doughnut staff
+  * Sunbucks Bucky: Starbucks staff
+  * Trainway Bucky: Subway staff
+  * Farmer Dan: American farmer
 * Food
-    * Sushi: 6 set of sushi with salmon, cucumber, and carrot
-    * Laksa: Stir-fried pork food in Overcooked 2 as the soup and a simple bowl
-    * Indomie: A pack  of indomie
-    * Boba: Gongcha's boba drink
-    * Pizza: Pepperoni pizza
-    * Korean Chicken: 2 drumstick fried chicken
-    * Doughnut: Doughnut with pink icing
-    * Coffee: Starbucks coffee drink with sleve
-    * Sandwich: Grilled cheese sandwhich
-    * Egg: An egg
-    * Meat: Raw porterhouse meat
-    * Carrot: A carrot
+  * Sushi: 6 set of sushi with salmon, cucumber, and carrot
+  * Laksa: Stir-fried pork food in Overcooked 2 as the soup and a simple bowl
+  * Indomie: A pack  of indomie
+  * Boba: Gongcha's boba drink
+  * Pizza: Pepperoni pizza
+  * Korean Chicken: 2 drumstick fried chicken
+  * Doughnut: Doughnut with pink icing
+  * Coffee: Starbucks coffee drink with sleve
+  * Sandwich: Grilled cheese sandwhich
+  * Egg: An egg
+  * Meat: Raw porterhouse meat
+  * Carrot: A carrot
 
 ### Graphics Pipeline
 
@@ -213,18 +214,18 @@ The implementation file can be located in <https://github.com/COMP30019/project-
 
 Below are the particle systems that we varied:
 
-| Name            | Option          | Values                |
-| :-------------- | :-------------- | :-------------------- |
-| Particle System | Duration        | 1                     |
-|                 | Start Lifetime  | 4                     |
-|                 | Start Speed     | [0,5]                 |
-|                 | Start Size      | [0.5,1.5]             |
+| Name            | Option          | Values                               |
+| :-------------- | :-------------- | :----------------------------------- |
+| Particle System | Duration        | 1                                    |
+|                 | Start Lifetime  | 4                                    |
+|                 | Start Speed     | [0,5]                                |
+|                 | Start Size      | [0.5,1.5]                            |
 | Emission        | Burst           | 2 Count in 5 Cycles, 0.01 Interval   |
-| Shape           | Shape           | Sphere                |
-|                 | Radius          | 0.08                  |
-| Renderer        | Render Mode     | Mesh                  |
-|                 | Meshes          | Coin Mesh             |
-|                 | Material        | Gold with Toon Shader |
+| Shape           | Shape           | Sphere                               |
+|                 | Radius          | 0.08                                 |
+| Renderer        | Render Mode     | Mesh                                 |
+|                 | Meshes          | Coin Mesh                            |
+|                 | Material        | Gold with Toon Shader                |
 
 We utilized randomisation using the feature "Random Between Two Constants" on the start speed and most importantly the start size. The start size is decided in ratio with the citizens so it won't be too big covering other actions but not too small making it unseen. Aside from that we also used burst emissions so theres more randomization by implementing 5 cycles with 0.01 interval and 2 particle each.
 
@@ -264,8 +265,10 @@ We utilized randomisation using the feature "Random Between Two Constants" on th
 * Wood Plank Prefab: <https://assetstore.unity.com/packages/2d/textures-materials/wood/plank-textures-pbr-72318>
 * Water Material: <https://assetstore.unity.com/packages/2d/textures-materials/floors/five-seamless-tileable-ground-textures-57060>
 * Sand Material: <https://assetstore.unity.com/packages/2d/textures-materials/free-stylized-pbr-textures-pack-111778>
+* Palm Tree Prefab: <https://assetstore.unity.com/packages/3d/vegetation/trees/free-trees-103208>
 
-#### Toon Shader
+#### Toon Shader Resources
+
 * Blinn-Phong Reflection: <https://en.wikipedia.org/wiki/Blinn%E2%80%93Phong_reflection_model>
 * Cel Shading: <https://www.youtube.com/watch?v=mnxs6CR6Zrk>
 * Basic Shader Information: <https://docs.unity3d.com/Manual/SL-VertexFragmentShaderExamples.html>
