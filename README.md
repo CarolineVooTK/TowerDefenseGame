@@ -98,6 +98,9 @@ Use coins to purchase more scroll and test your luck to defend the kitchen!
 
 ### Gameplay Related Design
 
+#### Balancing
+Many factors need to be taken into consideration to keep the game challenging and not too simple. Factors include coins dropped, damage outputted and damage tanked by the enemies.
+
 #### Maps
 
 #### Citizen, Chef, Food

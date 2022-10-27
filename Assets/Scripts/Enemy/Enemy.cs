@@ -18,6 +18,7 @@ public class Enemy : MonoBehaviour
     public GameObject explosive;
 
     private int wavePointIndex = 0;
+    private int lastWave=0;
     public Transform target;
     private float _currentHunger;
     private int level;
@@ -74,37 +75,81 @@ public class Enemy : MonoBehaviour
             case OPTIONS.marathonRunner:
                 startingHunger = 70;
                 speed *= 1.4f;
-                tokensDropped = 10;
+                tokensDropped = 7;
                 level = 2;
                 break;
           case OPTIONS.sumo:
-                startingHunger = 3000;
+                startingHunger = 4500;
                 speed *= 0.25f;
-                tokensDropped = 100;
+                tokensDropped = 50;
                 level = 5;
                 break;
             case OPTIONS.mukbanger:
-                startingHunger = 2500;
+                startingHunger = 6500;
                 speed *= 0.6f;
-                tokensDropped = 150;
+                tokensDropped = 40;
                 level = 3;
                 break;
             case OPTIONS.foodCritic:
-                startingHunger = 7000;
+                startingHunger = 10000;
                 speed *= 0.8f;
-                tokensDropped = 350;
+                tokensDropped = 100;
                 level = 15;
                 break;
             case OPTIONS.aristocrat:
-                startingHunger = 5000;
+                startingHunger = 25000;
                 speed *= 0.5f;
-                tokensDropped = 700;
+                tokensDropped = 150;
                 level = 20;
                 break;
         }
 
         rotationSpeed = 720;
         CurrentHunger = startingHunger;
+    }
+
+    // Reset the statistics of the enemies
+    public void BuffEnemy()
+    {
+        int wave = GameManager.waveNum;
+        if (wave==lastWave) return;
+        // Switch based on the type chosen and assign its respected values
+        switch (type)
+        {
+            case OPTIONS.averageJoe:
+                if (wave/5.0==0){
+                    startingHunger *= 1.5f;
+                    }
+                break;
+            case OPTIONS.marathonRunner:
+                if (wave/5.0==0){
+                    startingHunger *= 1.5f;
+                    }
+                break;
+          case OPTIONS.sumo:
+                if (wave/10.0==0){
+                    startingHunger *= 1.6f;
+                    }
+                break;
+            case OPTIONS.mukbanger:
+                if (wave-5/10.0==0){
+                    startingHunger *= 1.5f;
+                    }
+                break;
+            case OPTIONS.foodCritic:
+                if (wave-15/10.0==0){
+                    startingHunger *= 1.5f;
+                    }
+                break;
+            case OPTIONS.aristocrat:
+                if (wave-27/10.0==0){
+                    startingHunger *= 1.5f;
+                    }
+                break;
+        }
+
+        CurrentHunger = startingHunger;
+        lastWave = GameManager.waveNum;
     }
 
     // Reduce hunger when given food
@@ -122,6 +167,9 @@ public class Enemy : MonoBehaviour
         // Move object to a direction
         Vector3 dir = target.position - transform.position;
         transform.Translate(speed * Time.deltaTime * dir.normalized, Space.World);
+        
+        // Buff
+        BuffEnemy();
 
         // Rotate object to a direction
         if (dir != Vector3.zero)
