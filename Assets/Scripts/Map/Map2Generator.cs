@@ -125,31 +125,29 @@ public class Map2Generator : MonoBehaviour
             if(loopCount > 400){
                 break;
             }
-            if(currentTile.transform.position.x >47){
+            if(currentTile.transform.position.x >47 ){
                if(currentTile.transform.position.x >= 47&&currentTile.transform.position.x <=63  ){
                     if(currentTile.transform.position.z >= -86 ){
                         moveLeft();
                     }
 
                 }
-                else if (currentTile.transform.position.x >63){
+                else{
                     moveLeft();
                 }
 
             }
-            if(currentTile.transform.position.z > -102 ){
+            if(currentTile.transform.position.z > -91){
                 if(currentTile.transform.position.x >=52 &&currentTile.transform.position.x <=79  ){
-                    if(currentTile.transform.position.z >= -80 ){
+                    if(currentTile.transform.position.z >= -82){
                         moveDown();
                     }
 
                 }
-               /* else if(currentTile.transform.position.x>=63 && currentTile.transform.position.x<=79){
-                    if(currentTile.transform.position.z>18){
-                        moveDown();
-                    }
+                else if(currentTile.transform.position.x>=47 && currentTile.transform.position.x <=91
+                        || currentTile.transform.position.x>=135 && currentTile.transform.position.x <=143){
 
-                }*/
+                }
                 else if (currentTile.transform.position.x >82){
                     moveDown();
                 }
@@ -157,7 +155,7 @@ public class Map2Generator : MonoBehaviour
             }
             if(currentTile.transform.position.z < -69 ){
                 if(currentTile.transform.position.x >=47 &&currentTile.transform.position.x <=65 ){
-                    if(currentTile.transform.position.z >=-85){
+                    if(currentTile.transform.position.z >=-95){
                         moveUp();
                     }
 
