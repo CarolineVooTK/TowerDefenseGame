@@ -11,12 +11,11 @@ GameObject:
   - component: {fileID: 2255062268792639771}
   - component: {fileID: 2946564421239611070}
   - component: {fileID: 1081070563622546036}
-  - component: {fileID: 795864071417513787}
-  - component: {fileID: -6674759552195034194}
-  - component: {fileID: -6065898244638256424}
-  - component: {fileID: 3591232676124542318}
-  - component: {fileID: 1743284749784578191}
-  - component: {fileID: 1443384598498845089}
+  - component: {fileID: -4187676604987126900}
+  - component: {fileID: -2052592143986362506}
+  - component: {fileID: -7282943033987564076}
+  - component: {fileID: 2827329555699615110}
+  - component: {fileID: 4603786368126675384}
   m_Layer: 0
   m_Name: food_2_coffee
   m_TagString: Untagged
@@ -31,13 +30,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1441230509252660129}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 234.2, y: 234.2, z: 234.2}
-  m_ConstrainProportionsScale: 1
+  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+  m_LocalPosition: {x: -3.4652095, y: 0, z: 0}
+  m_LocalScale: {x: 100, y: 100, z: 100}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &2946564421239611070
 MeshFilter:
@@ -90,7 +89,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!54 &795864071417513787
+--- !u!135 &-4187676604987126900
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1441230509252660129}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.0024325927
+  m_Center: {x: 0.000009145122, y: 0.00034553633, z: 0.00012953274}
+--- !u!54 &-2052592143986362506
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -106,21 +118,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!136 &-6674759552195034194
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1441230509252660129}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.002594452
-  m_Height: 0.0056625246
-  m_Direction: 1
-  m_Center: {x: -0.0000035349528, y: 0.00055316964, z: 0.000114065806}
---- !u!114 &-6065898244638256424
+--- !u!114 &-7282943033987564076
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -132,7 +130,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4532cc6f0f214b27af27f39a45dc0b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &3591232676124542318
+--- !u!114 &2827329555699615110
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -144,26 +142,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36f8c246950b3f8439df9f0dc5ca0f02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chef: {fileID: 1660790173942388417, guid: 6390a1799096d4fcdba5af28e9589236, type: 3}
-  speed: 9
+  fireSpeed: 6
+  damage: 45
   collisionParticles: {fileID: 863899079453766310, guid: 599dec2fc6e4d4ae5b39910078070643, type: 3}
---- !u!114 &1743284749784578191
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1441230509252660129}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9cd8434be2e554037951b8f34a8c42f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
   type: 1
-  chef: {fileID: 1660790173942388417, guid: 6390a1799096d4fcdba5af28e9589236, type: 3}
-  damageAmount: 50
-  collisionParticles: {fileID: 863899079453766310, guid: 599dec2fc6e4d4ae5b39910078070643, type: 3}
---- !u!82 &1443384598498845089
+--- !u!82 &4603786368126675384
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
