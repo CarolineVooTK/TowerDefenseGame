@@ -15,8 +15,8 @@ public class UIWarning: MonoBehaviour
     // Iterate function on a certain second
     private IEnumerator Wait()
     {
-        // After 0.5 seconds, the panel will be off
-        yield return new WaitForSeconds(1f);
+        // After 1.5 seconds, the panel will be off
+        yield return new WaitForSeconds(1.5f);
         panel.SetActive(false);
     }
 }
