@@ -74,31 +74,31 @@ public class Enemy : MonoBehaviour
             case OPTIONS.marathonRunner:
                 startingHunger = 70;
                 speed *= 1.4f;
-                tokensDropped = 15;
+                tokensDropped = 10;
                 level = 2;
+                break;
+          case OPTIONS.sumo:
+                startingHunger = 3000;
+                speed *= 0.25f;
+                tokensDropped = 100;
+                level = 5;
                 break;
             case OPTIONS.mukbanger:
                 startingHunger = 2500;
                 speed *= 0.6f;
-                tokensDropped += 20;
+                tokensDropped = 150;
                 level = 3;
                 break;
             case OPTIONS.foodCritic:
                 startingHunger = 7000;
                 speed *= 0.8f;
-                tokensDropped = 1250;
+                tokensDropped = 350;
                 level = 15;
-                break;
-            case OPTIONS.sumo:
-                startingHunger = 2000;
-                speed *= 0.25f;
-                tokensDropped = 200;
-                level = 5;
                 break;
             case OPTIONS.aristocrat:
                 startingHunger = 5000;
                 speed *= 0.5f;
-                tokensDropped = 2000;
+                tokensDropped = 700;
                 level = 20;
                 break;
         }

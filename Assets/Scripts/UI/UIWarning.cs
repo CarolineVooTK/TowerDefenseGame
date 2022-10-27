@@ -16,7 +16,7 @@ public class UIWarning: MonoBehaviour
     private IEnumerator Wait()
     {
         // After 0.5 seconds, the panel will be off
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1f);
         panel.SetActive(false);
     }
 }

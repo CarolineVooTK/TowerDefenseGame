@@ -34,10 +34,11 @@ public class EnemyManager : MonoBehaviour
     };
     public Transform ParentEnemy;
 
-    private void start(){
+    private void Start(){
         enemySpacingList.Add((int)spacing.Wide,0.6f);
         enemySpacingList.Add((int)spacing.Close,0.4f);
         enemySpacingList.Add((int)spacing.Closer,0.3f);
+        enemyList.TryAdd((int)enemy.Joe,10);
     }
     // Generate enemies when update
     
@@ -49,13 +50,9 @@ public class EnemyManager : MonoBehaviour
     private void Update()
     {
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-
-        if (GameManager.waveNum == 0 ) enemyList.TryAdd((int)enemy.Joe,10);
-        if (GameManager.waveNum == 3 ) enemyList.TryAdd((int)enemy.Cindy,20);
-        if (GameManager.waveNum == 5 ) enemyList.TryAdd((int)enemy.Sumo,80);
-        if (GameManager.waveNum == 10 ) enemyList.TryAdd((int)enemy.MukBang,100);
-        if (GameManager.waveNum == 15) enemyList.TryAdd((int)enemy.Aristocrat,200);
-        if (GameManager.waveNum == 20 ) enemyList.TryAdd((int)enemy.Critic,300);
+        // enemySpacingList.TryAdd((int)spacing.Wide,0.6f);
+        // enemySpacingList.TryAdd((int)spacing.Close,0.4f);
+        // enemySpacingList.TryAdd((int)spacing.Closer,0.3f);
         if (countdown <= 0 && enemies.Length==0)
         {
             updateEnemySpacing(GameManager.waveNum);
@@ -181,19 +178,20 @@ public class EnemyManager : MonoBehaviour
                 yield return  StartCoroutine(GenerateMarathonRunner(10, 0.8f));
                 break;
             default:
-                int cost = wave * (250);
+                int cost = 500 + wave * (250);
                 int rand;
                 int rand2;
-                if (GameManager.waveNum < 0 ) enemyList.TryAdd((int)enemy.Joe,10);
-                if (GameManager.waveNum < 3 ) enemyList.TryAdd((int)enemy.Cindy,20);
-                if (GameManager.waveNum < 5 ) enemyList.TryAdd((int)enemy.Sumo,80);
-                if (GameManager.waveNum < 10 ) enemyList.TryAdd((int)enemy.MukBang,100);
-                if (GameManager.waveNum < 15) enemyList.TryAdd((int)enemy.Aristocrat,200);
-                if (GameManager.waveNum < 20 ) enemyList.TryAdd((int)enemy.Critic,300);
+                if (GameManager.waveNum == 3 ) enemyList.TryAdd((int)enemy.Cindy,20);
+                if (GameManager.waveNum == 5 ) enemyList.TryAdd((int)enemy.Sumo,80);
+                if (GameManager.waveNum == 10 ) enemyList.TryAdd((int)enemy.MukBang,100);
+                if (GameManager.waveNum == 15 ) enemyList.TryAdd((int)enemy.Critic,300);
+                if (GameManager.waveNum == 20) enemyList.TryAdd((int)enemy.Aristocrat,200);
                 while (cost > 0){
                     rand = UnityEngine.Random.Range(0, enemyList.Count);
                     rand2 = UnityEngine.Random.Range(0, enemySpacingList.Count);
                     Debug.Log(cost + "IS LEFTTTTTTTT");
+                    Debug.Log(rand + enemyList[rand]);
+                    Debug.Log(rand2+ enemySpacingList[rand2]);
                     if ((cost-500)>0){
                         switch (rand)
                         {
@@ -204,13 +202,13 @@ public class EnemyManager : MonoBehaviour
                                 yield return GenerateMarathonRunner(7+((int)Math.Ceiling((double)wave/3)), enemySpacingList[rand2]);
                                 break;
                             case (2):
-                                yield return GenerateSumo(1 +((int)Math.Ceiling((double)wave/4)), enemySpacingList[rand2]);
+                                yield return GenerateSumo(1 +((int)Math.Ceiling((double)wave/6)), enemySpacingList[rand2]);
                                 break;
                             case (3):
                                 yield return GenerateMukBanger(1+((int)Math.Ceiling((double)wave/4)), enemySpacingList[rand2]);
                                 break;
                             case (4):
-                                yield return GenerateAristocrat(1+((int)Math.Ceiling((double)wave/4)), enemySpacingList[rand2]);
+                                yield return GenerateAristocrat(((int)Math.Ceiling((double)wave/10)), enemySpacingList[rand2]);
                                 break;
                             case (5):
                                 yield return GenerateCritic(1+((int)Math.Ceiling((double)wave/4)), enemySpacingList[rand2]);
