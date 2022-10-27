@@ -11,7 +11,7 @@ public class UIWaveNumber : MonoBehaviour
     [SerializeField] private string prefixEnd;
 
     // At the start, start coroutine to update values
-    private void Awake()
+    private void Start()
     {
         StartCoroutine(Animate());
     }
