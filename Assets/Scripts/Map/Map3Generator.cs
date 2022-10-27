@@ -18,7 +18,7 @@ public class Map3Generator : MonoBehaviour
     private List <GameObject> mapTiles = new List<GameObject>();
     private List <GameObject> pathTiles = new List<GameObject>(); 
     private List <GameObject> sandTiles = new List<GameObject>(); 
-    //private List <GameObject> attackTiles = new List<GameObject>();
+    private List <GameObject> attackTiles = new List<GameObject>();
     private List <GameObject> pathTilesRandom = new List<GameObject>();
 
     private bool reachedX = false;
@@ -137,10 +137,10 @@ public class Map3Generator : MonoBehaviour
             randNum += randNum2;
             countSand++;
         }
-        GameObject startTile = mapTiles[617];
-        GameObject endTile;
-
-        endTile = mapTiles[1579];
+        GameObject endTile = mapTiles[617];
+        GameObject startTile = mapTiles[1579];
+        //Destroy(endTile);
+        //Destroy(startTile);
         
 
         currentTile = startTile;
@@ -156,11 +156,11 @@ public class Map3Generator : MonoBehaviour
                 pathTilesRandom = new List<GameObject>();
                 pathTiles.Add(currentTile);
 
-                /*currentIndex = mapTiles.IndexOf(currentTile);
+                currentIndex = mapTiles.IndexOf(currentTile);
                 attackTiles.Add(mapTiles[currentIndex+1]);
                 attackTiles.Add(mapTiles[currentIndex-1]);
                 attackTiles.Add(mapTiles[currentIndex+74]);
-                attackTiles.Add(mapTiles[currentIndex-74]);*/
+                attackTiles.Add(mapTiles[currentIndex-74]);
 
 
             }
@@ -171,33 +171,44 @@ public class Map3Generator : MonoBehaviour
             if(loopCount > 400){
                 break;
             }
+            if(loopCount <9 && loopCount!= 0){
+                if(currentTile.transform.position.x > -19 &&  currentTile.transform.position.x <80&& currentTile.transform.position.z >-40) {
+                    if (sandTiles.Contains(currentTile)){}
+                    else{   
+                        moveRight();
+                    }
+                }
+            }
+            else{
+                if(currentTile.transform.position.x > -19 &&  currentTile.transform.position.x <80&& currentTile.transform.position.z >-40) {
+                    if (sandTiles.Contains(currentTile)){}
+                    else{   
+                        moveRight();
+                    }
+                }
 
+                if(currentTile.transform.position.x >8&&  currentTile.transform.position.x <84) {
+                    if (sandTiles.Contains(currentTile)){
+                        Debug.Log("its Sabd");
+                    }
+                    else{   
+                        moveLeft();
+                    }
+                }
+                if(currentTile.transform.position.z <= 22&& currentTile.transform.position.z >-42 &&currentTile.transform.position.x > -19 ){
+                    if(currentTile.transform.position.x >12&&  currentTile.transform.position.x <85){
+                        moveDown();
+                    }
 
-            if(currentTile.transform.position.x <=105 && currentTile.transform.position.x > 5){
-                moveLeft();
-            }
-            if(currentTile.transform.position.x >= 5 &&  currentTile.transform.position.x <=105 ) {
-                if(currentTile.transform.position.x <= 105 && currentTile.transform.position.z >= 4){
-                    moveLeft();
                 }
-                else{
-                    moveRight();
-                }
-            }
-            if(currentTile.transform.position.z <= 4 && currentTile.transform.position.z >-56){
-                if(currentTile.transform.position.x >= 60 && currentTile.transform.position.z <= -20){
-                    moveUp();
-                }
-                else{
-                    moveDown();
-                }
-            }
-            if(currentTile.transform.position.z >=-56 && currentTile.transform.position.z < 8){
-                    moveUp();
-            }
+                //if(currentTile.transform.position.z >=-31&& currentTile.transform.position.z < 22){
+                //     moveUp();
+                // }
             
-            if(currentTile.transform.position.z == endTile.transform.position.z && currentTile.transform.position.x == endTile.transform.position.x){
-                reachedX = true;
+                if(currentTile.transform.position.z == endTile.transform.position.z && currentTile.transform.position.x == endTile.transform.position.x){
+                    reachedX = true;
+
+                }
             }
 
 
@@ -214,7 +225,8 @@ public class Map3Generator : MonoBehaviour
             newPoint.transform.position = new Vector3(obj.transform.position.x, obj.transform.position.y, obj.transform.position.z);
 
         }
-      /* foreach(GameObject obj in attackTiles){
+        Destroy((endTile));
+        foreach(GameObject obj in attackTiles){
             if(pathTiles.Contains(obj)){
 
             }
@@ -225,7 +237,7 @@ public class Map3Generator : MonoBehaviour
                 newAttackTile.transform.position = new Vector3(obj.transform.position.x,obj.transform.position.y,obj.transform.position.z); 
 
             }
-        }*/
+        }
 
         OnDoneMap.Invoke();
     }
