@@ -231,7 +231,7 @@ public class Map2Generator : MonoBehaviour
             }
             else{
                 if ((((mapTiles[randTile]).transform.position.x) >47) &&((mapTiles[randTile]).transform.position.x<139)){
-                    GameObject newItem= Instantiate(stone);
+                    GameObject newItem= Instantiate(aloe);
 
                     newItem.transform.position = new Vector3((mapTiles[randTile]).transform.position.x,((mapTiles[randTile]).transform.position.y),(mapTiles[randTile]).transform.position.z); 
                     itemTiles.Add(randTile);
