@@ -133,6 +133,9 @@ public class Map3Generator : MonoBehaviour
                 float e = mapTiles[tilesNum-l].transform.position.z;
                 if (q >= 5 && q<=105 && e <= 8){
                 }
+                else if(q >= 9 &&q<= 105&& e < 12){
+
+                }
                 else{
                     newSandTile.transform.position = new Vector3(q,w,e);
                     Destroy(mapTiles[tilesNum-l]);
