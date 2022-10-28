@@ -8720,6 +8720,7 @@ MonoBehaviour:
   pathTile: {fileID: 3998439447849943573, guid: 7f835dd465c97a345abe660693ba7187, type: 3}
   attackTile: {fileID: 7795170594080586799, guid: 71624ca53ac0b62439656e7405df32bd, type: 3}
   point: {fileID: 3497159259018104846, guid: 7aba8b7651a7e43e0bc1e8461aafd478, type: 3}
+  pondTile: {fileID: 4976569778295406471, guid: c0269cdaeb01cc043908a2e94beeba14, type: 3}
   aloe: {fileID: 145196, guid: 8a13b3dbbf597744192ac4a84ebb93c6, type: 3}
   stone: {fileID: 146236, guid: 802bd3dc24c20394ca2037c1b9c882a0, type: 3}
   cactus: {fileID: 114448, guid: 50294217694c1a145a9a3b86f853c022, type: 3}
@@ -14528,11 +14529,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 482546, guid: 8a13b3dbbf597744192ac4a84ebb93c6, type: 3}
   m_PrefabInstance: {fileID: 770909547}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &1465156111 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4840052140215516641, guid: b7d5a31e2b3908746b39720151582136, type: 3}
-  m_PrefabInstance: {fileID: 1784923494}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1472090789
 GameObject:
   m_ObjectHideFlags: 0
@@ -16744,7 +16740,6 @@ Transform:
   - {fileID: 1123145922}
   - {fileID: 210249060}
   - {fileID: 1464953052}
-  - {fileID: 1465156111}
   - {fileID: 1934210804}
   - {fileID: 626168777}
   - {fileID: 1247762697}
@@ -18538,65 +18533,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 9063638587199601780, guid: 63e0a48ed294278458fa101f87f50a76, type: 3}
   m_PrefabInstance: {fileID: 1234362126}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &1784923494
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 2
-    m_TransformParent: {fileID: 1627361754}
-    m_Modifications:
-    - target: {fileID: 4840052140215516641, guid: b7d5a31e2b3908746b39720151582136, type: 3}
-      propertyPath: m_RootOrder
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4840052140215516641, guid: b7d5a31e2b3908746b39720151582136, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -50
-      objectReference: {fileID: 0}
-    - target: {fileID: 4840052140215516641, guid: b7d5a31e2b3908746b39720151582136, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -15.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 4840052140215516641, guid: b7d5a31e2b3908746b39720151582136, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 36.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 4840052140215516641, guid: b7d5a31e2b3908746b39720151582136, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.5495252
-      objectReference: {fileID: 0}
-    - target: {fileID: 4840052140215516641, guid: b7d5a31e2b3908746b39720151582136, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.44499677
-      objectReference: {fileID: 0}
-    - target: {fileID: 4840052140215516641, guid: b7d5a31e2b3908746b39720151582136, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0.5495252
-      objectReference: {fileID: 0}
-    - target: {fileID: 4840052140215516641, guid: b7d5a31e2b3908746b39720151582136, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0.44499677
-      objectReference: {fileID: 0}
-    - target: {fileID: 4840052140215516641, guid: b7d5a31e2b3908746b39720151582136, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4840052140215516641, guid: b7d5a31e2b3908746b39720151582136, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: -90
-      objectReference: {fileID: 0}
-    - target: {fileID: 4840052140215516641, guid: b7d5a31e2b3908746b39720151582136, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5215310667293812571, guid: b7d5a31e2b3908746b39720151582136, type: 3}
-      propertyPath: m_Name
-      value: Desert_Village_House_1 (1)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_AddedGameObjects: []
-  m_SourcePrefab: {fileID: 100100000, guid: b7d5a31e2b3908746b39720151582136, type: 3}
 --- !u!4 &1791448519 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1231993524195552161, guid: 41435389b060aac45929f968c7e64a12, type: 3}

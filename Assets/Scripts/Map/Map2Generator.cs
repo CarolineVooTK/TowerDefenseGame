@@ -9,6 +9,7 @@ public class Map2Generator : MonoBehaviour
     public GameObject pathTile;
     public GameObject attackTile;
     public GameObject point;
+    public GameObject pondTile;
 
 
     public GameObject aloe;
@@ -20,6 +21,7 @@ public class Map2Generator : MonoBehaviour
     private int mapHeight = 3;
 
     private List <GameObject> mapTiles = new List<GameObject>();
+    private List <GameObject> pondTiles = new List<GameObject>();
     private List <GameObject> pathTiles = new List<GameObject>();
     private List <GameObject> attackTiles = new List<GameObject>();
     private List <GameObject> pathTilesRandom = new List<GameObject>();
@@ -90,13 +92,23 @@ public class Map2Generator : MonoBehaviour
         int x = 11;
         while (z <= mapLength){
             while(x <= mapWidth){
-                GameObject newTile = Instantiate(mapTile, ParentNodes);
-                mapTiles.Add(newTile);
+                if (x>=47 && x<=55 &&z <=-93 && z>=-101){
+                    GameObject newTile = Instantiate(pondTile, ParentNodes);
+                    mapTiles.Add(newTile);
+                    pondTiles.Add(newTile);
 
-                newTile.transform.position = new Vector3(x,y,z); 
-                tilesNum++;
+                    newTile.transform.position = new Vector3(x,y,z); 
+                    tilesNum++;
+
+                }
+                else{
+                    GameObject newTile = Instantiate(mapTile, ParentNodes);
+                    mapTiles.Add(newTile);
+
+                    newTile.transform.position = new Vector3(x,y,z); 
+                    tilesNum++;
+                }
                 x +=4;
-
             }
             x = 11;
             z += 4;
@@ -208,7 +220,7 @@ public class Map2Generator : MonoBehaviour
             if(itemTiles.Contains(randTile)){
 
             }
-            else if((pathTiles.Contains(mapTiles[randTile])) || (attackTiles.Contains(mapTiles[randTile])) ){
+            else if((pathTiles.Contains(mapTiles[randTile])) || (attackTiles.Contains(mapTiles[randTile]))||(pondTiles.Contains(mapTiles[randTile])) ){
         
             }
             else{
@@ -226,7 +238,7 @@ public class Map2Generator : MonoBehaviour
             if(itemTiles.Contains(randTile)){
 
             }
-            else if((pathTiles.Contains(mapTiles[randTile])) || (attackTiles.Contains(mapTiles[randTile])) ){
+            else if((pathTiles.Contains(mapTiles[randTile])) || (attackTiles.Contains(mapTiles[randTile]))||(pondTiles.Contains(mapTiles[randTile])) ){
         
             }
             else{
@@ -245,7 +257,7 @@ public class Map2Generator : MonoBehaviour
             if(itemTiles.Contains(randTile)){
 
             }
-            else if((pathTiles.Contains(mapTiles[randTile])) || (attackTiles.Contains(mapTiles[randTile])) ){
+            else if((pathTiles.Contains(mapTiles[randTile])) || (attackTiles.Contains(mapTiles[randTile])) ||(pondTiles.Contains(mapTiles[randTile])) ){
         
             }
             else{
