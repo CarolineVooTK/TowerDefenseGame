@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657838, g: 0.49641234, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -8720,6 +8720,9 @@ MonoBehaviour:
   pathTile: {fileID: 3998439447849943573, guid: 7f835dd465c97a345abe660693ba7187, type: 3}
   attackTile: {fileID: 7795170594080586799, guid: 71624ca53ac0b62439656e7405df32bd, type: 3}
   point: {fileID: 3497159259018104846, guid: 7aba8b7651a7e43e0bc1e8461aafd478, type: 3}
+  aloe: {fileID: 145196, guid: 8a13b3dbbf597744192ac4a84ebb93c6, type: 3}
+  stone: {fileID: 146236, guid: 802bd3dc24c20394ca2037c1b9c882a0, type: 3}
+  cactus: {fileID: 114448, guid: 50294217694c1a145a9a3b86f853c022, type: 3}
   mapWidth: 200
   mapLength: 0
   ParentPath: {fileID: 1964974612}

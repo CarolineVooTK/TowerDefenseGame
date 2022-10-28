@@ -240,7 +240,7 @@ public class Map3Generator : MonoBehaviour
             if(itemTiles.Contains(randTile)){
 
             }
-            if((pathTiles.Contains(mapTiles[randTile])) || (attackTiles.Contains(mapTiles[randTile])) ){
+            else if((pathTiles.Contains(mapTiles[randTile])) || (attackTiles.Contains(mapTiles[randTile])) ){
         
             }
             else{
@@ -258,7 +258,7 @@ public class Map3Generator : MonoBehaviour
             if(itemTiles.Contains(randTile)){
 
             }
-            if((pathTiles.Contains(mapTiles[randTile])) || (attackTiles.Contains(mapTiles[randTile])) ){
+            else if((pathTiles.Contains(mapTiles[randTile])) || (attackTiles.Contains(mapTiles[randTile])) ){
         
             }
             else{
@@ -276,7 +276,7 @@ public class Map3Generator : MonoBehaviour
             if(itemTiles.Contains(randTile)){
 
             }
-            if((pathTiles.Contains(mapTiles[randTile])) || (attackTiles.Contains(mapTiles[randTile])) ){
+            else if((pathTiles.Contains(mapTiles[randTile])) || (attackTiles.Contains(mapTiles[randTile])) ){
         
             }
             else{
