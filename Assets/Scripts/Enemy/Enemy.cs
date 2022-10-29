@@ -32,6 +32,7 @@ public class Enemy : MonoBehaviour
     private Vector3 hit;
     private Color[] initial;
     public Transform partToRotate;
+    private bool isLegend=false;
 
     // Check current hunger
     private float CurrentHunger
@@ -183,6 +184,14 @@ public class Enemy : MonoBehaviour
         currentSlowDuration=slowDuration;
         pctSlow=pct;
         hit = _hit;
+        isLegend=false;
+    }
+    public void Slow(float pct,Vector3 _hit,bool Legendary){
+        isSlowed=true;
+        currentSlowDuration=slowDuration;
+        pctSlow=pct;
+        hit = _hit;
+        isLegend=true;
     }
     private void IsSlowed(){
         int i=0;
@@ -190,7 +199,7 @@ public class Enemy : MonoBehaviour
             usedSpeed=speed;
             foreach (var render in rend)
             {
-                    render.color=initial[i];  
+                    render.color=initial[i]-new Color(0.1f,0.1f,0.1f);  
                     i++;              
             }
 
@@ -199,6 +208,7 @@ public class Enemy : MonoBehaviour
             foreach (var render in rend)
             {
                 render.color = initial[i]+new Color(1,0,0.5f)*new Color(0.3f,0.3f,0.3f);  
+                if (isLegend) render.color = initial[i]+Color.yellow-new Color(0.1f,0.1f,0.1f);  
                 i++;              
             }
 
@@ -237,7 +247,6 @@ public class Enemy : MonoBehaviour
                 Quaternion lookRotation = Quaternion.LookRotation(hit - transform.position);
                 Vector3 rotation3 = lookRotation.eulerAngles;
                 partToRotate.rotation = Quaternion.Euler(0f,rotation3.y,0f); 
-                Debug.Log("rotate");
             }
         }
 
