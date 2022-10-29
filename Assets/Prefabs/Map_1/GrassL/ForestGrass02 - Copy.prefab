@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 33368112925667890}
   - component: {fileID: 23897431744160528}
   m_Layer: 0
-  m_Name: ForestGrass02
+  m_Name: ForestGrass02 - Copy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
