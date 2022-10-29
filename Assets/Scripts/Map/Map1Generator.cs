@@ -48,7 +48,6 @@ public class Map1Generator : MonoBehaviour
         currentIndex = mapTiles.IndexOf(currentTile);
 
         nextIndex = currentIndex+69;
-      //  currentTile = mapTiles[nextIndex];
         if (pathTiles.Contains(mapTiles[nextIndex])){
 
         }
@@ -125,10 +124,21 @@ public class Map1Generator : MonoBehaviour
                 pathTiles.Add(currentTile);
 
                 currentIndex = mapTiles.IndexOf(currentTile);
-                attackTiles.Add(mapTiles[currentIndex+1]);
-                attackTiles.Add(mapTiles[currentIndex-1]);
-                attackTiles.Add(mapTiles[currentIndex+69]);
-                attackTiles.Add(mapTiles[currentIndex-69]);
+                int randAtt = Random.Range(1,4);
+                if (randAtt == 1){
+                    attackTiles.Add(mapTiles[currentIndex+1]);
+                    attackTiles.Add(mapTiles[currentIndex+69]);
+                }
+                if (randAtt == 2){
+                    attackTiles.Add(mapTiles[currentIndex-1]);
+                    attackTiles.Add(mapTiles[currentIndex-69]);
+                }
+                if (randAtt == 3){
+                    attackTiles.Add(mapTiles[currentIndex+1]);
+                    attackTiles.Add(mapTiles[currentIndex-1]);
+                    attackTiles.Add(mapTiles[currentIndex+69]);
+                    attackTiles.Add(mapTiles[currentIndex-69]);
+                }
 
 
             }
@@ -142,7 +152,6 @@ public class Map1Generator : MonoBehaviour
             if(currentTile.transform.position.x >-17){
                 if(currentTile.transform.position.x <=7 &&currentTile.transform.position.x >=-17  ){
                     if(currentTile.transform.position.z <= 6 ){
-                        //Debug.Log("moving up2");
                         moveLeft();
                     }
 
