@@ -10,6 +10,8 @@ public class Enemy : MonoBehaviour
     }
 
     public OPTIONS type;
+    [HideInInspector]
+    public float usedSpeed;
     public float startingHunger;
     public float speed;
     public int tokensDropped;
@@ -22,6 +24,14 @@ public class Enemy : MonoBehaviour
     public Transform target;
     private float _currentHunger;
     private int level;
+    private float pctSlow;
+    private bool isSlowed = false;
+    private float slowDuration = 3f;
+    private float currentSlowDuration=0;
+    private Material[] rend;
+    private Vector3 hit;
+    private Color[] initial;
+    public Transform partToRotate;
 
     // Check current hunger
     private float CurrentHunger
@@ -57,6 +67,16 @@ public class Enemy : MonoBehaviour
     {
         ResetEnemy();
         target = WayPoints.points[0];
+        rend = GetComponent<Renderer>().materials;
+        int i=0;
+        initial = new Color[rend.Length];
+        foreach (var render in rend)
+        {
+                initial[i] = render.color;  
+                Debug.Log(render.color);
+                i++;              
+        }
+        InvokeRepeating ("reduceSlowDuration",0f,1f);
     }
 
     // Reset the statistics of the enemies
@@ -106,6 +126,7 @@ public class Enemy : MonoBehaviour
 
         rotationSpeed = 720;
         CurrentHunger = startingHunger;
+        usedSpeed = speed;
     }
 
     // Reset the statistics of the enemies
@@ -157,25 +178,67 @@ public class Enemy : MonoBehaviour
     {
         CurrentHunger -= damage;
     }
+    public void Slow(float pct,Vector3 _hit){
+        isSlowed=true;
+        currentSlowDuration=slowDuration;
+        pctSlow=pct;
+        hit = _hit;
+    }
+    private void IsSlowed(){
+        int i=0;
+        if (isSlowed==false || currentSlowDuration==0){
+            usedSpeed=speed;
+            foreach (var render in rend)
+            {
+                    render.color=initial[i];  
+                    i++;              
+            }
 
+        } else {
+            usedSpeed = speed *(1f - pctSlow);
+            foreach (var render in rend)
+            {
+                render.color = initial[i]+new Color(1,0,0.5f)*new Color(0.3f,0.3f,0.3f);  
+                i++;              
+            }
+
+        }
+    }
+    private Color ColorAvg(Color a, Color b){
+        return new Color(a.r+(int)((b.r-a.r)/2),a.g+(int)((b.g-a.g)/2),a.b+(int)((b.b-a.b/2)));
+    }
+    private void reduceSlowDuration(){
+        if (isSlowed==true){
+            currentSlowDuration-=1;
+        }
+        if (currentSlowDuration<0){
+            isSlowed=false;
+        }
+    }
     // Move enemy to another waypoint
     private void Update()
     {
         if (target==null){
             target = WayPoints.points[wavePointIndex];
         }
-        // Move object to a direction
-        Vector3 dir = target.position - transform.position;
-        transform.Translate(speed * Time.deltaTime * dir.normalized, Space.World);
-        
-        // Buff
+        IsSlowed();
+
+           // Buff
         BuffEnemy();
+        Vector3 dir = target.position - transform.position;
+        transform.Translate(usedSpeed * Time.deltaTime * dir.normalized, Space.World);
 
         // Rotate object to a direction
         if (dir != Vector3.zero)
         {
             Quaternion rotation = Quaternion.LookRotation(dir);
             transform.rotation = rotation;
+            if (isSlowed){
+                Quaternion lookRotation = Quaternion.LookRotation(hit - transform.position);
+                Vector3 rotation3 = lookRotation.eulerAngles;
+                partToRotate.rotation = Quaternion.Euler(0f,rotation3.y,0f); 
+                Debug.Log("rotate");
+            }
         }
 
         // If distance is close as 0.2, assume it already reach the waypoint and update

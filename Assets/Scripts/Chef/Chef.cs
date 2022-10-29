@@ -22,6 +22,7 @@ public class Chef : MonoBehaviour{
     public string enemyTag = "Enemy";
     public Transform partToRotate;
     public Transform firePoint;
+    public float slowAmount = 0.5f;
     public enum OPTIONS{
         farmer,coffee,sushi,laksa,indomie,boba,pizza,korean,sandwich,doughnut
     }
@@ -42,64 +43,64 @@ public void ResetChef()
             // Basic (dps ~50)
             case OPTIONS.farmer:
                 // Attributes
-                range = 15f;
+                range = 12f;
                 fireRate = 3f;
                 fireCountdown = 2f;
                 break;
             // Rare (dps ~100)
             case OPTIONS.coffee:
                 // Attributes
-                range = 25f;
+                range = 15f;
                 fireRate = 2f;
                 fireCountdown = 1f;
                 break;
             case OPTIONS.doughnut:
                 // Attributes
-                range = 25f;
+                range = 15f;
                 fireRate = 1f;
                 fireCountdown = 1f;
                 break;
             case OPTIONS.sandwich:
                 // Attributes
-                range = 25f;
+                range = 15f;
                 fireRate = 3f;
                 fireCountdown = 1f;
                 break;
             // Super Rare (dps ~150)
             case OPTIONS.korean:
                 // Attributes
-                range = 35f;
+                range = 20f;
                 fireRate = 3f;
                 fireCountdown = 2f;
                 break;
             case OPTIONS.pizza:
                 // Attributes
-                range = 50f;
+                range = 25f;
                 fireRate = 1f;
                 fireCountdown = 1f;
                 break;
             case OPTIONS.boba:
                 // Attributes
-                range = 55f;
+                range = 20f;
                 fireRate = 2f;
                 fireCountdown = 1f;
                 break;
             // Legendary (dps ~210)
             case OPTIONS.indomie:
                 // Attributes
-                range = 45f;
+                range = 30f;
                 fireRate = 3f;
                 fireCountdown = 0f;
                 break;
             case OPTIONS.laksa:
                 // Attributes
-                range = 150f;
+                range = 35f;
                 fireRate = 1f;
                 fireCountdown = 3f;
                 break;
             case OPTIONS.sushi:
                 // Attributes
-                range = 70f;
+                range = 25f;
                 fireRate = 2f;
                 fireCountdown = 4f;
                 break;
@@ -113,7 +114,7 @@ public void ResetChef()
         foreach (GameObject enemy in enemies)
         {
             float distance = Vector3.Distance(transform.position,enemy.transform.position);    
-            if (distance < shortestDistance){
+            if (distance < shortestDistance && distance <=range){
                 shortestDistance = distance;
                 nearestEnemy = enemy;
             }
@@ -167,9 +168,9 @@ public void ResetChef()
         // if (bullet!=null){
         // }
     }
-    void OnDrawGizmoSelected () {
+    void OnDrawGizmosSelected () {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position,range);
 
     }
-}
+}   

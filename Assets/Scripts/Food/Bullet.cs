@@ -83,7 +83,6 @@ public class Bullet : MonoBehaviour {
             return;
         }
         if (target==null){
-            Debug.Log(shelfLife);
             shelfLife-=1;
         }
         if (shelfLife<=0){
@@ -123,6 +122,11 @@ public class Bullet : MonoBehaviour {
             // Damage enemy
             var enemyHealth = col.gameObject.GetComponent<Enemy>();
             enemyHealth.ApplyFood((int)this.damage);
+            // Slow if farmer
+            if (type == OPTIONS.farmer){
+                Debug.Log("slowed");
+                col.gameObject.GetComponent<Enemy>().Slow(0.5f,shootPosition);
+            }
 
             // Create collision particles in opposite direction to movement.
             var particles = Instantiate(this.collisionParticles);

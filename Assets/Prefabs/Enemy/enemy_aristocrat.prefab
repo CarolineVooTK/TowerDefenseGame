@@ -107,6 +107,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 5
+  usedSpeed: 0
   startingHunger: 0
   speed: 0
   tokensDropped: 0
@@ -114,3 +115,9 @@ MonoBehaviour:
   collisionParticles: {fileID: 863899079453766310, guid: 14c9ef49a970944e483955e7eb1c9263, type: 3}
   explosive: {fileID: 6028843709792365407, guid: b0a68b39061bc44119416967355deffa, type: 3}
   target: {fileID: 0}
+  partToRotate: {fileID: 6914828369330318991}
+--- !u!4 &6914828369330318991 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 2975446b3cbb743c695216056fd04704, type: 3}
+  m_PrefabInstance: {fileID: 6376216082256447844}
+  m_PrefabAsset: {fileID: 0}
