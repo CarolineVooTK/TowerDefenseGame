@@ -11,8 +11,13 @@ public class Map3Generator : MonoBehaviour
     public GameObject attackTile;
     public GameObject point;
 
+    public GameObject boat;
+    public GameObject barrel;
+    public GameObject cannon;
+
     [SerializeField] private int mapWidth;
     [SerializeField] private int mapLength;
+
     private int mapHeight = 15;
 
     private List <GameObject> mapTiles = new List<GameObject>();
@@ -20,6 +25,7 @@ public class Map3Generator : MonoBehaviour
     private List <GameObject> sandTiles = new List<GameObject>(); 
     private List <GameObject> attackTiles = new List<GameObject>();
     private List <GameObject> pathTilesRandom = new List<GameObject>();
+    private List<int> itemTiles = new List<int>();
 
     private bool reachedX = false;
 
@@ -127,6 +133,9 @@ public class Map3Generator : MonoBehaviour
                 float e = mapTiles[tilesNum-l].transform.position.z;
                 if (q >= 5 && q<=105 && e <= 8){
                 }
+                else if(q >= 9 &&q<= 105&& e < 12){
+
+                }
                 else{
                     newSandTile.transform.position = new Vector3(q,w,e);
                     Destroy(mapTiles[tilesNum-l]);
@@ -192,7 +201,7 @@ public class Map3Generator : MonoBehaviour
                     }
                 }
                 if(currentTile.transform.position.z <= 22&& currentTile.transform.position.z >-42 &&currentTile.transform.position.x > -19 ){
-                        moveDown();
+                    moveDown();
 
                 }
             
@@ -228,7 +237,61 @@ public class Map3Generator : MonoBehaviour
 
             }
         }
+        int itemCount = 0;
+        while (itemCount < 100){
+            int randTile = Random.Range(0,tilesNum);
+            if(itemTiles.Contains(randTile)){
 
+            }
+            else if((pathTiles.Contains(mapTiles[randTile])) || (attackTiles.Contains(mapTiles[randTile])) ){
+        
+            }
+            else{
+                if ((((mapTiles[randTile]).transform.position.x) >-19) &&((mapTiles[randTile]).transform.position.x<80)){
+                    GameObject newItem= Instantiate(boat);
+
+                    newItem.transform.position = new Vector3((mapTiles[randTile]).transform.position.x,((mapTiles[randTile]).transform.position.y),(mapTiles[randTile]).transform.position.z); 
+                    itemTiles.Add(randTile);
+                }
+            }
+            itemCount++;
+        }
+        while (itemCount < 180){
+            int randTile = Random.Range(100,tilesNum);
+            if(itemTiles.Contains(randTile)){
+
+            }
+            else if((pathTiles.Contains(mapTiles[randTile])) || (attackTiles.Contains(mapTiles[randTile])) ){
+        
+            }
+            else{
+                if ((((mapTiles[randTile]).transform.position.x) >-19) &&((mapTiles[randTile]).transform.position.x<80)){
+                    GameObject newItem= Instantiate(barrel);
+
+                    newItem.transform.position = new Vector3((mapTiles[randTile]).transform.position.x,((mapTiles[randTile]).transform.position.y+1),(mapTiles[randTile]).transform.position.z); 
+                    itemTiles.Add(randTile);
+                }
+            }
+            itemCount++;
+        }
+        while (itemCount < 220){
+            int randTile = Random.Range(100,tilesNum);
+            if(itemTiles.Contains(randTile)){
+
+            }
+            else if((pathTiles.Contains(mapTiles[randTile])) || (attackTiles.Contains(mapTiles[randTile])) ){
+        
+            }
+            else{
+                if ((((mapTiles[randTile]).transform.position.x) >-19) &&((mapTiles[randTile]).transform.position.x<80)){
+                    GameObject newItem= Instantiate(cannon);
+
+                    newItem.transform.position = new Vector3((mapTiles[randTile]).transform.position.x,((mapTiles[randTile]).transform.position.y+1),(mapTiles[randTile]).transform.position.z); 
+                    itemTiles.Add(randTile);
+                }
+            }
+            itemCount++;
+        }
         OnDoneMap.Invoke();
     }
     

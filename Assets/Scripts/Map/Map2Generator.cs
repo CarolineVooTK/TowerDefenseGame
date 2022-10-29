@@ -9,22 +9,30 @@ public class Map2Generator : MonoBehaviour
     public GameObject pathTile;
     public GameObject attackTile;
     public GameObject point;
+    public GameObject pondTile;
+
+
+    public GameObject aloe;
+    public GameObject stone;
+    public GameObject cactus;
 
     [SerializeField] private int mapWidth;
     [SerializeField] private int mapLength;
     private int mapHeight = 3;
 
     private List <GameObject> mapTiles = new List<GameObject>();
+    private List <GameObject> pondTiles = new List<GameObject>();
     private List <GameObject> pathTiles = new List<GameObject>();
     private List <GameObject> attackTiles = new List<GameObject>();
     private List <GameObject> pathTilesRandom = new List<GameObject>();
-
+    private List<int> itemTiles = new List<int>();
     private bool reachedX = false;
 
     private GameObject currentTile;
     private int currentIndex;
     private int nextIndex;
     private int count = 0;
+    private int tilesNum = 0;
 
     public Transform ParentPath;
     public Transform ParentAttack;
@@ -84,12 +92,23 @@ public class Map2Generator : MonoBehaviour
         int x = 11;
         while (z <= mapLength){
             while(x <= mapWidth){
-                GameObject newTile = Instantiate(mapTile, ParentNodes);
-                mapTiles.Add(newTile);
+                if (x>=47 && x<=55 &&z <=-93 && z>=-101){
+                    GameObject newTile = Instantiate(pondTile, ParentNodes);
+                    mapTiles.Add(newTile);
+                    pondTiles.Add(newTile);
 
-                newTile.transform.position = new Vector3(x,y,z); 
+                    newTile.transform.position = new Vector3(x,y,z); 
+                    tilesNum++;
+
+                }
+                else{
+                    GameObject newTile = Instantiate(mapTile, ParentNodes);
+                    mapTiles.Add(newTile);
+
+                    newTile.transform.position = new Vector3(x,y,z); 
+                    tilesNum++;
+                }
                 x +=4;
-
             }
             x = 11;
             z += 4;
@@ -111,6 +130,7 @@ public class Map2Generator : MonoBehaviour
                 pathTiles.Add(currentTile);
 
                 currentIndex = mapTiles.IndexOf(currentTile);
+
                 attackTiles.Add(mapTiles[currentIndex+1]);
                 attackTiles.Add(mapTiles[currentIndex-1]);
                 attackTiles.Add(mapTiles[currentIndex+48]);
@@ -194,6 +214,63 @@ public class Map2Generator : MonoBehaviour
 
             }
         }
+        int itemCount = 0;
+        while (itemCount < 40){
+            int randTile = Random.Range(0,tilesNum);
+            if(itemTiles.Contains(randTile)){
+
+            }
+            else if((pathTiles.Contains(mapTiles[randTile])) || (attackTiles.Contains(mapTiles[randTile]))||(pondTiles.Contains(mapTiles[randTile])) ){
+        
+            }
+            else{
+                if ((((mapTiles[randTile]).transform.position.x) >47) &&((mapTiles[randTile]).transform.position.x<139)){
+                    GameObject newItem= Instantiate(cactus);
+
+                    newItem.transform.position = new Vector3((mapTiles[randTile]).transform.position.x,((mapTiles[randTile]).transform.position.y),(mapTiles[randTile]).transform.position.z); 
+                    itemTiles.Add(randTile);
+                }
+            }
+            itemCount++;
+        }
+        while (itemCount < 70){
+            int randTile = Random.Range(50,tilesNum);
+            if(itemTiles.Contains(randTile)){
+
+            }
+            else if((pathTiles.Contains(mapTiles[randTile])) || (attackTiles.Contains(mapTiles[randTile]))||(pondTiles.Contains(mapTiles[randTile])) ){
+        
+            }
+            else{
+                if ((((mapTiles[randTile]).transform.position.x) >47) &&((mapTiles[randTile]).transform.position.x<139)){
+                    GameObject newItem= Instantiate(stone);
+
+                    newItem.transform.position = new Vector3((mapTiles[randTile]).transform.position.x,((mapTiles[randTile]).transform.position.y),(mapTiles[randTile]).transform.position.z); 
+                    itemTiles.Add(randTile);
+                }
+            }
+            itemCount++;
+        }
+
+        while (itemCount < 120){
+            int randTile = Random.Range(70,tilesNum);
+            if(itemTiles.Contains(randTile)){
+
+            }
+            else if((pathTiles.Contains(mapTiles[randTile])) || (attackTiles.Contains(mapTiles[randTile])) ||(pondTiles.Contains(mapTiles[randTile])) ){
+        
+            }
+            else{
+                if ((((mapTiles[randTile]).transform.position.x) >47) &&((mapTiles[randTile]).transform.position.x<139)){
+                    GameObject newItem= Instantiate(aloe);
+
+                    newItem.transform.position = new Vector3((mapTiles[randTile]).transform.position.x,((mapTiles[randTile]).transform.position.y),(mapTiles[randTile]).transform.position.z); 
+                    itemTiles.Add(randTile);
+                }
+            }
+            itemCount++;
+        }
+
 
         OnDoneMap.Invoke();
     }
