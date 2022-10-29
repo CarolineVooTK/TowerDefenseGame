@@ -124,22 +124,42 @@ public class Map1Generator : MonoBehaviour
                 pathTiles.Add(currentTile);
 
                 currentIndex = mapTiles.IndexOf(currentTile);
-                int randAtt = Random.Range(1,4);
+                int randAtt = Random.Range(1,10);
                 if (randAtt == 1){
                     attackTiles.Add(mapTiles[currentIndex+1]);
-                    attackTiles.Add(mapTiles[currentIndex+69]);
                 }
                 if (randAtt == 2){
                     attackTiles.Add(mapTiles[currentIndex-1]);
-                    attackTiles.Add(mapTiles[currentIndex-69]);
                 }
                 if (randAtt == 3){
+                    attackTiles.Add(mapTiles[currentIndex+69]);
+                }
+                if (randAtt == 4){
+                    attackTiles.Add(mapTiles[currentIndex-69]);
+                }
+                if (randAtt == 5){
                     attackTiles.Add(mapTiles[currentIndex+1]);
                     attackTiles.Add(mapTiles[currentIndex-1]);
+                }
+                if (randAtt == 6){
                     attackTiles.Add(mapTiles[currentIndex+69]);
                     attackTiles.Add(mapTiles[currentIndex-69]);
                 }
-
+                if (randAtt == 7){
+                    attackTiles.Add(mapTiles[currentIndex+1]);
+                    attackTiles.Add(mapTiles[currentIndex-69]);
+                }
+                if (randAtt == 8){
+                    attackTiles.Add(mapTiles[currentIndex+69]);
+                    attackTiles.Add(mapTiles[currentIndex-1]);
+                }
+                if (randAtt == 9){
+                    attackTiles.Add(mapTiles[currentIndex+69]);
+                    attackTiles.Add(mapTiles[currentIndex-1]);
+                    attackTiles.Add(mapTiles[currentIndex+1]);
+                    attackTiles.Add(mapTiles[currentIndex-69]);
+                }
+                
 
             }
             else if (loopCount == 0){

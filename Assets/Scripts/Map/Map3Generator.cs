@@ -163,11 +163,22 @@ public class Map3Generator : MonoBehaviour
                 pathTiles.Add(currentTile);
 
                 currentIndex = mapTiles.IndexOf(currentTile);
-                attackTiles.Add(mapTiles[currentIndex+1]);
-                attackTiles.Add(mapTiles[currentIndex-1]);
-                attackTiles.Add(mapTiles[currentIndex+74]);
-                attackTiles.Add(mapTiles[currentIndex-74]);
+                int randAtt = Random.Range(1,4);
+                if (randAtt == 1){
+                    attackTiles.Add(mapTiles[currentIndex+1]);
+                    attackTiles.Add(mapTiles[currentIndex-74]);
+                }
+                if (randAtt == 2){
+                    attackTiles.Add(mapTiles[currentIndex+74]);
+                    attackTiles.Add(mapTiles[currentIndex-1]);
 
+                }
+                if (randAtt == 3){
+                    attackTiles.Add(mapTiles[currentIndex+1]);
+                    attackTiles.Add(mapTiles[currentIndex-1]);
+                    attackTiles.Add(mapTiles[currentIndex+74]);
+                    attackTiles.Add(mapTiles[currentIndex-74]);
+                }
 
             }
             else if (loopCount == 0){
