@@ -11,6 +11,7 @@ public class Bullet : MonoBehaviour {
     public float fireSpeed=6f;
     public int damage=45;
     private readonly string tagToDamage = "Enemy";
+    private float slowpct=0f;
 
     [SerializeField] private ParticleSystem collisionParticles;
         public enum OPTIONS{
@@ -33,45 +34,55 @@ public class Bullet : MonoBehaviour {
             case OPTIONS.farmer:
                 fireSpeed = 7f;
                 damage = 17;
+                slowpct=0.5f;
                 break;
             // Rare (dps ~100)
             case OPTIONS.coffee:
                 fireSpeed = 10f;
                 damage = 50;
+                slowpct=0.2f;
                 break;
             case OPTIONS.doughnut:
                 fireSpeed = 7f;
                 damage = 150;
+                slowpct=0.7f;
                 break;
             case OPTIONS.sandwich:
                 fireSpeed = 10f;
                 damage = 25;
+                slowpct=0.4f;
                 break;
             // Super Rare (dps ~150)
             case OPTIONS.korean:
                 fireSpeed = 6f;
                 damage = 50;
+                slowpct=0.4f;
                 break;
             case OPTIONS.pizza:
                 fireSpeed = 5f;
                 damage = 300;
+                slowpct=0.7f;
                 break;
             case OPTIONS.boba:
                 fireSpeed = 6f;
                 damage = 75;
+                slowpct=0.2f;
                 break;
             // Legendary (dps ~210)
             case OPTIONS.indomie:
                 fireSpeed = 8f;
                 damage = 35;
+                slowpct=0.6f;
                 break;
             case OPTIONS.laksa:
                 fireSpeed = 6f;
                 damage = 500;
+                slowpct=0.6f;
                 break;
             case OPTIONS.sushi:
                 fireSpeed = 8f;
                 damage = 105;
+                slowpct=0.6f;
                 break;
         }
     }
@@ -124,8 +135,29 @@ public class Bullet : MonoBehaviour {
             enemyHealth.ApplyFood((int)this.damage);
             // Slow if farmer
             if (type == OPTIONS.farmer){
-                Debug.Log("slowed");
-                col.gameObject.GetComponent<Enemy>().Slow(0.5f,shootPosition);
+                Enemy enemy = col.gameObject.GetComponent<Enemy>();
+                if (enemy.type==Enemy.OPTIONS.averageJoe) enemy.Slow(slowpct,shootPosition);
+            }
+            if (type == OPTIONS.coffee){
+                Enemy enemy = col.gameObject.GetComponent<Enemy>();
+                if (enemy.type==Enemy.OPTIONS.marathonRunner||enemy.type==Enemy.OPTIONS.aristocrat) enemy.Slow(slowpct,shootPosition);
+            }
+            if (type == OPTIONS.boba||type == OPTIONS.korean){
+                Enemy enemy = col.gameObject.GetComponent<Enemy>();
+                if (enemy.type==Enemy.OPTIONS.mukbanger) enemy.Slow(slowpct,shootPosition);
+            }
+            if (type == OPTIONS.pizza||type == OPTIONS.korean){
+                Enemy enemy = col.gameObject.GetComponent<Enemy>();
+                if (enemy.type==Enemy.OPTIONS.sumo||enemy.type==Enemy.OPTIONS.foodCritic) enemy.Slow(slowpct,shootPosition);
+            }
+            if (type == OPTIONS.laksa){
+                col.gameObject.GetComponent<Enemy>().Slow(slowpct,shootPosition,true);
+            }
+            if (type == OPTIONS.sushi){
+                col.gameObject.GetComponent<Enemy>().Slow(slowpct,shootPosition,true);
+            }
+            if (type == OPTIONS.indomie){
+                col.gameObject.GetComponent<Enemy>().Slow(slowpct,shootPosition,true);
             }
 
             // Create collision particles in opposite direction to movement.

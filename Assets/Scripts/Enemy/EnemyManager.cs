@@ -138,6 +138,7 @@ public class EnemyManager : MonoBehaviour
         switch (wave)
         {
             case (0): // total credits == 1000
+                yield return StartCoroutine(GenerateMukBanger(10, 1.5f));
                 yield return StartCoroutine(GenerateJoe(10, 1.5f));
                 prevWaveCost=100;
                 break;
