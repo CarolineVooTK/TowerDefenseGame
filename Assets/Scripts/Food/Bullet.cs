@@ -76,12 +76,19 @@ public class Bullet : MonoBehaviour {
         }
     }
     public void ShelfLife(){
-        if (shelfLife<1){
+        float distance = Vector3.Distance(shootPosition,transform.position);
+        if (distance>=shootRange){
             // Debug.Log("FARMER "+Chef.DAMAGE.farmer);
             Destroy(gameObject);
             return;
         }
-        shelfLife-=1;
+        if (target==null){
+            Debug.Log(shelfLife);
+            shelfLife-=1;
+        }
+        if (shelfLife<=0){
+            Destroy(gameObject);
+        }
     }
     public void Seek(Transform _target,Vector3 _shootPosition,float _range) {
         target = _target;

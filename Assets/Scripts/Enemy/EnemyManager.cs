@@ -64,7 +64,6 @@ public class EnemyManager : MonoBehaviour
         // enemySpacingList.TryAdd((int)spacing.Closer,0.3f);
         if (countdown <= 0 && enemies.Length==0)
         {
-            updateEnemySpacing(GameManager.waveNum);
             updateEnemy(GameManager.waveNum);
             StartCoroutine(GenerateWave());
             countdown = waveTime;
@@ -143,66 +142,71 @@ public class EnemyManager : MonoBehaviour
                 prevWaveCost=100;
                 break;
             case (1):
-                yield return StartCoroutine(GenerateJoe(5, 1f));
+                yield return StartCoroutine(GenerateJoe(7, 0.6f));
                 yield return new WaitForSeconds(0.5f);
-                yield return StartCoroutine(GenerateJoe(5, 0.5f));
+                yield return StartCoroutine(GenerateJoe(7, 0.6f));
 
                 prevWaveCost=250;
                 break;            
             case (2):
                 yield return StartCoroutine(GenerateMarathonRunner(7, 1f));
-                yield return StartCoroutine(GenerateJoe(10, 0.5f));
+                yield return StartCoroutine(GenerateJoe(10, 0.2f));
                 prevWaveCost=250;
                 break;            
             case (3):
-                yield return  StartCoroutine(GenerateMarathonRunner(3, 2f));
-                yield return  StartCoroutine(GenerateJoe(10, 0.5f));
-                yield return  StartCoroutine(GenerateMarathonRunner(3, 2f));
-                yield return  StartCoroutine(GenerateJoe(10, 0.5f));
+                yield return  StartCoroutine(GenerateMarathonRunner(3, 0.5f));
+                yield return  StartCoroutine(GenerateJoe(10, 0.3f));
+                yield return  StartCoroutine(GenerateMarathonRunner(3, 0.5f));
+                yield return  StartCoroutine(GenerateJoe(10, 0.3f));
                 break;
             case (4):
                 yield return  StartCoroutine(GenerateJoe(10, 0.5f));
-                yield return  StartCoroutine(GenerateMarathonRunner(2, 1f));
+                yield return  StartCoroutine(GenerateMarathonRunner(5, 1f));
                 yield return  StartCoroutine(GenerateJoe(5, 0.3f));
-                yield return  StartCoroutine(GenerateMarathonRunner(2, 1f));
+                yield return  StartCoroutine(GenerateMarathonRunner(5, 1f));
                 break;
             case (5):
-                yield return  StartCoroutine(GenerateJoe(5, 0.5f));
-                yield return  StartCoroutine(GenerateMarathonRunner(7, 2.3f));
-                yield return  StartCoroutine(GenerateJoe(15, 0.5f));
-                yield return  StartCoroutine(GenerateMarathonRunner(7, 2.3f));
+                yield return  StartCoroutine(GenerateJoe(5, 0.2f));
+                yield return  StartCoroutine(GenerateMarathonRunner(7, 0.3f));
+                yield return  StartCoroutine(GenerateJoe(15, 0.2f));
+                yield return  StartCoroutine(GenerateMarathonRunner(7, 0.3f));
                 break;
             case (6):
                 yield return  StartCoroutine(GenerateSumo(1, 0.4f));
+                yield return  StartCoroutine(GenerateJoe(10, 0.3f));
+                yield return new WaitForSeconds(0.5f);
+                yield return  StartCoroutine(GenerateJoe(10, 0.3f));
+
                 break;
             case (7):
+                yield return  StartCoroutine(GenerateSumo(1, 0.4f));
                 yield return  StartCoroutine(GenerateMarathonRunner(7, 0.7f));
-                yield return  StartCoroutine(GenerateJoe(10, 0.5f));
+                yield return  StartCoroutine(GenerateJoe(10, 0.3f));
                 yield return  StartCoroutine(GenerateMarathonRunner(7, 0.7f));
                 yield return  StartCoroutine(GenerateJoe(10, 0.5f));
                 yield return  StartCoroutine(GenerateSumo(1, 0.4f));
-                yield return  StartCoroutine(GenerateJoe(10, 1f));
+                yield return  StartCoroutine(GenerateJoe(10, 0.3f));
                 prevWaveCost=3000;
                 break;
             case (10):
                 yield return  StartCoroutine(GenerateMukBanger(1, 1f));
                 yield return  StartCoroutine(GenerateJoe(20, 1f));
-                yield return  StartCoroutine(GenerateSumo(3, 0.4f));
+                yield return  StartCoroutine(GenerateSumo(3, 2f));
                 yield return  StartCoroutine(GenerateJoe(20, 0.2f));
                 yield return  StartCoroutine(GenerateMarathonRunner(10, 0.5f));
                 yield return  StartCoroutine(GenerateJoe(10, 0.2f));
-                yield return  StartCoroutine(GenerateSumo(3, 0.6f));
+                yield return  StartCoroutine(GenerateSumo(2, 2f));
                 yield return  StartCoroutine(GenerateMarathonRunner(10, 0.8f));
                 prevWaveCost= 4000;
                 break;
             case (15):
                 yield return  StartCoroutine(GenerateCritic(1, 1f));
-                yield return  StartCoroutine(GenerateMukBanger(5, 1f));
-                yield return  StartCoroutine(GenerateSumo(3, 0.4f));
+                yield return  StartCoroutine(GenerateMukBanger(3, 1f));
+                yield return  StartCoroutine(GenerateSumo(3, 1f));
                 yield return  StartCoroutine(GenerateJoe(20, 0.2f));
-                yield return  StartCoroutine(GenerateSumo(3, 0.4f));
+                yield return  StartCoroutine(GenerateSumo(3, 1f));
                 yield return  StartCoroutine(GenerateMarathonRunner(10, 0.5f));
-                yield return  StartCoroutine(GenerateSumo(3, 0.4f));
+                yield return  StartCoroutine(GenerateSumo(3, 1f));
                 yield return  StartCoroutine(GenerateJoe(10, 0.2f));
                 yield return  StartCoroutine(GenerateCritic(1, 1f));
                 yield return  StartCoroutine(GenerateSumo(3, 0.6f));
@@ -212,7 +216,7 @@ public class EnemyManager : MonoBehaviour
             case (20):
                 yield return  StartCoroutine(GenerateAristocrat(1, 1f));
                 yield return  StartCoroutine(GenerateCritic(1, 1f));
-                yield return  StartCoroutine(GenerateMukBanger(5, 1f));
+                yield return  StartCoroutine(GenerateMukBanger(3, 1f));
                 yield return  StartCoroutine(GenerateSumo(3, 0.4f));
                 yield return  StartCoroutine(GenerateJoe(20, 0.2f));
                 yield return  StartCoroutine(GenerateSumo(3, 0.4f));
@@ -226,48 +230,54 @@ public class EnemyManager : MonoBehaviour
                 prevWaveCost= 12000;
                 break;
             default:
-                int cost = (int)Math.Ceiling((prevWaveCost + wave) * 1.2);
+                int cost = (int)Math.Ceiling((prevWaveCost + wave) * 1.5);
                 currentCost = cost;
                 int rand;
                 int rand2;
+                int generateExtra=1;
+                int currentUnit;
+                int currentUnitCost=0;
+                Debug.Log("initial: "+cost);
 
                 while (cost > 0){
                     rand = UnityEngine.Random.Range(0, enemyList.Count);
                     rand2 = UnityEngine.Random.Range(0, enemySpacingList.Count);
-                    int currentUnit = enemyList[rand];
-                    int generateExtra=1;
+                    currentUnit = enemyList[rand];
                     switch (rand)
                         {
                             case (0):
-                                yield return GenerateJoe(10, enemySpacingList[rand2]);
-                                cost-=currentUnit*10*(generateExtra);
+                                yield return GenerateJoe(10, 0.3f);
+                                currentUnitCost=currentUnit*10*(generateExtra);
                                 break;
                             case (1):
                                 generateExtra = (int)Math.Ceiling((double)wave/3);
                                 yield return GenerateMarathonRunner(7+generateExtra, enemySpacingList[rand2]);
-                                cost-=currentUnit*7*(generateExtra);
+                                currentUnitCost=currentUnit*7*(generateExtra);
                                 break;
                             case (2):
                                 generateExtra = (int)Math.Ceiling((double)wave/6);
                                 yield return GenerateSumo(generateExtra, enemySpacingList[rand2]);
-                                cost-=currentUnit*1*(generateExtra);
+                                currentUnitCost=currentUnit*1*(generateExtra);
                                 break;
                             case (3):
                                 generateExtra = (int)Math.Ceiling((double)wave/5);
                                 yield return GenerateMukBanger(generateExtra, enemySpacingList[rand2]);
-                                cost-=currentUnit*1*(generateExtra);
+                                currentUnitCost=currentUnit*1*(generateExtra);
                                 break;
                             case (4):
                                 generateExtra = (int)Math.Ceiling((double)wave/4);
                                 yield return GenerateCritic(generateExtra, enemySpacingList[rand2]);
-                                cost-=currentUnit*1*(generateExtra);
+                                currentUnitCost=currentUnit*1*(generateExtra);
                                 break;
                             case (5):
                                 generateExtra = (int)Math.Ceiling((double)wave/10);
                                 yield return GenerateAristocrat(generateExtra, enemySpacingList[rand2]);
-                                cost-=currentUnit*1*(generateExtra);
+                                currentUnitCost=currentUnit*1*(generateExtra);
                                 break;
                         }
+                    Debug.Log("bought: "+currentUnitCost);
+                    cost-=currentUnitCost;
+                    Debug.Log("remaining: "+cost);
                     }
                 break;
         }
