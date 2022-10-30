@@ -257,7 +257,7 @@ We utilized randomisation using the feature "Random Between Two Constants" on th
 * Trees Prefab : <https://assetstore.unity.com/packages/3d/vegetation/trees/free-trees-103208>
 * Castle Prefab : <https://assetstore.unity.com/packages/3d/environments/forest-low-poly-toon-battle-arena-tower-defense-pack-100080>
 * Village Prefab :<https://assetstore.unity.com/packages/3d/polygon-city-pack-environment-and-interior-free-101685>
-* Grass Material Prefab : <https://assetstore.unity.com/packages/2d/textures-materials/nature/nature-materials-vol-1-21113>
+* Grass Material: <https://assetstore.unity.com/packages/2d/textures-materials/nature/nature-materials-vol-1-21113>
 * Flower and Stones Prefab : <https://assetstore.unity.com/packages/3d/environments/landscapes/free-low-poly-nature-forest-205742>
 
 #### Desert Map Assets
@@ -266,6 +266,7 @@ We utilized randomisation using the feature "Random Between Two Constants" on th
 * Dessert Houses Prefab: <https://assetstore.unity.com/packages/3d/environments/desert-village-houses-lowpoly-200247>
 * Rocks Prefab: <https://assetstore.unity.com/packages/3d/environments/landscapes/polydesert-107196>
 * Sand Material: <https://assetstore.unity.com/packages/2d/textures-materials/free-stylized-pbr-textures-pack-111778>
+* Water Textures : <https://assetstore.unity.com/?q=water%20texture&orderBy=1>
 
 #### Shore Map Assets
 
