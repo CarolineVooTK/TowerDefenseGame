@@ -9,6 +9,7 @@ public class Bullet : MonoBehaviour {
     [Header ("Ammo Attributes")]
 
     public float fireSpeed=6f;
+    public float explosionRadius=0f;
     public int damage=45;
     private readonly string tagToDamage = "Enemy";
     private float slowpct=0f;
@@ -37,51 +38,54 @@ public class Bullet : MonoBehaviour {
                 slowpct=0.5f;
                 break;
             // Rare (dps ~100)
-            case OPTIONS.coffee:
+            case OPTIONS.coffee: // fast
                 fireSpeed = 10f;
-                damage = 50;
+                damage = 30;
                 slowpct=0.2f;
                 break;
-            case OPTIONS.doughnut:
+            case OPTIONS.doughnut: // slow aoe
                 fireSpeed = 7f;
-                damage = 150;
+                damage = 30;
                 slowpct=0.7f;
+                explosionRadius=3f;
                 break;
-            case OPTIONS.sandwich:
+            case OPTIONS.sandwich: // normal
                 fireSpeed = 10f;
-                damage = 25;
+                damage = 55;
                 slowpct=0.4f;
                 break;
             // Super Rare (dps ~150)
-            case OPTIONS.korean:
+            case OPTIONS.korean: // normal
                 fireSpeed = 6f;
-                damage = 50;
+                damage = 70;
                 slowpct=0.4f;
                 break;
-            case OPTIONS.pizza:
+            case OPTIONS.pizza: // slow aoe
                 fireSpeed = 5f;
-                damage = 300;
-                slowpct=0.7f;
-                break;
-            case OPTIONS.boba:
-                fireSpeed = 6f;
                 damage = 75;
+                slowpct=0.7f;
+                explosionRadius=6f;
+                break;
+            case OPTIONS.boba: // fast
+                fireSpeed = 6f;
+                damage = 35;
                 slowpct=0.2f;
                 break;
             // Legendary (dps ~210)
-            case OPTIONS.indomie:
+            case OPTIONS.indomie: // fast
                 fireSpeed = 8f;
-                damage = 35;
+                damage = 45;
                 slowpct=0.6f;
                 break;
-            case OPTIONS.laksa:
+            case OPTIONS.laksa: // slow aoe
                 fireSpeed = 6f;
-                damage = 500;
+                damage = 200;
                 slowpct=0.6f;
+                explosionRadius=8f;
                 break;
-            case OPTIONS.sushi:
+            case OPTIONS.sushi: // normal
                 fireSpeed = 8f;
-                damage = 105;
+                damage = 175;
                 slowpct=0.6f;
                 break;
         }
@@ -131,35 +135,14 @@ public class Bullet : MonoBehaviour {
         if (col.gameObject.CompareTag(this.tagToDamage))
         {
             // Damage enemy
-            var enemyHealth = col.gameObject.GetComponent<Enemy>();
-            enemyHealth.ApplyFood((int)this.damage);
+            var enemy = col.gameObject.GetComponent<Enemy>();
             // Slow if farmer
-            if (type == OPTIONS.farmer){
-                Enemy enemy = col.gameObject.GetComponent<Enemy>();
-                if (enemy.type==Enemy.OPTIONS.averageJoe) enemy.Slow(slowpct,shootPosition);
+            if (explosionRadius >0){
+                Explode();
+            } else{
+                enemy.ApplyFood((int)this.damage);
+                ApplySlow(enemy);
             }
-            if (type == OPTIONS.coffee){
-                Enemy enemy = col.gameObject.GetComponent<Enemy>();
-                if (enemy.type==Enemy.OPTIONS.marathonRunner||enemy.type==Enemy.OPTIONS.aristocrat) enemy.Slow(slowpct,shootPosition);
-            }
-            if (type == OPTIONS.boba||type == OPTIONS.korean){
-                Enemy enemy = col.gameObject.GetComponent<Enemy>();
-                if (enemy.type==Enemy.OPTIONS.mukbanger) enemy.Slow(slowpct,shootPosition);
-            }
-            if (type == OPTIONS.pizza||type == OPTIONS.korean){
-                Enemy enemy = col.gameObject.GetComponent<Enemy>();
-                if (enemy.type==Enemy.OPTIONS.sumo||enemy.type==Enemy.OPTIONS.foodCritic) enemy.Slow(slowpct,shootPosition);
-            }
-            if (type == OPTIONS.laksa){
-                col.gameObject.GetComponent<Enemy>().Slow(slowpct,shootPosition,true);
-            }
-            if (type == OPTIONS.sushi){
-                col.gameObject.GetComponent<Enemy>().Slow(slowpct,shootPosition,true);
-            }
-            if (type == OPTIONS.indomie){
-                col.gameObject.GetComponent<Enemy>().Slow(slowpct,shootPosition,true);
-            }
-
             // Create collision particles in opposite direction to movement.
             var particles = Instantiate(this.collisionParticles);
             particles.transform.position = transform.position;
@@ -167,5 +150,43 @@ public class Bullet : MonoBehaviour {
             // Destroy item
             Destroy(gameObject);
         }
+    }
+    void ApplySlow(Enemy enemy){
+        if (type == OPTIONS.farmer){
+                if (enemy.type==Enemy.OPTIONS.averageJoe) enemy.Slow(slowpct,shootPosition);
+            }
+            if (type == OPTIONS.coffee){
+                if (enemy.type==Enemy.OPTIONS.marathonRunner||enemy.type==Enemy.OPTIONS.aristocrat) enemy.Slow(slowpct,shootPosition);
+            }
+            if (type == OPTIONS.boba||type == OPTIONS.korean){
+                if (enemy.type==Enemy.OPTIONS.mukbanger) enemy.Slow(slowpct,shootPosition);
+            }
+            if (type == OPTIONS.pizza||type == OPTIONS.korean){
+                if (enemy.type==Enemy.OPTIONS.sumo||enemy.type==Enemy.OPTIONS.foodCritic) enemy.Slow(slowpct,shootPosition);
+            }
+            if (type == OPTIONS.laksa){
+                enemy.Slow(slowpct,shootPosition,true);
+            }
+            if (type == OPTIONS.sushi){
+                enemy.Slow(slowpct,shootPosition,true);
+            }
+            if (type == OPTIONS.indomie){
+                enemy.Slow(slowpct,shootPosition,true);
+            }
+
+    }
+    void Explode(){
+        Collider[] collider = Physics.OverlapSphere(transform.position,explosionRadius);
+        foreach(Collider collider1 in collider){
+            if (collider1.tag == "Enemy"){
+                Enemy enemy = collider1.gameObject.GetComponent<Enemy>();
+                enemy.ApplyFood((int)this.damage);
+                ApplySlow(enemy);
+            }
+        }
+    }
+    void OnDrawGizmosSelected(){
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position,explosionRadius);
     }
 }

@@ -74,7 +74,6 @@ public class Enemy : MonoBehaviour
         foreach (var render in rend)
         {
                 initial[i] = render.color;  
-                Debug.Log(render.color);
                 i++;              
         }
         InvokeRepeating ("reduceSlowDuration",0f,1f);

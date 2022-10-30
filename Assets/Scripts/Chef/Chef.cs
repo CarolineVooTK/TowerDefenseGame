@@ -48,60 +48,60 @@ public void ResetChef()
                 fireCountdown = 2f;
                 break;
             // Rare (dps ~100)
-            case OPTIONS.coffee:
+            case OPTIONS.coffee: // fast
                 // Attributes
                 range = 15f;
-                fireRate = 2f;
+                fireRate = 1.5f;
                 fireCountdown = 1f;
                 break;
-            case OPTIONS.doughnut:
+            case OPTIONS.doughnut: // slow aoe
                 // Attributes
                 range = 15f;
-                fireRate = 1f;
+                fireRate = 0.7f;
                 fireCountdown = 1f;
                 break;
-            case OPTIONS.sandwich:
+            case OPTIONS.sandwich: // normal
                 // Attributes
                 range = 15f;
-                fireRate = 3f;
+                fireRate = 1.2f;
                 fireCountdown = 1f;
                 break;
             // Super Rare (dps ~150)
-            case OPTIONS.korean:
+            case OPTIONS.korean: // normal
                 // Attributes
                 range = 20f;
-                fireRate = 3f;
+                fireRate = 1.4f;
                 fireCountdown = 2f;
                 break;
-            case OPTIONS.pizza:
+            case OPTIONS.pizza: // slow aoe
                 // Attributes
                 range = 25f;
-                fireRate = 1f;
+                fireRate = 0.4f;
                 fireCountdown = 1f;
                 break;
-            case OPTIONS.boba:
+            case OPTIONS.boba: // fast
                 // Attributes
                 range = 20f;
                 fireRate = 2f;
                 fireCountdown = 1f;
                 break;
             // Legendary (dps ~210)
-            case OPTIONS.indomie:
+            case OPTIONS.indomie: // fast
                 // Attributes
                 range = 30f;
                 fireRate = 3f;
                 fireCountdown = 0f;
                 break;
-            case OPTIONS.laksa:
+            case OPTIONS.laksa: // slow aoe
                 // Attributes
                 range = 35f;
-                fireRate = 1f;
-                fireCountdown = 3f;
+                fireRate = 0.2f;
+                fireCountdown = 1f;
                 break;
-            case OPTIONS.sushi:
+            case OPTIONS.sushi: // normal
                 // Attributes
                 range = 25f;
-                fireRate = 2f;
+                fireRate = 1.6f;
                 fireCountdown = 4f;
                 break;
         }

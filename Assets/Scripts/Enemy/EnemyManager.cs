@@ -23,8 +23,8 @@ public class EnemyManager : MonoBehaviour
     Dictionary<int,  float> enemySpacingList = new Dictionary<int,float>();
     public int enemyWaveCost = 150;
     public int waveTime = 10;
-    public int currentCost=100;
-    public int prevWaveCost=100;
+    public float currentCost=100;
+    public float prevWaveCost=100;
 
     public Transform point;
 
@@ -50,8 +50,8 @@ public class EnemyManager : MonoBehaviour
     private void updateEnemy(int waveNum){
         if (GameManager.waveNum == 0 ) enemyList.TryAdd((int)enemy.Joe,10);
         if (GameManager.waveNum == 3 ) enemyList.TryAdd((int)enemy.Cindy,20);
-        if (GameManager.waveNum == 5 ) enemyList.TryAdd((int)enemy.Sumo,300);
-        if (GameManager.waveNum == 10 ) enemyList.TryAdd((int)enemy.MukBang,200);
+        if (GameManager.waveNum == 5 ) enemyList.TryAdd((int)enemy.Sumo,200);
+        if (GameManager.waveNum == 10 ) enemyList.TryAdd((int)enemy.MukBang,250);
         if (GameManager.waveNum == 15 ) enemyList.TryAdd((int)enemy.Critic,500);
         if (GameManager.waveNum == 20) enemyList.TryAdd((int)enemy.Aristocrat,1000);
     }
@@ -138,7 +138,6 @@ public class EnemyManager : MonoBehaviour
         switch (wave)
         {
             case (0): // total credits == 1000
-                yield return StartCoroutine(GenerateMukBanger(10, 1.5f));
                 yield return StartCoroutine(GenerateJoe(10, 1.5f));
                 prevWaveCost=100;
                 break;
@@ -231,7 +230,7 @@ public class EnemyManager : MonoBehaviour
                 prevWaveCost= 12000;
                 break;
             default:
-                int cost = (int)Math.Ceiling((prevWaveCost + wave) * 1.5);
+                float cost = prevWaveCost + (wave * 1500);
                 currentCost = cost;
                 int rand;
                 int rand2;
@@ -253,27 +252,27 @@ public class EnemyManager : MonoBehaviour
                             case (1):
                                 generateExtra = (int)Math.Ceiling((double)wave/3);
                                 yield return GenerateMarathonRunner(7+generateExtra, enemySpacingList[rand2]);
-                                currentUnitCost=currentUnit*7*(generateExtra);
+                                currentUnitCost=currentUnit*7+currentUnit*(generateExtra);
                                 break;
                             case (2):
                                 generateExtra = (int)Math.Ceiling((double)wave/6);
                                 yield return GenerateSumo(generateExtra, enemySpacingList[rand2]);
-                                currentUnitCost=currentUnit*1*(generateExtra);
+                                currentUnitCost=currentUnit*(generateExtra);
                                 break;
                             case (3):
                                 generateExtra = (int)Math.Ceiling((double)wave/5);
                                 yield return GenerateMukBanger(generateExtra, enemySpacingList[rand2]);
-                                currentUnitCost=currentUnit*1*(generateExtra);
+                                currentUnitCost=currentUnit*(generateExtra);
                                 break;
                             case (4):
                                 generateExtra = (int)Math.Ceiling((double)wave/4);
                                 yield return GenerateCritic(generateExtra, enemySpacingList[rand2]);
-                                currentUnitCost=currentUnit*1*(generateExtra);
+                                currentUnitCost=currentUnit*(generateExtra);
                                 break;
                             case (5):
                                 generateExtra = (int)Math.Ceiling((double)wave/10);
                                 yield return GenerateAristocrat(generateExtra, enemySpacingList[rand2]);
-                                currentUnitCost=currentUnit*1*(generateExtra);
+                                currentUnitCost=currentUnit*(generateExtra);
                                 break;
                         }
                     Debug.Log("bought: "+currentUnitCost);
