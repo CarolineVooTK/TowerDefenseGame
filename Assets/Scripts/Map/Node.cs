@@ -19,11 +19,13 @@ public class Node : MonoBehaviour {
         return transform.position +positionOffset;
     }
     void OnMouseDown(){
-        if (!buildManager.CanBuild) return;
+
         if (turret!=null){
-            Debug.Log("Can't Build There!");
+            buildManager.SelectNode(this);
             return;
         }
+        buildManager.DeselectNode();
+        if (!buildManager.CanBuild) return;
         // build a turret
         buildManager.BuildTurretOn(this);
         // GameObject turretToBuild = BuildManager.instance.GetTurretToBuild();
@@ -36,5 +38,10 @@ public class Node : MonoBehaviour {
 
     void OnMouseExit (){
         rend.material.color = startColour;
+    }
+    public void Sell(){
+        GameManager.AddToken(50);
+        Destroy(turret);
+        turret= null;
     }
 }

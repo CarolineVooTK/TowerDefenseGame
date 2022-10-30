@@ -51,9 +51,9 @@ public class EnemyManager : MonoBehaviour
         if (GameManager.waveNum == 0 ) enemyList.TryAdd((int)enemy.Joe,10);
         if (GameManager.waveNum == 3 ) enemyList.TryAdd((int)enemy.Cindy,20);
         if (GameManager.waveNum == 5 ) enemyList.TryAdd((int)enemy.Sumo,200);
-        if (GameManager.waveNum == 7 ) enemyList.TryAdd((int)enemy.MukBang,250);
-        if (GameManager.waveNum == 10 ) enemyList.TryAdd((int)enemy.Critic,500);
-        if (GameManager.waveNum == 15) enemyList.TryAdd((int)enemy.Aristocrat,1000);
+        if (GameManager.waveNum == 10 ) enemyList.TryAdd((int)enemy.MukBang,250);
+        if (GameManager.waveNum == 15 ) enemyList.TryAdd((int)enemy.Critic,500);
+        if (GameManager.waveNum == 20) enemyList.TryAdd((int)enemy.Aristocrat,1000);
     }
 
     private void Update()
@@ -260,12 +260,12 @@ public class EnemyManager : MonoBehaviour
                                 currentUnitCost=currentUnit*(generateExtra);
                                 break;
                             case (3):
-                                generateExtra = (int)Math.Ceiling((double)wave/5);
+                                generateExtra = (int)Math.Ceiling((double)wave/8);
                                 yield return GenerateMukBanger(generateExtra, enemySpacingList[rand2]);
                                 currentUnitCost=currentUnit*(generateExtra);
                                 break;
                             case (4):
-                                generateExtra = (int)Math.Ceiling((double)wave/4);
+                                generateExtra = (int)Math.Ceiling((double)wave/10);
                                 yield return GenerateCritic(generateExtra, enemySpacingList[rand2]);
                                 currentUnitCost=currentUnit*(generateExtra);
                                 break;
