@@ -254,7 +254,11 @@ We utilized randomisation using the feature "Random Between Two Constants" on th
 
 #### Castle Map Assets
 
-*
+* Trees Prefab : <https://assetstore.unity.com/packages/3d/vegetation/trees/free-trees-103208>
+* Castle Prefab : <https://assetstore.unity.com/packages/3d/environments/forest-low-poly-toon-battle-arena-tower-defense-pack-100080>
+* Village Prefab :<https://assetstore.unity.com/packages/3d/polygon-city-pack-environment-and-interior-free-101685>
+* Grass Material Prefab : <https://assetstore.unity.com/packages/2d/textures-materials/nature/nature-materials-vol-1-21113>
+* Flower and Stones Prefab : <https://assetstore.unity.com/packages/3d/environments/landscapes/free-low-poly-nature-forest-205742>
 
 #### Desert Map Assets
 
