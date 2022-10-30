@@ -19,6 +19,7 @@
 |                 | Implement Citizens            |
 | Yuji Nojima     | Procedural Generation Citizen |
 |                 | Implement Chefs and Gacha     |
+|                 | Manage bullet effects (slow,dmg)|
 
 <!-- [[EndTeamworkPlan]] PLEASE LEAVE THIS LINE UNTOUCHED -->
 
@@ -93,6 +94,8 @@ Let the chef feed the citizens their specialised foods. Once the citizens are fu
 #### 5. Defend Kitchen
 
 Use coins to purchase more scroll and test your luck to defend the kitchen!
+
+You start off with 40 lives, if a number of enemies reach the end, they will take a number of your lives.
 
 \* Protip: If you place the scroll on the correct tile and have enough money, you can spam and purchase multiple scrolls!
 

@@ -12,6 +12,7 @@ public class Enemy : MonoBehaviour
     public OPTIONS type;
     [HideInInspector]
     public float usedSpeed;
+    public int damage;
     public float startingHunger;
     public float speed;
     public int tokensDropped;
@@ -83,10 +84,10 @@ public class Enemy : MonoBehaviour
     public void ResetEnemy()
     {
         startingHunger = 50;
-        speed = 5;
+        speed = 10;
         tokensDropped = 5;
         level = 1;
-
+        damage = 1;
         // Switch based on the type chosen and assign its respected values
         switch (type)
         {
@@ -97,30 +98,35 @@ public class Enemy : MonoBehaviour
                 speed *= 1.4f;
                 tokensDropped = 7;
                 level = 2;
+                damage = 2;
                 break;
           case OPTIONS.sumo:
                 startingHunger = 4500;
                 speed *= 0.25f;
                 tokensDropped = 50;
                 level = 5;
+                damage = 5;
                 break;
             case OPTIONS.mukbanger:
                 startingHunger = 6500;
                 speed *= 0.6f;
                 tokensDropped = 40;
                 level = 3;
+                damage = 7;
                 break;
             case OPTIONS.foodCritic:
                 startingHunger = 10000;
                 speed *= 0.8f;
                 tokensDropped = 100;
                 level = 15;
+                damage = 15;
                 break;
             case OPTIONS.aristocrat:
                 startingHunger = 25000;
                 speed *= 0.5f;
                 tokensDropped = 150;
                 level = 20;
+                damage = 39;
                 break;
         }
 
