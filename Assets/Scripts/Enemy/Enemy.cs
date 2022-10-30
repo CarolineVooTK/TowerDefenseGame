@@ -84,7 +84,7 @@ public class Enemy : MonoBehaviour
     public void ResetEnemy()
     {
         startingHunger = 50;
-        speed = 10;
+        speed = 5;
         tokensDropped = 5;
         level = 1;
         damage = 1;
@@ -144,17 +144,17 @@ public class Enemy : MonoBehaviour
         switch (type)
         {
             case OPTIONS.averageJoe:
-                if (wave/5.0==0){
+                if (wave/3.0==0){
                     startingHunger *= 1.5f;
                     }
                 break;
             case OPTIONS.marathonRunner:
-                if (wave/5.0==0){
+                if (wave/3.0==0){
                     startingHunger *= 1.5f;
                     }
                 break;
           case OPTIONS.sumo:
-                if (wave/10.0==0){
+                if (wave/5.0==0){
                     startingHunger *= 1.6f;
                     }
                 break;

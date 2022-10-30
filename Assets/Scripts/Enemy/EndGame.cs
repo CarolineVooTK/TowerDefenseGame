@@ -4,7 +4,6 @@ using UnityEngine.Events;
 public class EndGame : MonoBehaviour
 {
     private readonly string tagToDamage = "Enemy";
-    public int health = 40;
     [SerializeField] private UnityEvent OnEndGame;
 
     void Update(){
@@ -19,8 +18,9 @@ public class EndGame : MonoBehaviour
         if (col.gameObject.CompareTag(this.tagToDamage))
         {
             Enemy hit = col.gameObject.GetComponent<Enemy>();
-            health-= hit.damage;
-            if (health<=0){
+            GameManager.ReduceHealth(hit.damage);
+
+            if (GameManager.health<=0){
                 Time.timeScale = 0f;
                 OnEndGame.Invoke();
             }

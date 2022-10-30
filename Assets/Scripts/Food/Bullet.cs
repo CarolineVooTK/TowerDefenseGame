@@ -56,12 +56,12 @@ public class Bullet : MonoBehaviour {
                 break;
             // Super Rare (dps ~150)
             case OPTIONS.korean: // normal
-                fireSpeed = 6f;
+                fireSpeed = 8f;
                 damage = 70;
                 slowpct=0.4f;
                 break;
             case OPTIONS.pizza: // slow aoe
-                fireSpeed = 5f;
+                fireSpeed = 7f;
                 damage = 75;
                 slowpct=0.7f;
                 explosionRadius=6f;

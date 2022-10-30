@@ -51,9 +51,9 @@ public class EnemyManager : MonoBehaviour
         if (GameManager.waveNum == 0 ) enemyList.TryAdd((int)enemy.Joe,10);
         if (GameManager.waveNum == 3 ) enemyList.TryAdd((int)enemy.Cindy,20);
         if (GameManager.waveNum == 5 ) enemyList.TryAdd((int)enemy.Sumo,200);
-        if (GameManager.waveNum == 10 ) enemyList.TryAdd((int)enemy.MukBang,250);
-        if (GameManager.waveNum == 15 ) enemyList.TryAdd((int)enemy.Critic,500);
-        if (GameManager.waveNum == 20) enemyList.TryAdd((int)enemy.Aristocrat,1000);
+        if (GameManager.waveNum == 7 ) enemyList.TryAdd((int)enemy.MukBang,250);
+        if (GameManager.waveNum == 10 ) enemyList.TryAdd((int)enemy.Critic,500);
+        if (GameManager.waveNum == 15) enemyList.TryAdd((int)enemy.Aristocrat,1000);
     }
 
     private void Update()
@@ -230,7 +230,7 @@ public class EnemyManager : MonoBehaviour
                 prevWaveCost= 12000;
                 break;
             default:
-                float cost = prevWaveCost + (wave * 1500);
+                float cost = prevWaveCost + (wave * 200);
                 currentCost = cost;
                 int rand;
                 int rand2;

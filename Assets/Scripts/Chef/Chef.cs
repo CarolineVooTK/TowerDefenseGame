@@ -57,7 +57,7 @@ public void ResetChef()
             case OPTIONS.doughnut: // slow aoe
                 // Attributes
                 range = 15f;
-                fireRate = 0.7f;
+                fireRate = 0.9f;
                 fireCountdown = 1f;
                 break;
             case OPTIONS.sandwich: // normal
@@ -76,7 +76,7 @@ public void ResetChef()
             case OPTIONS.pizza: // slow aoe
                 // Attributes
                 range = 25f;
-                fireRate = 0.4f;
+                fireRate = 0.6f;
                 fireCountdown = 1f;
                 break;
             case OPTIONS.boba: // fast
@@ -95,7 +95,7 @@ public void ResetChef()
             case OPTIONS.laksa: // slow aoe
                 // Attributes
                 range = 35f;
-                fireRate = 0.2f;
+                fireRate = 0.4f;
                 fireCountdown = 1f;
                 break;
             case OPTIONS.sushi: // normal
@@ -131,6 +131,11 @@ public void ResetChef()
         Vector3 rotation = lookRotation.eulerAngles;
         partToRotate.rotation = Quaternion.Euler(0f,rotation.y,0f); 
 
+        float distance = Vector3.Distance(transform.position,target.position);    
+
+        if (distance > range){
+            target=null;
+        }
 
         if (fireCountdown <= 0f){
             Shoot();
