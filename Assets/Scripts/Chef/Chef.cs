@@ -10,6 +10,7 @@ public class Chef : MonoBehaviour{
     public float range;
     // bullets per second
     public float fireRate;
+    public int sellAmount;
    
     // shoooting interval
     public float fireCountdown;
@@ -37,6 +38,7 @@ public void ResetChef()
         this.range = 15f;
         this.fireRate = 3f;
         this.fireCountdown = 0f;
+        this.sellAmount = 50;
         // Switch based on the type chosen and assign its respected values
         switch (type)
         {
@@ -53,18 +55,21 @@ public void ResetChef()
                 range = 15f;
                 fireRate = 1.5f;
                 fireCountdown = 1f;
+                sellAmount = 100;
                 break;
             case OPTIONS.doughnut: // slow aoe
                 // Attributes
                 range = 15f;
                 fireRate = 0.9f;
                 fireCountdown = 1f;
+                sellAmount = 100;
                 break;
             case OPTIONS.sandwich: // normal
                 // Attributes
                 range = 15f;
                 fireRate = 1.2f;
                 fireCountdown = 1f;
+                sellAmount = 100;
                 break;
             // Super Rare (dps ~150)
             case OPTIONS.korean: // normal
@@ -72,18 +77,21 @@ public void ResetChef()
                 range = 20f;
                 fireRate = 1.4f;
                 fireCountdown = 2f;
+                sellAmount = 200;
                 break;
             case OPTIONS.pizza: // slow aoe
                 // Attributes
                 range = 25f;
                 fireRate = 0.6f;
                 fireCountdown = 1f;
+                sellAmount = 200;
                 break;
             case OPTIONS.boba: // fast
                 // Attributes
                 range = 20f;
                 fireRate = 2f;
                 fireCountdown = 1f;
+                sellAmount = 200;
                 break;
             // Legendary (dps ~210)
             case OPTIONS.indomie: // fast
@@ -91,18 +99,21 @@ public void ResetChef()
                 range = 30f;
                 fireRate = 3f;
                 fireCountdown = 0f;
+                sellAmount = 400;
                 break;
             case OPTIONS.laksa: // slow aoe
                 // Attributes
                 range = 35f;
                 fireRate = 0.4f;
                 fireCountdown = 1f;
+                sellAmount = 400;
                 break;
             case OPTIONS.sushi: // normal
                 // Attributes
                 range = 25f;
                 fireRate = 1.6f;
                 fireCountdown = 4f;
+                sellAmount = 400;
                 break;
         }
     }

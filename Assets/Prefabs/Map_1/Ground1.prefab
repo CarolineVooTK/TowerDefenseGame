@@ -50,6 +50,7 @@ MonoBehaviour:
   hoverColor: {r: 0.7830189, g: 0.5993202, b: 0.48384658, a: 0}
   turret: {fileID: 4398272844514848389, guid: 68dfdac735df4e44f83a79a714359cbc, type: 3}
   positionOffset: {x: 0, y: 0.5, z: 0}
+  collisionParticles: {fileID: 863899079453766310, guid: 14c9ef49a970944e483955e7eb1c9263, type: 3}
 --- !u!33 &6257737277255653977
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -109,7 +110,7 @@ BoxCollider:
   m_GameObject: {fileID: 6474365257706775561}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}

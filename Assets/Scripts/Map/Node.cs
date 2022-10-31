@@ -7,9 +7,10 @@ public class Node : MonoBehaviour {
     [Header("Optional")]
     public GameObject turret;
     public Vector3 positionOffset;
+    [SerializeField] private ParticleSystem collisionParticles;
+
     private Color startColour;
     BuildManager buildManager;
-
     void Start (){
         rend = GetComponent<Renderer>();
         startColour = rend.material.color;
@@ -40,7 +41,9 @@ public class Node : MonoBehaviour {
         rend.material.color = startColour;
     }
     public void Sell(){
-        GameManager.AddToken(50);
+        GameManager.AddToken(turret.gameObject.GetComponent<Chef>().sellAmount);
+        var particles = Instantiate(this.collisionParticles);
+        particles.transform.position = transform.position + new Vector3(0f, 2f, 0f);
         Destroy(turret);
         turret= null;
     }
