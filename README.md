@@ -102,7 +102,53 @@ You start off with 40 lives, if a number of enemies reach the end, they will tak
 ### Gameplay Related Design
 
 #### Balancing
-Many factors need to be taken into consideration to keep the game challenging and not too simple. Factors include coins dropped, damage outputted and damage tanked by the enemies.
+Many factors need to be taken into consideration to keep the game challenging and not too simple. Factors include coins dropped, damage outputted and damage tanked by the enemies. At some points the enemies got too easy, and the chefs only had one fixed dmg output. Therefore both chef and enemy scaling had to be introduced.
+
+##### Enemy
+| Enemy  | Starting Hunger  | Speed   | Tokend dropped   | Damage to lives   | favourite food (infatuation)
+| :----  | :----------- |:-------------|:-------------------------|:-------------------------|:-------------------------|
+| Average Joe     | 50   | 5 | 5 | 1 | farmer, legendary
+|  Marathon Cindy | 70   | 7.5 | 7 | 2 | coffee, legendary
+| Sumo            | 4500  | 1.25 | 50|  5 | pizza, korean, doughnuts, legendary
+|  Mukbang Kim Jong Duos     | 6500   |3 | 70|  7| doughnuts, korean chicken, sandwiches, boba
+|  Critique Anton Ego      | 10000  | 4  | 100|  15 | legendary
+|  Aristocrat Bill Fences   | 25000   |2.5 | 250|  39 | coffee, sandwiches, legendary
+##### Wave Scaling
+| Enemy  | Hunger  | Multiplier   | Every N Levels  | 
+| :----  | :----------- |:------------- |:-- |
+| Average Joe     | 50   | 200% | 3 |
+|  Marathon Cindy | 70   | 200%| 7 | 3
+| Sumo            | 4500  | 200%| 5
+|  Mukbang Kim Jong Duos     | 6500   |170% | (wave-5) / 10|
+|  Critique Anton Ego      | 10000  | 150% | (wave-15) / 10
+|  Aristocrat Bill Fences   | 25000   |150% | (wave-23) / 10
+
+
+##### Chef
+There are four types of chefs, basic, fast shooter, explosion and normal.
+| Chef  |Type| Rarity | Range   | Initial Damage  | Fire Rate  | Infatuation (slow effect)  | Explosion Radius  |  Food Served  | Sell price  | 
+| :----  | :----------- |:-------------|:-------------------------|:-------------------------| :----  | :----------- |:-------------|:-------------------------|:-------------------------|
+| Farmer     | Basic|⭐   | 12 | 17| 3| 50% | 0| carrots, eggs, raw meat| 50 + (level * 25)
+|  Coffee| Fast| ⭐⭐⭐   | 15 | 30| 1.5| 20% | 0| coffee |100 + (level * 25)
+| Boba   |Fast |⭐⭐⭐⭐ | 23 | 35| 2 | 20%|0| boba|125 + (level * 25)
+|  Indomie|  Fast| ⭐⭐⭐⭐⭐ | 25 | 45| 3 | 60% |0| indomie| 200 + (level * 25)
+| Doughnut    |Explosion       | ⭐⭐⭐  | 15| 50|  0.9 | 70% | 3| doughnut|100 + (level * 25)
+|        Pizza|Explosion | ⭐⭐⭐⭐        |20 | 85|  0.6 | 70%|6| pizza|125 + (level * 25)
+| Laksa   | Explosion        | ⭐⭐⭐⭐⭐ | 35 | 200|  0.4 | 60%|8| laksa|200 + (level * 25)
+|         Sandwich  |Normal| ⭐⭐⭐  |15 | 55|  1.2 | 40%| 0| sandwich|100 + (level * 25)
+|        Korean     |Normal| ⭐⭐⭐⭐       |25  | 70|  1.4 | 40% |0| korean chicken |125 + (level * 25)
+|         Sushi |Normal   | ⭐⭐⭐⭐⭐  |30 | 175|  1.6 |60%| 0| sushi|200 + (level * 25)
+*note level for sell bonus isnt included if level 1
+##### Chef Upgrades
+| Upgrade level  | ⭐ Cost  |⭐⭐⭐ Cost  |⭐⭐⭐⭐ Cost  |⭐⭐⭐⭐⭐ Cost  | Damage   | Radius   | Explosion Radius (applicable to explosion objects only)   | Fire Rate   |  
+| :----  | :----------- |:-------------|:-------------------------| :----  | :----------- |:-------------|:-------------------------|:-------------------------|
+| 1   | --   | -- | --| --| --| --| --| --| 
+| 2 | 75   | 125 | 150| 225| 130% |--|130%|130%
+| 3 | 200  | 250 | 275|   350| 130% |130%|130%|--
+| 4 | 275   |325 | 350|   375| 130% |--|130%|130%
+| 5 | 350        |400  | 425|  450| 130% |130%|130%|130% 
+upgrade formula = sellAmount+baseUpgradeAmount;
+from lvl2 onwards upgrade formula = sellAmount+baseUpgradeAmount*(level*3);
 
 #### Maps
 The assets used for the maps consists of assets downloaded from the Unity Store and the chefs, citizens and food were customly modelled ourselves. The downloaded assets included buildings, trees, stones, grass, flowerd, fountains , boats etc. These are all placed in the prefab. We created 3 maps for the game, inspired by castles, beaches, the desert. The objects and paths of each map were originally fixed, however procedural generation for the maps was added later on to generate the map's path randomly. We positioned the point of view of the player in a slightly angled down bird's eye view so players could see the objects in the map clearly and also visualize what their strategy would be when playing the game.
@@ -205,6 +251,15 @@ return _Color * col * (_AmbientColor + light + specular + rim);
 Procedural generation for the path, attack tiles and some objects are implemented in the maps. For the path, the ground is firstly generated then the path. Since the map originally had a fixed design, the start and end points of the path are fixed and thus cannot be changed. Only the path connecting the endpoints is randomly generated and is restricted to a specific area. The algorithm for the procedural generation is as follows. Starting at the Start Tile, check to see which direction it is possible to move in while staying within the boundaries. Add this to a list, then randomly select one of these options to add a tile. For map3, the first one-third of the path is set to generate moving only right to ensure the path does not end too fast. The attack tiles of the path are generated by choosing randomly from a set of possible configurations. The decorations for the map are randomly added after the path and attack tiles are generated in the empty spaces left on the map within the preset boundary.
 
 #### Enemy
+Procedural generation was managed by the enemy manager, other than some precoded rounds, the enemy manager would have a given cost of enemies to spend on depending on round number and the cost of the previous wave, using the formula totalcost = previouswavecost + wave * 200. The enemy manager would then rotate through the available enemies (note that difficult enemies are added into the pool depending on the level) and put down a number a cycle accordingly to the wave number and random spacing. Wave 10 costing 4000, mwaning that wave 11 = 4000 + (11* 200) = 6200.
+| Enemy  | Cost  | Wave introduction   | Amount spawned per cycle   | 
+| :----  | :----------- |:-------------|:-------------------------|
+| Average Joe     | 10   | 0 | 10 + waveNum / 2| 
+|  Marathon Cindy | 20   | 3 | 7 + waveNum / 3| 
+| Sumo            | 200  | 5 | waveNum / 6|  
+|          Mukbang Kim Jong Duos     | 250   |10 | waveNum / 8|  
+|        Critique Anton Ego      | 500        |15  | waveNum / 15|  
+|         Aristocrat Bill Fences   | 1000          |20 | waveNum / 20|  
 
 ### Particle System
 

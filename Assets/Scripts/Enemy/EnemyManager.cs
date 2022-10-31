@@ -246,7 +246,8 @@ public class EnemyManager : MonoBehaviour
                     switch (rand)
                         {
                             case (0):
-                                yield return GenerateJoe(10, 0.3f);
+                                generateExtra = (int)Math.Ceiling((double)wave/2);
+                                yield return GenerateJoe(10+generateExtra, 0.3f);
                                 currentUnitCost=currentUnit*10*(generateExtra);
                                 break;
                             case (1):
@@ -265,12 +266,12 @@ public class EnemyManager : MonoBehaviour
                                 currentUnitCost=currentUnit*(generateExtra);
                                 break;
                             case (4):
-                                generateExtra = (int)Math.Ceiling((double)wave/10);
+                                generateExtra = (int)Math.Ceiling((double)wave/15);
                                 yield return GenerateCritic(generateExtra, enemySpacingList[rand2]);
                                 currentUnitCost=currentUnit*(generateExtra);
                                 break;
                             case (5):
-                                generateExtra = (int)Math.Ceiling((double)wave/10);
+                                generateExtra = (int)Math.Ceiling((double)wave/20);
                                 yield return GenerateAristocrat(generateExtra, enemySpacingList[rand2]);
                                 currentUnitCost=currentUnit*(generateExtra);
                                 break;

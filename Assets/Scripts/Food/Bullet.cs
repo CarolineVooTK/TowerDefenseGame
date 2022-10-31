@@ -178,6 +178,14 @@ public class Bullet : MonoBehaviour {
             if (type == OPTIONS.coffee){
                 if (enemy.type==Enemy.OPTIONS.marathonRunner||enemy.type==Enemy.OPTIONS.aristocrat) enemy.Slow(slowpct,shootPosition);
             }
+            if (type == OPTIONS.doughnut){
+                if (enemy.type==Enemy.OPTIONS.sumo||enemy.type==Enemy.OPTIONS.mukbanger) enemy.Slow(slowpct,shootPosition);
+            }
+
+            if (type == OPTIONS.sandwich){
+                if (enemy.type==Enemy.OPTIONS.aristocrat||enemy.type==Enemy.OPTIONS.mukbanger) enemy.Slow(slowpct,shootPosition);
+            }
+
             if (type == OPTIONS.boba||type == OPTIONS.korean){
                 if (enemy.type==Enemy.OPTIONS.mukbanger) enemy.Slow(slowpct,shootPosition);
             }
@@ -187,6 +195,7 @@ public class Bullet : MonoBehaviour {
             if (type == OPTIONS.laksa){
                 enemy.Slow(slowpct,shootPosition,true);
             }
+            
             if (type == OPTIONS.sushi){
                 enemy.Slow(slowpct,shootPosition,true);
             }
