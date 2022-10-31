@@ -183,6 +183,7 @@ There are four types of chefs, basic, fast shooter, explosion and normal.
 |         Sandwich  |Normal| ⭐⭐⭐  |15 | 55|  1.2 | 40%| 0| sandwich|100 + (level * 25)|
 |        Korean     |Normal| ⭐⭐⭐⭐       |25  | 70|  1.4 | 40% |0| korean chicken |125 + (level * 25)|
 |         Sushi |Normal   | ⭐⭐⭐⭐⭐  |30 | 175|  1.6 |60%| 0| sushi|200 + (level * 25)|
+
 *note level for sell bonus isnt included if level 1
 
 ##### Chef Upgrades
@@ -194,6 +195,7 @@ There are four types of chefs, basic, fast shooter, explosion and normal.
 | 3 | 200  | 250 | 275|   350| 130% |130%|130%|--|
 | 4 | 275   |325 | 350|   375| 130% |--|130%|130%|
 | 5 | 350        |400  | 425|  450| 130% |130%|130%|130% |
+
 upgrade formula = sellAmount+baseUpgradeAmount;
 from lvl2 onwards upgrade formula = sellAmount+baseUpgradeAmount*(level*3);
 
