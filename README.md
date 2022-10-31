@@ -13,6 +13,9 @@
 | Name            | Responsibility                  |
 | :-------------- | :------------------------------ |
 | Caroline Voo    | Procedural Generation Map       |
+|                 | Procedural General Path         |
+|                 | Procedural Generation Objects   |
+|                 | Creating and Designing Maps     |
 |                 | Evaluation                      |
 | Livya Riany     | Heads Up Display (HUD)          |
 |                 | Model Chefs, Citizen, Foods     |
