@@ -78,6 +78,7 @@ public class Enemy : MonoBehaviour
                 i++;              
         }
         InvokeRepeating ("reduceSlowDuration",0f,1f);
+        BuffEnemy();
     }
 
     // Reset the statistics of the enemies
@@ -108,21 +109,21 @@ public class Enemy : MonoBehaviour
                 damage = 5;
                 break;
             case OPTIONS.mukbanger:
-                startingHunger = 6500;
+                startingHunger = 10500;
                 speed *= 0.6f;
                 tokensDropped = 70;
                 level = 3;
                 damage = 7;
                 break;
             case OPTIONS.foodCritic:
-                startingHunger = 10000;
+                startingHunger = 20000;
                 speed *= 0.8f;
                 tokensDropped = 100;
                 level = 10;
                 damage = 15;
                 break;
             case OPTIONS.aristocrat:
-                startingHunger = 25000;
+                startingHunger = 50000;
                 speed *= 0.5f;
                 tokensDropped = 250;
                 level = 20;
@@ -139,38 +140,37 @@ public class Enemy : MonoBehaviour
     public void BuffEnemy()
     {
         int wave = GameManager.waveNum;
-        if (wave==lastWave) return;
         // Switch based on the type chosen and assign its respected values
         switch (type)
         {
             case OPTIONS.averageJoe:
-                if (wave/3.0==0){
-                    startingHunger *= 2f;
+                if (wave-4/2.0==0){
+                    CurrentHunger = startingHunger * 2f * wave;
                     }
                 break;
             case OPTIONS.marathonRunner:
-                if (wave/3.0==0){
-                    startingHunger *= 2f;
+                if (wave-4/2.0==0){
+                    CurrentHunger = startingHunger * 2f * wave;
                     }
                 break;
           case OPTIONS.sumo:
-                if (wave/5.0==0){
-                    startingHunger *= 2f;
+                if (wave-5/2.0==0){
+                    CurrentHunger = startingHunger * 3f * wave;
                     }
                 break;
             case OPTIONS.mukbanger:
-                if (wave-5/10.0==0){
-                    startingHunger *= 1.7f;
+                if (wave-5/2.0==0){
+                    CurrentHunger = startingHunger * 3f * wave;
                     }
                 break;
             case OPTIONS.foodCritic:
-                if (wave-15/10.0==0){
-                    startingHunger *= 1.5f;
+                if (wave-15/2.0==0){
+                    CurrentHunger = startingHunger * 3f * wave;
                     }
                 break;
             case OPTIONS.aristocrat:
-                if (wave-23/10.0==0){
-                    startingHunger *= 1.5f;
+                if (wave-23/2.0==0){
+                    CurrentHunger = startingHunger * 2f * wave;
                     }
                 break;
         }
@@ -240,7 +240,6 @@ public class Enemy : MonoBehaviour
         IsSlowed();
 
            // Buff
-        BuffEnemy();
         Vector3 dir = target.position - transform.position;
         transform.Translate(usedSpeed * Time.deltaTime * dir.normalized, Space.World);
 

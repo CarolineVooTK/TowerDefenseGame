@@ -123,6 +123,11 @@ You start off with 40 lives, if a number of enemies reach the end, they will tak
 
 #### Balancing
 Many factors need to be taken into consideration to keep the game challenging and not too simple. Factors include coins dropped, damage outputted and damage tanked by the enemies. At some points the enemies got too easy, and the chefs only had one fixed dmg output. Therefore both chef and enemy scaling had to be introduced.
+##### Bullet Effects
+###### Favourite Food
+If hit with favourite food, the enemy will slow down and turn to face the chef that gave them their favourite food. The slow effects are according to the chefs meals.
+###### Explosion
+If hit with an explosive food (pizza, donuts and laksa), the enemies around the radius of the enemy hit will take the same amount of damage.
 
 ##### Enemy
 | Enemy  | Starting Hunger  | Speed   | Tokend dropped   | Damage to lives   | favourite food (infatuation)
@@ -130,22 +135,22 @@ Many factors need to be taken into consideration to keep the game challenging an
 | Average Joe     | 50   | 5 | 5 | 1 | farmer, legendary
 |  Marathon Cindy | 70   | 7.5 | 7 | 2 | coffee, legendary
 | Sumo            | 4500  | 1.25 | 50|  5 | pizza, korean, doughnuts, legendary
-|  Mukbang Kim Jong Duos     | 6500   |3 | 70|  7| doughnuts, korean chicken, sandwiches, boba
-|  Critique Anton Ego      | 10000  | 4  | 100|  15 | legendary
-|  Aristocrat Bill Fences   | 25000   |2.5 | 250|  39 | coffee, sandwiches, legendary
+|  Mukbang Kim Jong Duos     | 10500   |3 | 70|  7| doughnuts, korean chicken, sandwiches, boba
+|  Critique Anton Ego      | 20000  | 4  | 100|  15 | legendary
+|  Aristocrat Bill Fences   | 50000   |2.5 | 250|  39 | coffee, sandwiches, legendary
 ##### Wave Scaling
 | Enemy  | Hunger  | Multiplier   | Every N Levels  | 
 | :----  | :----------- |:------------- |:-- |
-| Average Joe     | 50   | 200% | 3 |
-|  Marathon Cindy | 70   | 200%| 3 | 3
-| Sumo            | 4500  | 200%| 5
-|  Mukbang Kim Jong Duos     | 6500   |170% | (wave-5) / 10|
-|  Critique Anton Ego      | 10000  | 150% | (wave-15) / 10
-|  Aristocrat Bill Fences   | 25000   |150% | (wave-23) / 10
+| Average Joe     | 50   | 200% | 2 |
+|  Marathon Cindy | 70   | 200%| 2 |
+| Sumo            | 4500  | 200%| 2
+|  Mukbang Kim Jong Duos     | 6500   |250% | (wave-5) / 2|
+|  Critique Anton Ego      | 10000  | 300% | (wave-15) / 5
+|  Aristocrat Bill Fences   | 25000   |200% | (wave-23) / 10
 
 
 ##### Chef
-There are four types of chefs, basic, fast shooter, explosion and normal.
+There are four types of chefs, basic, fast shooter, explosion and normal. They can slow enemies if they are given their favourite foods
 | Chef  |Type| Rarity | Range   | Initial Damage  | Fire Rate  | Infatuation (slow effect)  | Explosion Radius  |  Food Served  | Sell price  | 
 | :----  | :----------- |:-------------|:-------------------------|:-------------------------| :----  | :----------- |:-------------|:-------------------------|:-------------------------|
 | Farmer     | Basic|⭐   | 12 | 17| 3| 50% | 0| carrots, eggs, raw meat| 50 + (level * 25)
