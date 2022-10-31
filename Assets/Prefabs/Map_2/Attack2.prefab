@@ -58,6 +58,7 @@ MonoBehaviour:
   hoverColor: {r: 0.8396226, g: 0.6348874, b: 0.41585082, a: 0}
   turret: {fileID: 4398272844514848389, guid: 68dfdac735df4e44f83a79a714359cbc, type: 3}
   positionOffset: {x: 0, y: 0.5, z: 0}
+  collisionParticles: {fileID: 863899079453766310, guid: 14c9ef49a970944e483955e7eb1c9263, type: 3}
 --- !u!23 &3752185070038968789
 MeshRenderer:
   m_ObjectHideFlags: 0

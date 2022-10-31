@@ -10,6 +10,7 @@ public class BuildManager : MonoBehaviour {
         instance = this;
     }
     public TurretBluePrint turretToBuild;
+    public Node selectedNode;
     [Header ("COST")]
     public int premiumCost=400;
     public int standardCost=200;
@@ -30,16 +31,6 @@ public class BuildManager : MonoBehaviour {
     public int scrollInt;
     public void SetScroll(int _set){
         scrollInt=_set;
-    }
-    public string placeTag = "Placeable";
-    public UnityEvent OnNoMoney;
-    public UnityEvent OnPurchase;
-    public UnityEvent OnNoPlace;
-    [SerializeField] private Text textDisplay;
-    [SerializeField] private string prefix;
-    [SerializeField] private string sufix;
-    public void BuildTurretOn (Node node){
-        if (scrollInt == 2) return;
         if (scrollInt == 1)
         {
             PurchasePremiumChest();
@@ -47,7 +38,26 @@ public class BuildManager : MonoBehaviour {
         if (scrollInt == 0)
         {
             PurchaseStandardChest();
-        }    
+        }
+    }
+    public string placeTag = "Placeable";
+    public UnityEvent OnNoMoney;
+    public UnityEvent OnPurchase;
+    public UnityEvent OnNoPlace;
+    public NodeUI nodeUI;
+    [SerializeField] private Text textDisplay;
+    [SerializeField] private string prefix;
+    [SerializeField] private string sufix;
+    public void BuildTurretOn (Node node){
+        if (scrollInt == 2) return;
+         if (scrollInt == 1)
+        {
+            PurchasePremiumChest();
+        }
+        if (scrollInt == 0)
+        {
+            PurchaseStandardChest();
+        }
         if (node.tag!=placeTag){
             scrollInt = 2;
             Debug.Log("Cannot Place!");
@@ -63,7 +73,6 @@ public class BuildManager : MonoBehaviour {
             return;
         }
 
-
         GameManager.ReduceToken(turretToBuild.cost);
         GameObject turret = (GameObject)Instantiate(turretToBuild.prefab,node.GetBuildPosition(),Quaternion.identity);
         OnPurchase.Invoke();
@@ -71,13 +80,29 @@ public class BuildManager : MonoBehaviour {
         Debug.Log("Money Left " + GameManager.tokenBank);
     }
     public bool CanBuild { get {return turretToBuild != null;}}
+    public void SelectNode(Node node){
+        if (selectedNode == node){
+            DeselectNode();
+            return;
+        }
+        
+        selectedNode = node;
+        turretToBuild = null;
+
+        nodeUI.SetTarget(node);
+    }
     public void SetTurretToBuild(TurretBluePrint turret){
+        DeselectNode();
         turretToBuild = turret;
     }
     public GameObject GetTurretToBuild(){
         return turretToBuild.prefab;
     }
 
+    public void DeselectNode(){
+        selectedNode = null;
+        nodeUI.Hide();
+    }
     public void PurchasePremiumChest(){
         int roll = Random.Range(0,100);
         switch(roll){
