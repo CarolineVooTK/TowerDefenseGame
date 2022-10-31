@@ -9,16 +9,17 @@
 
 <!-- Fill this section by Milestone 1 (see specification for details) -->
 
-| Name            | Responsibility                |
-| :-------------- | :---------------------------- |
-| Caroline Voo    | Procedural Generation Map     |
-|                 | Evaluation                    |
-| Livya Riany     | Heads Up Display (HUD)        |
-|                 | Model Chefs, Citizen, Foods   |
-|                 | Audio and Sound Effect        |
-|                 | Implement Citizens            |
-| Yuji Nojima     | Procedural Generation Citizen |
-|                 | Implement Chefs and Gacha     |
+| Name            | Responsibility                  |
+| :-------------- | :------------------------------ |
+| Caroline Voo    | Procedural Generation Map       |
+|                 | Evaluation                      |
+| Livya Riany     | Heads Up Display (HUD)          |
+|                 | Model Chefs, Citizen, Foods     |
+|                 | Audio and Sound Effect          |
+|                 | Implement Citizens              |
+|                 | Shaders                         |
+| Yuji Nojima     | Procedural Generation Citizen   |
+|                 | Implement Chefs and Gacha       |
 |                 | Manage bullet effects (slow,dmg)|
 
 <!-- [[EndTeamworkPlan]] PLEASE LEAVE THIS LINE UNTOUCHED -->
@@ -102,9 +103,56 @@ You start off with 40 lives, if a number of enemies reach the end, they will tak
 ### Gameplay Related Design
 
 #### Balancing
-Many factors need to be taken into consideration to keep the game challenging and not too simple. Factors include coins dropped, damage outputted and damage tanked by the enemies.
+Many factors need to be taken into consideration to keep the game challenging and not too simple. Factors include coins dropped, damage outputted and damage tanked by the enemies. At some points the enemies got too easy, and the chefs only had one fixed dmg output. Therefore both chef and enemy scaling had to be introduced.
+
+##### Enemy
+| Enemy  | Starting Hunger  | Speed   | Tokend dropped   | Damage to lives   | favourite food (infatuation)
+| :----  | :----------- |:-------------|:-------------------------|:-------------------------|:-------------------------|
+| Average Joe     | 50   | 5 | 5 | 1 | farmer, legendary
+|  Marathon Cindy | 70   | 7.5 | 7 | 2 | coffee, legendary
+| Sumo            | 4500  | 1.25 | 50|  5 | pizza, korean, doughnuts, legendary
+|  Mukbang Kim Jong Duos     | 6500   |3 | 70|  7| doughnuts, korean chicken, sandwiches, boba
+|  Critique Anton Ego      | 10000  | 4  | 100|  15 | legendary
+|  Aristocrat Bill Fences   | 25000   |2.5 | 250|  39 | coffee, sandwiches, legendary
+##### Wave Scaling
+| Enemy  | Hunger  | Multiplier   | Every N Levels  | 
+| :----  | :----------- |:------------- |:-- |
+| Average Joe     | 50   | 200% | 3 |
+|  Marathon Cindy | 70   | 200%| 7 | 3
+| Sumo            | 4500  | 200%| 5
+|  Mukbang Kim Jong Duos     | 6500   |170% | (wave-5) / 10|
+|  Critique Anton Ego      | 10000  | 150% | (wave-15) / 10
+|  Aristocrat Bill Fences   | 25000   |150% | (wave-23) / 10
+
+
+##### Chef
+There are four types of chefs, basic, fast shooter, explosion and normal.
+| Chef  |Type| Rarity | Range   | Initial Damage  | Fire Rate  | Infatuation (slow effect)  | Explosion Radius  |  Food Served  | Sell price  | 
+| :----  | :----------- |:-------------|:-------------------------|:-------------------------| :----  | :----------- |:-------------|:-------------------------|:-------------------------|
+| Farmer     | Basic|⭐   | 12 | 17| 3| 50% | 0| carrots, eggs, raw meat| 50 + (level * 25)
+|  Coffee| Fast| ⭐⭐⭐   | 15 | 30| 1.5| 20% | 0| coffee |100 + (level * 25)
+| Boba   |Fast |⭐⭐⭐⭐ | 23 | 35| 2 | 20%|0| boba|125 + (level * 25)
+|  Indomie|  Fast| ⭐⭐⭐⭐⭐ | 25 | 45| 3 | 60% |0| indomie| 200 + (level * 25)
+| Doughnut    |Explosion       | ⭐⭐⭐  | 15| 50|  0.9 | 70% | 3| doughnut|100 + (level * 25)
+|        Pizza|Explosion | ⭐⭐⭐⭐        |20 | 85|  0.6 | 70%|6| pizza|125 + (level * 25)
+| Laksa   | Explosion        | ⭐⭐⭐⭐⭐ | 35 | 200|  0.4 | 60%|8| laksa|200 + (level * 25)
+|         Sandwich  |Normal| ⭐⭐⭐  |15 | 55|  1.2 | 40%| 0| sandwich|100 + (level * 25)
+|        Korean     |Normal| ⭐⭐⭐⭐       |25  | 70|  1.4 | 40% |0| korean chicken |125 + (level * 25)
+|         Sushi |Normal   | ⭐⭐⭐⭐⭐  |30 | 175|  1.6 |60%| 0| sushi|200 + (level * 25)
+*note level for sell bonus isnt included if level 1
+##### Chef Upgrades
+| Upgrade level  | ⭐ Cost  |⭐⭐⭐ Cost  |⭐⭐⭐⭐ Cost  |⭐⭐⭐⭐⭐ Cost  | Damage   | Radius   | Explosion Radius (applicable to explosion objects only)   | Fire Rate   |  
+| :----  | :----------- |:-------------|:-------------------------| :----  | :----------- |:-------------|:-------------------------|:-------------------------|
+| 1   | --   | -- | --| --| --| --| --| --| 
+| 2 | 75   | 125 | 150| 225| 130% |--|130%|130%
+| 3 | 200  | 250 | 275|   350| 130% |130%|130%|--
+| 4 | 275   |325 | 350|   375| 130% |--|130%|130%
+| 5 | 350        |400  | 425|  450| 130% |130%|130%|130% 
+upgrade formula = sellAmount+baseUpgradeAmount;
+from lvl2 onwards upgrade formula = sellAmount+baseUpgradeAmount*(level*3);
 
 #### Maps
+
 The assets used for the maps consists of assets downloaded from the Unity Store and the chefs, citizens and food were customly modelled ourselves. The downloaded assets included buildings, trees, stones, grass, flowerd, fountains , boats etc. These are all placed in the prefab. We created 3 maps for the game, inspired by castles, beaches, the desert. The objects and paths of each map were originally fixed, however procedural generation for the maps was added later on to generate the map's path randomly. We positioned the point of view of the player in a slightly angled down bird's eye view so players could see the objects in the map clearly and also visualize what their strategy would be when playing the game.
 
 #### Citizen, Chef, Food
@@ -162,9 +210,9 @@ For the light, we calculate if the pixel is lit or its a shadow by doing dot pro
 // Calculate item's light to be distinct
 float3 normal = normalize(i.worldNormal);
 float NdotL = dot(_WorldSpaceLightPos0, normal);
-float shadow = SHADOW_ATTENUATION(i); 
+float shadow = SHADOW_ATTENUATION(i);
 float lightIntensity = smoothstep(0, 0.01, NdotL * shadow);
-float4 light = lightIntensity * _LightColor0; 
+float4 light = lightIntensity * _LightColor0;
 ```
 
 For specular reflection of the pixel, we implemented Blinn-Phong reflection model. Calculating the half vector between the light vector and the view vector, using the formula $H = {L + V \over || L + V ||}$. Then dot product the result with the normal of the item to calculate intensity of specular reflection. After calculate the size of the specular by multipy the result with light intensity of the pixel and power it to the glossiness variable. Lastly utilize "smoothstep" again to intensify the difference between pixel colors.
@@ -172,9 +220,9 @@ For specular reflection of the pixel, we implemented Blinn-Phong reflection mode
 ```c#
 // Calculate Blinn-Phong specular reflection  
 float3 viewDir = normalize(i.viewDir);
-float3 halfVector = normalize(_WorldSpaceLightPos0 + viewDir); 
-float NdotH = dot(normal, halfVector); 
-float specularIntensity = pow(NdotH * lightIntensity, _Glossiness * _Glossiness); 
+float3 halfVector = normalize(_WorldSpaceLightPos0 + viewDir);
+float NdotH = dot(normal, halfVector);
+float specularIntensity = pow(NdotH * lightIntensity, _Glossiness * _Glossiness);
 float specularIntensitySmooth = smoothstep(0.005, 0.01, specularIntensity);
 float4 specular = specularIntensitySmooth * _SpecularColor;
 ```
@@ -183,32 +231,61 @@ For rim lighting, it gives an illumination effect at the edges of the item. Firs
 
 ```c#
 // Illumination to the edges (rim lighting)
-float4 rimDot = 1 - dot(viewDir, normal); 
+float4 rimDot = 1 - dot(viewDir, normal);
 float rimIntensity = rimDot * pow(NdotL, _RimThreshold);
 float rimIntensitySmooth = smoothstep(_RimAmount - 0.01, _RimAmount + 0.01, rimIntensity);
 float4 rim = rimIntensitySmooth * _RimColor;
-```
-
-Lastly, sum everything to produce the pixel color.
-
-```c#
-return _Color * col * (_AmbientColor + light + specular + rim);
 ```
 
  \* Code snippets from <https://github.com/COMP30019/project-2-laksa-novona/blob/main/Assets/Shader/toon.shader>
 
 #### Water Shader
 
+When analysing which shader we should create, we noticed that all 3 maps have one component in common, water. Before implementing this shader, we just applied a water texture without any animation. By adding a shader, it enhances the game's visuals so it looks like we are playing with water.
+
+To implement this we used textures from Perlin Noise and red-green distortion textures. The textures' color would then be added to the water color to add a wave like effect.
+
+```c#
+float2 distortSample = (tex2D(_SurfaceDistortion, i.distortUV).xy * 2 - 1) * _SurfaceDistortionAmount;
+```
+
+For the animation, we shift the texture by a certain x and y in respect to time. This will then loop as the game runs creating a movement effect.
+
+```c#
+float2 noiseUV = float2((i.noiseUV.x + _Time.y * _SurfaceNoiseScroll.x) + distortSample.x, (i.noiseUV.y + _Time.y * _SurfaceNoiseScroll.y) + distortSample.y);
+float surfaceNoiseSample = tex2D(_SurfaceNoise, noiseUV).r;
+```
+
+Lastly, to create a cartoon effect also on the water to fit the game theme, we implement smoothstep again for a distinct difference.
+
+```c#
+float surfaceNoise = smoothstep(surfaceNoiseCutoff - SMOOTHSTEP_AA, surfaceNoiseCutoff + SMOOTHSTEP_AA, surfaceNoiseSample);
+```
+
+* Code snippets from <https://github.com/COMP30019/project-2-laksa-novona/blob/main/Assets/Shader/water.shader>
+
 ### Procedural Generation
 
 #### Map
+
 Procedural generation for the path, attack tiles and some objects are implemented in the maps. For the path, the ground is firstly generated then the path. Since the map originally had a fixed design, the start and end points of the path are fixed and thus cannot be changed. Only the path connecting the endpoints is randomly generated and is restricted to a specific area. The algorithm for the procedural generation is as follows. Starting at the Start Tile, check to see which direction it is possible to move in while staying within the boundaries. Add this to a list, then randomly select one of these options to add a tile. For map3, the first one-third of the path is set to generate moving only right to ensure the path does not end too fast. The attack tiles of the path are generated by choosing randomly from a set of possible configurations. The decorations for the map are randomly added after the path and attack tiles are generated in the empty spaces left on the map within the preset boundary.
 
 #### Enemy
+Procedural generation was managed by the enemy manager, other than some precoded rounds, the enemy manager would have a given cost of enemies to spend on depending on round number and the cost of the previous wave, using the formula totalcost = previouswavecost + wave * 200. The enemy manager would then rotate through the available enemies (note that difficult enemies are added into the pool depending on the level) and put down a number a cycle accordingly to the wave number and random spacing. Wave 10 costing 4000, mwaning that wave 11 = 4000 + (11* 200) = 6200.
+| Enemy  | Cost  | Wave introduction   | Amount spawned per cycle   | 
+| :----  | :----------- |:-------------|:-------------------------|
+| Average Joe     | 10   | 0 | 10 + waveNum / 2| 
+|  Marathon Cindy | 20   | 3 | 7 + waveNum / 3| 
+| Sumo            | 200  | 5 | waveNum / 6|  
+|          Mukbang Kim Jong Duos     | 250   |10 | waveNum / 8|  
+|        Critique Anton Ego      | 500        |15  | waveNum / 15|  
+|         Aristocrat Bill Fences   | 1000          |20 | waveNum / 20|  
 
 ### Particle System
 
-We have implemented 2 particle system in Laksa Mania. Both particle system are implemented when the chefs throws food on the citizens. One is a tiny effect of crumbs falling off when the citizen consumes the food (when food collides with citizens). The other one which we would love to highlight is when the  citizen is full, it will explode into coin particles.These coin particles would represent that when citizens are full, player would gain coins from them.
+We have implemented 5 particle system in Laksa Mania. Both particle system are implemented when the chefs throws food on the citizens. 4 of which are effects of crumbs falling off when the citizen consumes the food (when food collides with citizens). These effects range from normal crumbs falling, burnt crisps from pizza, colorful donut explosion, and exploding laksa. Effects are implemented based on what food is consumed by the citizens.
+
+The other one which we would love to highlight is when the  citizen is full, it will explode into coin particles. These coin particles would represent that when citizens are full, player would gain coins from them. It can also be seen when selling off the chefs, it would also explode and give out coins.
 
 <p align="center">
     <img src="Gifs/particle_system_map.gif" width="400">
@@ -240,11 +317,21 @@ We utilized randomisation using the feature "Random Between Two Constants" on th
 ### Evaluation
 
 #### Query and Observational Methods Used
-We used Cooperative Evaluation for the Observation and Interviews for the Query technique. We split the 5 players into two different types, ones that had played Tower Defence Games before and ones that had not. They are all in their twenties and we had them all play 15 rounds of the game. We recorded the interview questions, answers and observations on paper. All of the interviews and query were conducted face to face. It was observed that some players thought the colour for the Path and Attack Tiles in Map2 is too similar to the colour of the map ground. Players also thought the first 10 waves of the game were too easy and required not much effort. They thought the "enemies" in the games were too weak since there were too many "average joes", which is the weakest enemy in the game. There was also one player who thought there were too many "attack tiles", thus it should be decreased to make the game more challenging or decrease the amount of coins earned when killing the "enemies". All of the players felt that the game needed to be more challenging. All of the players were confused at the start of the game and had to be taught that they had to press the shop to buy the "chefs". Players were also unclear what chef they got from the gacha. Most players found that the aesthetic was good and complimented how the path changed everytime. They also noted how detailed the characters were. 
+
+##### Method
+
+We used Cooperative Evaluation for the Observation and Interviews for the Query technique. We split the 5 players into two different types, ones that had played Tower Defence Games before and ones that had not. They are all in their twenties and we had them all play 15 rounds of the game. We recorded the interview questions, answers and observations on paper. All of the interviews and query were conducted face to face.
+
+##### Observation
+
+It was observed that some players thought the colour for the Path and Attack Tiles in Map2 is too similar to the colour of the map ground. Players also thought the first 10 waves of the game were too easy and required not much effort. They thought the "enemies" in the games were too weak since there were too many "average joes", which is the weakest enemy in the game. There was also one player who thought there were too many "attack tiles", thus it should be decreased to make the game more challenging or decrease the amount of coins earned when killing the "enemies". All of the players felt that the game needed to be more challenging. All of the players were confused at the start of the game and had to be taught that they had to press the shop to buy the "chefs". Players were also unclear what chef they got from the gacha. Most players found that the aesthetic was good and complimented how the path changed everytime. They also noted how detailed the characters were.
+
+##### Query
+
 For the query part, we generated some questions for the interview. The first questions was "Do they like the overall aesthetic of the game?". Most players liked the colours and design of the game except for one who thought the colour for the path in Map2 was too similar to the colour of the ground. However, he said that it did not effect his gameplay. The second question was "Were they aware that everytime they start the game, the path and design of the map were different?". The results from this was a 50/50 response. Some did not realize, but others did and liked it a lot. The third question was "Was the controls of the game easy to understand?". All players did not find the controls confusing and the instructions in the how to play guide was clear. The third question was "Were there moments in the game that you did not know what to do?". Some players did not have any issues while some were confused where to put the "chefs". They did not understand where the attack tiles were and that they could only place it on those certain tiles. All players did not know they should press on the shop to buy the "chefs" and felt that it would be better if this was explained. One player that had never played Tower Defense Games thought the how to play instructions were confusing. The final question for the interview was "Do you find the game engaging". All players liked the game but felt that it needed to be more challenging.
 
 #### Changes Made
-After the query and observation, we made some changes to the game to make it more challenging. We added in a functionality that increase the health of the weaker enemies every 3 rounds during the game so that they get harder to eliminate. We also added procedural generation for the "attack tiles" so that it is different everytime players start the game and only certain areas can be placed instead of generating it beside the path everytime. We also changed the colour of the map 2 "attack tiles" and "path" so that it does not blend with the ground. We also added a notification popup at the bottom left to make it clear what chef was bought to make it clearer. We also added text on the screen when players start the game so that they are clear on how to use gatcha to buy the chef and to place onto the path. 
+After the query and observation, we made some changes to the game to make it more challenging. We added in a functionality that increase the health of the weaker enemies every 3 rounds during the game so that they get harder to eliminate. We also added procedural generation for the "attack tiles" so that it is different everytime players start the game and only certain areas can be placed instead of generating it beside the path everytime. We also changed the colour of the map 2 "attack tiles" and "path" so that it does not blend with the ground. We also added a notification popup at the bottom left to make it clear what chef was bought to make it clearer. We also added text on the screen when players start the game so that they are clear on how to use gatcha to buy the chef and to place onto the path.
 ### References
 
 #### Audio
@@ -292,6 +379,15 @@ After the query and observation, we made some changes to the game to make it mor
 * Toon Shader in HLSL Language: <https://gist.github.com/JSandusky/4f9a4f00110691eb45104f69abd32f75>
 * Inspiration: <https://docs.unity3d.com/Packages/com.unity.toonshader@0.6/manual/index.html>
 * Analysis on Toon Shader: <https://www.youtube.com/watch?v=HD85S4TYVjg>
+
+#### Water Shader Resources
+
+* Minecraft Water Block Inspiration: <https://minecraft.fandom.com/wiki/Water>
+* Perlin Noise Texture: <https://en.wikipedia.org/wiki/Perlin_noise>
+* Water Shader Steps: <https://roystan.net/articles/toon-water/>
+* Water In Unity: <https://docs.unity3d.com/560/Documentation/Manual/HOWTO-Water.html>
+* Water Shader Implementation: <https://github.com/lindenreid/Unity-Shader-Tutorials/blob/master/Assets/Materials/Shaders/water.shader>
+* Inspiration: <https://www.artstation.com/artwork/QzX90E>
 
 #### Others
 

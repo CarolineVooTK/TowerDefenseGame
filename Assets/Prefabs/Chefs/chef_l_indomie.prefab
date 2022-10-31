@@ -58,6 +58,7 @@ MonoBehaviour:
   target: {fileID: 0}
   range: 15
   fireRate: 1
+  sellAmount: 0
   fireCountdown: 0
   bulletPrefab: {fileID: 4124366962605548720, guid: 435fa9a30f8f042d9b64c2b0338bafd2, type: 3}
   bulletPrefab2: {fileID: 0}
@@ -65,6 +66,11 @@ MonoBehaviour:
   enemyTag: Enemy
   partToRotate: {fileID: 3404553823709081590}
   firePoint: {fileID: 3404553823709081590}
+  slowAmount: 0.5
+  baseUpgradeAmount: 0
+  upgradeAmount: 0
+  level: 0
+  fullyUpgraded: 0
   type: 4
 --- !u!82 &8076619116953600983
 AudioSource:

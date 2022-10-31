@@ -50,6 +50,7 @@ MonoBehaviour:
   target: {fileID: 0}
   range: 25
   fireRate: 2
+  sellAmount: 0
   fireCountdown: 0
   bulletPrefab: {fileID: 7849801800009429261, guid: 1ca9f98ad90e34323aade44a71dec96e, type: 3}
   bulletPrefab2: {fileID: 4302844978948419585, guid: 9573a3d0ed4f64d6a9034a5c811c10ef, type: 3}
@@ -58,6 +59,10 @@ MonoBehaviour:
   partToRotate: {fileID: 2601975780499396010}
   firePoint: {fileID: 2601975780499396010}
   slowAmount: 0.5
+  baseUpgradeAmount: 0
+  upgradeAmount: 0
+  level: 0
+  fullyUpgraded: 0
   type: 0
 --- !u!82 &8367044879957029551
 AudioSource:

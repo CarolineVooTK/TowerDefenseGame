@@ -110,7 +110,7 @@ public class Enemy : MonoBehaviour
             case OPTIONS.mukbanger:
                 startingHunger = 6500;
                 speed *= 0.6f;
-                tokensDropped = 40;
+                tokensDropped = 70;
                 level = 3;
                 damage = 7;
                 break;
@@ -118,13 +118,13 @@ public class Enemy : MonoBehaviour
                 startingHunger = 10000;
                 speed *= 0.8f;
                 tokensDropped = 100;
-                level = 15;
+                level = 10;
                 damage = 15;
                 break;
             case OPTIONS.aristocrat:
                 startingHunger = 25000;
                 speed *= 0.5f;
-                tokensDropped = 150;
+                tokensDropped = 250;
                 level = 20;
                 damage = 39;
                 break;
@@ -145,22 +145,22 @@ public class Enemy : MonoBehaviour
         {
             case OPTIONS.averageJoe:
                 if (wave/3.0==0){
-                    startingHunger *= 1.5f;
+                    startingHunger *= 2f;
                     }
                 break;
             case OPTIONS.marathonRunner:
                 if (wave/3.0==0){
-                    startingHunger *= 1.5f;
+                    startingHunger *= 2f;
                     }
                 break;
           case OPTIONS.sumo:
                 if (wave/5.0==0){
-                    startingHunger *= 1.6f;
+                    startingHunger *= 2f;
                     }
                 break;
             case OPTIONS.mukbanger:
                 if (wave-5/10.0==0){
-                    startingHunger *= 1.5f;
+                    startingHunger *= 1.7f;
                     }
                 break;
             case OPTIONS.foodCritic:
@@ -169,7 +169,7 @@ public class Enemy : MonoBehaviour
                     }
                 break;
             case OPTIONS.aristocrat:
-                if (wave-27/10.0==0){
+                if (wave-23/10.0==0){
                     startingHunger *= 1.5f;
                     }
                 break;

@@ -37,7 +37,7 @@ public class Chef : MonoBehaviour{
         InvokeRepeating ("UpdateTarget",0f,0.5f);
         ResetChef();
     }
-public void ResetChef()
+    public void ResetChef()
     {
         this.range = 15f;
         this.fireRate = 3f;
@@ -87,7 +87,7 @@ public void ResetChef()
             // Super Rare (dps ~150)
             case OPTIONS.korean: // normal
                 // Attributes
-                range = 20f;
+                range = 25f;
                 fireRate = 1.4f;
                 fireCountdown = 2f;
                 sellAmount = 125;
@@ -95,7 +95,7 @@ public void ResetChef()
                 break;
             case OPTIONS.pizza: // slow aoe
                 // Attributes
-                range = 25f;
+                range = 20f;
                 fireRate = 0.6f;
                 fireCountdown = 1f;
                 sellAmount = 125;
@@ -104,7 +104,7 @@ public void ResetChef()
                 break;
             case OPTIONS.boba: // fast
                 // Attributes
-                range = 20f;
+                range = 23f;
                 fireRate = 2f;
                 fireCountdown = 1f;
                 sellAmount = 125;
@@ -113,7 +113,7 @@ public void ResetChef()
             // Legendary (dps ~210)
             case OPTIONS.indomie: // fast
                 // Attributes
-                range = 30f;
+                range = 25f;
                 fireRate = 3f;
                 fireCountdown = 0f;
                 sellAmount = 200;
@@ -129,7 +129,7 @@ public void ResetChef()
                 break;
             case OPTIONS.sushi: // normal
                 // Attributes
-                range = 25f;
+                range = 30f;
                 fireRate = 1.6f;
                 fireCountdown = 4f;
                 sellAmount = 200;
