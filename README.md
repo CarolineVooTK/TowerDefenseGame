@@ -90,14 +90,15 @@ Here are the gacha chances you would be faced when purchasing a scroll:
 
 <p align="center">
     <img src="Assets/Images/2.jpg" width="500">
-     <img src="Assets/Images/4.jpg" width="500">
+    <img src="Assets/Images/4.jpg" width="500">
 </p>
+* Chefs shown are not using toon shader
 
 #### 3. Purchase scroll
 
 Place the scroll beside the path that has different color than the base map. Usually 1 tile beside the paths of the citizen. See what chef you have recruited!
 <p align="center">
-    <img src="Assets/Images/correct_place.jpg" width="500">
+    <img src="Gifs/correct_place.jpg" width="500">
 </p>
 <p align="center">
     <img src="Gifs/purchase_scroll.gif" width="500">
@@ -111,20 +112,35 @@ Let the chef feed the citizens their specialised foods. Once the citizens are fu
     <img src="Gifs/chef_feed.gif" width="500">
 </p>
 
-#### 5. Defend Kitchen
+#### 5. Upgrade and sell Chefs
 
-Use coins to purchase more scroll and test your luck to defend the kitchen!
+If you feel your chefs are too weak against the citizens, you can opt for an upgrade to increase it's stats with a price.
+<p align="center">
+    <img src="Gifs/upgrade_chef.gif" width="500">
+</p>
 
-You start off with 40 lives, if a number of enemies reach the end, they will take a number of your lives.
+Or if you are feeling unlucky, you can sell the chef and retry the gacha to test your luck.
+<p align="center">
+    <img src="Gifs/sell_chef.gif" width="500">
+</p>
+
+#### 6. Defend Kitchen
+
+Use coins to purchase more scroll and test your luck to defend the kitchen! You start off with 30 lives, if a number of enemies reach the end, they will take a number of your lives. Once your life reach 0, the kitchen has already been fully invaded by the citizens.
+<p align="center">
+    <img src="Gifs/end_game.gif" width="500">
+</p>
 
 \* Protip: If you place the scroll on the correct tile and have enough money, you can spam and purchase multiple scrolls!
 
 ### Gameplay Related Design
 
 #### Balancing
+
 Many factors need to be taken into consideration to keep the game challenging and not too simple. Factors include coins dropped, damage outputted and damage tanked by the enemies. At some points the enemies got too easy, and the chefs only had one fixed dmg output. Therefore both chef and enemy scaling had to be introduced.
 
 ##### Enemy
+
 | Enemy  | Starting Hunger  | Speed   | Tokend dropped   | Damage to lives   | favourite food (infatuation)
 | :----  | :----------- |:-------------|:-------------------------|:-------------------------|:-------------------------|
 | Average Joe     | 50   | 5 | 5 | 1 | farmer, legendary
@@ -133,7 +149,9 @@ Many factors need to be taken into consideration to keep the game challenging an
 |  Mukbang Kim Jong Duos     | 6500   |3 | 70|  7| doughnuts, korean chicken, sandwiches, boba
 |  Critique Anton Ego      | 10000  | 4  | 100|  15 | legendary
 |  Aristocrat Bill Fences   | 25000   |2.5 | 250|  39 | coffee, sandwiches, legendary
+
 ##### Wave Scaling
+
 | Enemy  | Hunger  | Multiplier   | Every N Levels  | 
 | :----  | :----------- |:------------- |:-- |
 | Average Joe     | 50   | 200% | 3 |
@@ -143,8 +161,8 @@ Many factors need to be taken into consideration to keep the game challenging an
 |  Critique Anton Ego      | 10000  | 150% | (wave-15) / 10
 |  Aristocrat Bill Fences   | 25000   |150% | (wave-23) / 10
 
-
 ##### Chef
+
 There are four types of chefs, basic, fast shooter, explosion and normal.
 | Chef  |Type| Rarity | Range   | Initial Damage  | Fire Rate  | Infatuation (slow effect)  | Explosion Radius  |  Food Served  | Sell price  | 
 | :----  | :----------- |:-------------|:-------------------------|:-------------------------| :----  | :----------- |:-------------|:-------------------------|:-------------------------|
@@ -159,7 +177,9 @@ There are four types of chefs, basic, fast shooter, explosion and normal.
 |        Korean     |Normal| ⭐⭐⭐⭐       |25  | 70|  1.4 | 40% |0| korean chicken |125 + (level * 25)
 |         Sushi |Normal   | ⭐⭐⭐⭐⭐  |30 | 175|  1.6 |60%| 0| sushi|200 + (level * 25)
 *note level for sell bonus isnt included if level 1
+
 ##### Chef Upgrades
+
 | Upgrade level  | ⭐ Cost  |⭐⭐⭐ Cost  |⭐⭐⭐⭐ Cost  |⭐⭐⭐⭐⭐ Cost  | Damage   | Radius   | Explosion Radius (applicable to explosion objects only)   | Fire Rate   |  
 | :----  | :----------- |:-------------|:-------------------------| :----  | :----------- |:-------------|:-------------------------|:-------------------------|
 | 1   | --   | -- | --| --| --| --| --| --| 
@@ -180,8 +200,9 @@ The citizens, chefs, and foods are customly modeled and rendered through Blender
 
 <p align="center">
     <img src="Assets/Images/5.jpg" width="500">
-     <img src="Assets/Images/4.jpg" width="500">
+    <img src="Assets/Images/4.jpg" width="500">
 </p>
+* Characters shown are not using toon shader
 
 Design  Inspirations:
 
