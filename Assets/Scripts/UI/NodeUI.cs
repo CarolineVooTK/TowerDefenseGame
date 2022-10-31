@@ -14,6 +14,8 @@ public class NodeUI : MonoBehaviour{
         ui.SetActive(true);
     }
     public void Hide(){
+        // Debug.Log("Hidden");
+
         ui.SetActive(false);
     }
     public void Sell(){

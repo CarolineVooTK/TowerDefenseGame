@@ -18,7 +18,7 @@ public class Node : MonoBehaviour {
     public Vector3 GetBuildPosition(){
         return transform.position +positionOffset;
     }
-    void OnMouseDown(){
+    public void OnMouseDown(){
 
         if (turret!=null){
             buildManager.SelectNode(this);
@@ -31,12 +31,12 @@ public class Node : MonoBehaviour {
         // GameObject turretToBuild = BuildManager.instance.GetTurretToBuild();
         // turret = (GameObject) Instantiate(turretToBuild,transform.position+positionOffset,transform.rotation);
     }
-    void OnMouseEnter (){
+    public void OnMouseEnter (){
         if (!buildManager.CanBuild) return;
         rend.material.color = hoverColor;
     }
 
-    void OnMouseExit (){
+    public void OnMouseExit (){
         rend.material.color = startColour;
     }
     public void Sell(){
