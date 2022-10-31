@@ -10,9 +10,13 @@ public class Bullet : MonoBehaviour {
 
     public float fireSpeed=6f;
     public float explosionRadius=0f;
-    public int damage=45;
+    public float changedExplosionRadius;
+    
+    public float changedDamage;
+    public float damage;
     private readonly string tagToDamage = "Enemy";
-    private float slowpct=0f;
+    private float slowpct;
+    public int level;
 
     [SerializeField] private ParticleSystem collisionParticles;
         public enum OPTIONS{
@@ -22,70 +26,81 @@ public class Bullet : MonoBehaviour {
     public OPTIONS type;
     private void Start () {
         InvokeRepeating ("ShelfLife",0f,1f);
-        ResetBullet();
+        LevelMultiplier();
+    }
+    public void LevelMultiplier(){
+        if (level==1) {
+            changedDamage=damage;
+            changedExplosionRadius=explosionRadius;
+            return;
+        }
+        changedDamage=damage*(1.5f*((float)(level-1)));
+        changedExplosionRadius = explosionRadius*(1.3f*((float)(level-1)));
     }
     public void ResetBullet()
     {
         this.fireSpeed = 7f;
-        this.damage = 17;
+        this.damage = 17f;
+        this.slowpct=0f;
+        this.level=1;
         // Switch based on the type chosen and assign its respected values
         switch (type)
         {
             // Basic (dps ~50)
             case OPTIONS.farmer:
                 fireSpeed = 7f;
-                damage = 17;
+                damage = 17f;
                 slowpct=0.5f;
                 break;
             // Rare (dps ~100)
             case OPTIONS.coffee: // fast
                 fireSpeed = 10f;
-                damage = 30;
+                damage = 30f;
                 slowpct=0.2f;
                 break;
             case OPTIONS.doughnut: // slow aoe
                 fireSpeed = 7f;
-                damage = 30;
+                damage = 50f;
                 slowpct=0.7f;
                 explosionRadius=3f;
                 break;
             case OPTIONS.sandwich: // normal
                 fireSpeed = 10f;
-                damage = 55;
+                damage = 55f;
                 slowpct=0.4f;
                 break;
             // Super Rare (dps ~150)
             case OPTIONS.korean: // normal
                 fireSpeed = 8f;
-                damage = 70;
+                damage = 70f;
                 slowpct=0.4f;
                 break;
             case OPTIONS.pizza: // slow aoe
                 fireSpeed = 7f;
-                damage = 75;
+                damage = 85f;
                 slowpct=0.7f;
                 explosionRadius=6f;
                 break;
             case OPTIONS.boba: // fast
                 fireSpeed = 6f;
-                damage = 35;
+                damage = 35f;
                 slowpct=0.2f;
                 break;
             // Legendary (dps ~210)
             case OPTIONS.indomie: // fast
                 fireSpeed = 8f;
-                damage = 45;
+                damage = 45f;
                 slowpct=0.6f;
                 break;
             case OPTIONS.laksa: // slow aoe
                 fireSpeed = 6f;
-                damage = 200;
+                damage = 200f;
                 slowpct=0.6f;
                 explosionRadius=8f;
                 break;
             case OPTIONS.sushi: // normal
                 fireSpeed = 8f;
-                damage = 175;
+                damage = 175f;
                 slowpct=0.6f;
                 break;
         }
@@ -93,7 +108,6 @@ public class Bullet : MonoBehaviour {
     public void ShelfLife(){
         float distance = Vector3.Distance(shootPosition,transform.position);
         if (distance>=shootRange){
-            // Debug.Log("FARMER "+Chef.DAMAGE.farmer);
             Destroy(gameObject);
             return;
         }
@@ -104,13 +118,18 @@ public class Bullet : MonoBehaviour {
             Destroy(gameObject);
         }
     }
-    public void Seek(Transform _target,Vector3 _shootPosition,float _range) {
+    public void Seek(Transform _target,Vector3 _shootPosition,float _range,int _level) {
+        ResetBullet();
         target = _target;
         shootPosition = _shootPosition;
         shootRange= _range;
+        level =_level;
+        LevelMultiplier();
+
     }
     // Move food based on velocity
     void Update() {
+        LevelMultiplier();
         if (target == null){
             if ((transform.position - shootPosition).magnitude >= shootRange){
                 var particles = Instantiate(this.collisionParticles);
@@ -134,13 +153,14 @@ public class Bullet : MonoBehaviour {
         
         if (col.gameObject.CompareTag(this.tagToDamage))
         {
+            LevelMultiplier();
             // Damage enemy
             var enemy = col.gameObject.GetComponent<Enemy>();
             // Slow if farmer
-            if (explosionRadius >0){
+            if (changedExplosionRadius >0){
                 Explode();
             } else{
-                enemy.ApplyFood((int)this.damage);
+                enemy.ApplyFood((int)changedDamage);
                 ApplySlow(enemy);
             }
             // Create collision particles in opposite direction to movement.
@@ -180,7 +200,7 @@ public class Bullet : MonoBehaviour {
         foreach(Collider collider1 in collider){
             if (collider1.tag == "Enemy"){
                 Enemy enemy = collider1.gameObject.GetComponent<Enemy>();
-                enemy.ApplyFood((int)this.damage);
+                enemy.ApplyFood((int)changedDamage);
                 ApplySlow(enemy);
             }
         }

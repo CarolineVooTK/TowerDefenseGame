@@ -180,7 +180,7 @@ public class Enemy : MonoBehaviour
     }
 
     // Reduce hunger when given food
-    public void ApplyFood(int damage)
+    public void ApplyFood(float damage)
     {
         CurrentHunger -= damage;
     }

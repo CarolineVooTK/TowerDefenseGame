@@ -146,8 +146,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fireSpeed: 6
+  explosionRadius: 0
   damage: 45
-  collisionParticles: {fileID: 863899079453766310, guid: 599dec2fc6e4d4ae5b39910078070643, type: 3}
+  collisionParticles: {fileID: 863899079453766310, guid: b055c631a37b09947bf04c96f8a955e0, type: 3}
   type: 3
 --- !u!82 &-5885283664427173324
 AudioSource:

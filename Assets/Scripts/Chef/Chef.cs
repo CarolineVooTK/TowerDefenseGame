@@ -24,6 +24,10 @@ public class Chef : MonoBehaviour{
     public Transform partToRotate;
     public Transform firePoint;
     public float slowAmount = 0.5f;
+    public int baseUpgradeAmount;
+    public int upgradeAmount;
+    public int level;
+    public bool fullyUpgraded;
     public enum OPTIONS{
         farmer,coffee,sushi,laksa,indomie,boba,pizza,korean,sandwich,doughnut
     }
@@ -39,6 +43,8 @@ public void ResetChef()
         this.fireRate = 3f;
         this.fireCountdown = 0f;
         this.sellAmount = 50;
+        this.level = 1;
+        this.fullyUpgraded=false;
         // Switch based on the type chosen and assign its respected values
         switch (type)
         {
@@ -48,6 +54,7 @@ public void ResetChef()
                 range = 12f;
                 fireRate = 3f;
                 fireCountdown = 2f;
+                baseUpgradeAmount = 25;
                 break;
             // Rare (dps ~100)
             case OPTIONS.coffee: // fast
@@ -56,6 +63,8 @@ public void ResetChef()
                 fireRate = 1.5f;
                 fireCountdown = 1f;
                 sellAmount = 100;
+                baseUpgradeAmount = 25;
+
                 break;
             case OPTIONS.doughnut: // slow aoe
                 // Attributes
@@ -63,6 +72,8 @@ public void ResetChef()
                 fireRate = 0.9f;
                 fireCountdown = 1f;
                 sellAmount = 100;
+                baseUpgradeAmount = 25;
+
                 break;
             case OPTIONS.sandwich: // normal
                 // Attributes
@@ -70,6 +81,8 @@ public void ResetChef()
                 fireRate = 1.2f;
                 fireCountdown = 1f;
                 sellAmount = 100;
+                baseUpgradeAmount = 25;
+
                 break;
             // Super Rare (dps ~150)
             case OPTIONS.korean: // normal
@@ -77,21 +90,25 @@ public void ResetChef()
                 range = 20f;
                 fireRate = 1.4f;
                 fireCountdown = 2f;
-                sellAmount = 200;
+                sellAmount = 125;
+                baseUpgradeAmount = 25;
                 break;
             case OPTIONS.pizza: // slow aoe
                 // Attributes
                 range = 25f;
                 fireRate = 0.6f;
                 fireCountdown = 1f;
-                sellAmount = 200;
+                sellAmount = 125;
+                baseUpgradeAmount = 25;
+
                 break;
             case OPTIONS.boba: // fast
                 // Attributes
                 range = 20f;
                 fireRate = 2f;
                 fireCountdown = 1f;
-                sellAmount = 200;
+                sellAmount = 125;
+                baseUpgradeAmount = 25;
                 break;
             // Legendary (dps ~210)
             case OPTIONS.indomie: // fast
@@ -99,23 +116,27 @@ public void ResetChef()
                 range = 30f;
                 fireRate = 3f;
                 fireCountdown = 0f;
-                sellAmount = 400;
+                sellAmount = 200;
+                baseUpgradeAmount = 25;
                 break;
             case OPTIONS.laksa: // slow aoe
                 // Attributes
                 range = 35f;
                 fireRate = 0.4f;
                 fireCountdown = 1f;
-                sellAmount = 400;
+                sellAmount = 200;
+                baseUpgradeAmount = 25;
                 break;
             case OPTIONS.sushi: // normal
                 // Attributes
                 range = 25f;
                 fireRate = 1.6f;
                 fireCountdown = 4f;
-                sellAmount = 400;
+                sellAmount = 200;
+                baseUpgradeAmount = 25;
                 break;
         }
+        this.upgradeAmount=(int)Mathf.Ceil(sellAmount/2.0f);
     }
     void UpdateTarget () {
         GameObject[] enemies = GameObject.FindGameObjectsWithTag(enemyTag);
@@ -159,23 +180,22 @@ public void ResetChef()
 
         int index=0;
         if (bulletPrefab2 == null && bulletPrefab3 == null) index=0;
-        if (bulletPrefab3 == null && bulletPrefab3)  index = Random.Range(0,1);
+        if (bulletPrefab3 == null && bulletPrefab2)  index = Random.Range(0,1);
         if (bulletPrefab2 && bulletPrefab3) index = Random.Range(0,3);
-
         switch(index){
             case 1:
             GameObject bullet2 = Instantiate(bulletPrefab2, firePoint.position,firePoint.rotation);
-            bullet2.GetComponent<Bullet>().Seek(target,transform.position,range);
+            bullet2.GetComponent<Bullet>().Seek(target,transform.position,range,level);
             // bullet;
             return;
             case 2:
             GameObject bullet3 = Instantiate(bulletPrefab3, firePoint.position,firePoint.rotation);
-            bullet3.GetComponent<Bullet>().Seek(target,transform.position,range);
+            bullet3.GetComponent<Bullet>().Seek(target,transform.position,range,level);
             // bullet;
             return;
             default:
             GameObject bullet1 = Instantiate(bulletPrefab, firePoint.position,firePoint.rotation);
-            bullet1.GetComponent<Bullet>().Seek(target,transform.position,range);
+            bullet1.GetComponent<Bullet>().Seek(target,transform.position,range,level);
             // bullet;
            
             return;
@@ -187,6 +207,42 @@ public void ResetChef()
     void OnDrawGizmosSelected () {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position,range);
-
     }
+    public int GetSellAmount(){
+        if (level ==1) return sellAmount;
+        return sellAmount + baseUpgradeAmount*level;
+    }
+    public int GetUpgradeAmount(){
+        if (level ==1) return sellAmount + baseUpgradeAmount*level;
+        return sellAmount+baseUpgradeAmount*(level*3);
+    }
+    
+    public void Upgrade(){
+        switch (level){
+            case (1):
+                level++;
+                fireRate *= 1.3f;
+                break;
+            case (2):
+                range *= 1.3f;
+                level++;
+                break;
+            case (3):
+                level++;
+                fireRate *= 1.3f;
+                fireCountdown = 0f;
+                break;
+            case (4):
+                level++;
+                fireRate *= 1.3f;
+                range *= 1.3f;
+                fullyUpgraded = true;
+                break;
+            default:
+                fullyUpgraded = true;
+                break;
+        }
+        upgradeAmount=sellAmount+baseUpgradeAmount*level;
+    }
+
 }   

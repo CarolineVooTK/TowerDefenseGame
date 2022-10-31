@@ -142,10 +142,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36f8c246950b3f8439df9f0dc5ca0f02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chef: {fileID: -3650548578924503681, guid: 65099c91914a44dfa8bd306d8a539cb0, type: 3}
   fireSpeed: 6
+  explosionRadius: 0
   damage: 45
-  collisionParticles: {fileID: 863899079453766310, guid: 599dec2fc6e4d4ae5b39910078070643, type: 3}
+  collisionParticles: {fileID: 863899079453766310, guid: 8da134919a4f8c14f8c66ba5db37acd4, type: 3}
   type: 9
 --- !u!82 &3890062748607087654
 AudioSource:

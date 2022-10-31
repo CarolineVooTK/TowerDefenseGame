@@ -27,10 +27,9 @@ public class Node : MonoBehaviour {
         }
         buildManager.DeselectNode();
         if (!buildManager.CanBuild) return;
+        
         // build a turret
         buildManager.BuildTurretOn(this);
-        // GameObject turretToBuild = BuildManager.instance.GetTurretToBuild();
-        // turret = (GameObject) Instantiate(turretToBuild,transform.position+positionOffset,transform.rotation);
     }
     public void OnMouseEnter (){
         if (!buildManager.CanBuild) return;
@@ -41,10 +40,17 @@ public class Node : MonoBehaviour {
         rend.material.color = startColour;
     }
     public void Sell(){
-        GameManager.AddToken(turret.gameObject.GetComponent<Chef>().sellAmount);
+        GameManager.AddToken(turret.gameObject.GetComponent<Chef>().GetSellAmount());
         var particles = Instantiate(this.collisionParticles);
         particles.transform.position = transform.position + new Vector3(0f, 2f, 0f);
         Destroy(turret);
         turret= null;
+    }
+    public void UpgradeChef(){
+        Chef chef = turret.gameObject.GetComponent<Chef>();
+        if (chef.fullyUpgraded) return;
+        if (GameManager.tokenBank<chef.GetUpgradeAmount()) return;
+        GameManager.ReduceToken(chef.GetUpgradeAmount());
+        chef.Upgrade();
     }
 }
