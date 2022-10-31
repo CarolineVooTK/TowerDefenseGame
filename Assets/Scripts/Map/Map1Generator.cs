@@ -5,12 +5,13 @@ using UnityEngine.Events;
 
 public class Map1Generator : MonoBehaviour
 {
+    //the tiles for the map
     public GameObject mapTile;
     public GameObject pathTile;
     public GameObject attackTile;
     public GameObject point;
     
-    
+    //the objects that are instantiated
     public GameObject grass;
     public GameObject stone;
     public GameObject trees;
@@ -44,13 +45,14 @@ public class Map1Generator : MonoBehaviour
         generateMap();
     }
 
+    //functions for moving the direction of the tile 
+
     private void moveUp(){
         currentIndex = mapTiles.IndexOf(currentTile);
 
         nextIndex = currentIndex+69;
-        if (pathTiles.Contains(mapTiles[nextIndex])){
-
-        }
+        //if the tile is on the path, do not move that direction
+        if (pathTiles.Contains(mapTiles[nextIndex])){}
         else{
             pathTilesRandom.Add(mapTiles[nextIndex]);
             count +=1;
@@ -59,15 +61,10 @@ public class Map1Generator : MonoBehaviour
     }
     
     private void moveDown(){
-       // Debug.Log("movingDown:");
         currentIndex = mapTiles.IndexOf(currentTile);
-        //Debug.Log(currentIndex);
         nextIndex = currentIndex-69;
-        if (pathTiles.Contains(mapTiles[nextIndex])){
+        if (pathTiles.Contains(mapTiles[nextIndex])){}
 
-        }
-        //Debug.Log(nextIndex);
-       // currentTile = mapTiles[nextIndex];
         else{
             pathTilesRandom.Add(mapTiles[nextIndex]);
             count +=1;
@@ -78,9 +75,7 @@ public class Map1Generator : MonoBehaviour
     private void moveLeft(){
         currentIndex = mapTiles.IndexOf(currentTile);
         nextIndex = currentIndex-1;
-        if (pathTiles.Contains(mapTiles[nextIndex])){
-
-        }
+        if (pathTiles.Contains(mapTiles[nextIndex])){       }
         else{
             pathTilesRandom.Add(mapTiles[nextIndex]);
             count +=1;
@@ -94,6 +89,7 @@ public class Map1Generator : MonoBehaviour
         int y = mapHeight;
         int x = -129;
         while (z <= mapLength){
+            //generate ground tiles for the map 
             while(x <= mapWidth){
                 GameObject newTile = Instantiate(mapTile, ParentNodes);
                 mapTiles.Add(newTile);
@@ -106,25 +102,29 @@ public class Map1Generator : MonoBehaviour
             x = -129;
             z += 4;
         }
+        //starting and end tile of the enemies
         GameObject startTile =  mapTiles[811];
         GameObject endTile = mapTiles[511];
 
         currentTile = startTile;
 
         int loopCount = 0;
-
+        //generate path and attack tiles until it reaches the enemies ending point
         while(reachedX == false){
             if (loopCount>0 && count!= 0){
-                Debug.Log(count);
+                //random number used to choose tile moving direction
                 int rand = Random.Range(0,count);
 
                 count = 0;
+                //choose a random tile from the list of movable direction and set as current tile
                 currentTile = pathTilesRandom[rand];
                 pathTilesRandom = new List<GameObject>();
                 pathTiles.Add(currentTile);
 
                 currentIndex = mapTiles.IndexOf(currentTile);
+                //random number used to choose from a set of configurations
                 int randAtt = Random.Range(1,10);
+                //different amount of attack tiles
                 if (randAtt == 1){
                     attackTiles.Add(mapTiles[currentIndex+1]);
                 }
@@ -162,6 +162,7 @@ public class Map1Generator : MonoBehaviour
                 
 
             }
+            //if starting point just add into into path
             else if (loopCount == 0){
                 pathTiles.Add(currentTile);
             }
@@ -169,6 +170,7 @@ public class Map1Generator : MonoBehaviour
             if(loopCount > 400){
                 break;
             }
+            //check if tile is in preset boundary of path before moving
             if(currentTile.transform.position.x >-17){
                 if(currentTile.transform.position.x <=7 &&currentTile.transform.position.x >=-17  ){
                     if(currentTile.transform.position.z <= 6 ){
@@ -211,13 +213,14 @@ public class Map1Generator : MonoBehaviour
                     moveUp();
                 }
             }
+            //check if reached ending point
             if(currentTile.transform.position.z == endTile.transform.position.z && currentTile.transform.position.x == endTile.transform.position.x){
                 reachedX = true;
             }
 
 
         }
-
+        //destroy ground tile and generate path tiles
         foreach(GameObject obj in pathTiles){
             Destroy(obj);
             GameObject newPathTile = Instantiate(pathTile, ParentPath);
@@ -229,29 +232,30 @@ public class Map1Generator : MonoBehaviour
             newPoint.transform.position = new Vector3(obj.transform.position.x, obj.transform.position.y, obj.transform.position.z);
 
         }
+        //destroy ground tile and generate attack tiles
         foreach(GameObject obj in attackTiles){
-            if(pathTiles.Contains(obj)){
-
-            }
+            //if attack tile is already a path tile do not generate
+            if(pathTiles.Contains(obj)){}
             else{
                 Destroy(obj);
                 GameObject newAttackTile = Instantiate(attackTile, ParentAttack);
-
                 newAttackTile.transform.position = new Vector3(obj.transform.position.x,obj.transform.position.y,obj.transform.position.z); 
-
             }
         }
-        int itemCount = 0;
-        while (itemCount < 40){
-            int randTile = Random.Range(0,tilesNum);
-            if(itemTiles.Contains(randTile)){
 
-            }
-            else if((pathTiles.Contains(mapTiles[randTile])) || (attackTiles.Contains(mapTiles[randTile])) ){
-        
-            }
+        //functions to generate random objects on map
+        int itemCount = 0;
+        //generating different objects using different ranges
+        while (itemCount < 40){
+            //generate random tile number to place object
+            int randTile = Random.Range(0,tilesNum);
+            //if tile contains item already skip
+            if(itemTiles.Contains(randTile)){}
+            //if tile is a path or attack tile skip
+            else if((pathTiles.Contains(mapTiles[randTile])) || (attackTiles.Contains(mapTiles[randTile]))){}      
             else{
-                if ((((mapTiles[randTile]).transform.position.x) >-21) &&((mapTiles[randTile]).transform.position.x<79)&&((mapTiles[randTile]).transform.position.z<42) ){
+                //check if tile is in preset boundary
+                if ((((mapTiles[randTile]).transform.position.x) >-21) &&((mapTiles[randTile]).transform.position.x<79)&&((mapTiles[randTile]).transform.position.z<42)){
                     if ((((mapTiles[randTile]).transform.position.z) >-6) &&((mapTiles[randTile]).transform.position.x<-1)){}
                     else{
                         GameObject newItem= Instantiate(trees);
@@ -265,12 +269,8 @@ public class Map1Generator : MonoBehaviour
         }
         while (itemCount < 70){
             int randTile = Random.Range(50,tilesNum);
-            if(itemTiles.Contains(randTile)){
-
-            }
-            else if((pathTiles.Contains(mapTiles[randTile])) || (attackTiles.Contains(mapTiles[randTile])) ){
-        
-            }
+            if(itemTiles.Contains(randTile)){}
+            else if((pathTiles.Contains(mapTiles[randTile])) || (attackTiles.Contains(mapTiles[randTile])) ){}
             else{
                 if ((((mapTiles[randTile]).transform.position.x) >-21) &&((mapTiles[randTile]).transform.position.x<79)&&((mapTiles[randTile]).transform.position.z<42) ){
                     if ((((mapTiles[randTile]).transform.position.z) >-6) &&((mapTiles[randTile]).transform.position.x<-1)){}
@@ -287,12 +287,8 @@ public class Map1Generator : MonoBehaviour
 
         while (itemCount < 200){
             int randTile = Random.Range(0,tilesNum);
-            if(itemTiles.Contains(randTile)){
-
-            }
-            else if((pathTiles.Contains(mapTiles[randTile])) || (attackTiles.Contains(mapTiles[randTile])) ){
-        
-            }
+            if(itemTiles.Contains(randTile)){}
+            else if((pathTiles.Contains(mapTiles[randTile])) || (attackTiles.Contains(mapTiles[randTile])) ){}
             else{
                 if ((((mapTiles[randTile]).transform.position.x) >-21) &&((mapTiles[randTile]).transform.position.x<79) &&((mapTiles[randTile]).transform.position.z<42)  ){
                     if ((((mapTiles[randTile]).transform.position.z) >-6) &&((mapTiles[randTile]).transform.position.x<-1)){}
