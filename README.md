@@ -103,9 +103,11 @@ You start off with 40 lives, if a number of enemies reach the end, they will tak
 ### Gameplay Related Design
 
 #### Balancing
+
 Many factors need to be taken into consideration to keep the game challenging and not too simple. Factors include coins dropped, damage outputted and damage tanked by the enemies.
 
 #### Maps
+
 The assets used for the maps consists of assets downloaded from the Unity Store and the chefs, citizens and food were customly modelled ourselves. The downloaded assets included buildings, trees, stones, grass, flowerd, fountains , boats etc. These are all placed in the prefab. We created 3 maps for the game, inspired by castles, beaches, the desert. The objects and paths of each map were originally fixed, however procedural generation for the maps was added later on to generate the map's path randomly. We positioned the point of view of the player in a slightly angled down bird's eye view so players could see the objects in the map clearly and also visualize what their strategy would be when playing the game.
 
 #### Citizen, Chef, Food

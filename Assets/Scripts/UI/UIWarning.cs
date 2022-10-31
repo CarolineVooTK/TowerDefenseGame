@@ -5,6 +5,7 @@ using System.Collections;
 public class UIWarning: MonoBehaviour
 {
     public GameObject panel;
+    [SerializeField] float second = 1.5f;
 
     // When it is called, do coroutine
     private void OnEnable()
@@ -16,7 +17,7 @@ public class UIWarning: MonoBehaviour
     private IEnumerator Wait()
     {
         // After 1.5 seconds, the panel will be off
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(second);
         panel.SetActive(false);
     }
 }

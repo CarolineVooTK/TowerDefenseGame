@@ -118,14 +118,14 @@ public class Enemy : MonoBehaviour
                 startingHunger = 10000;
                 speed *= 0.8f;
                 tokensDropped = 100;
-                level = 15;
+                level = 10;
                 damage = 15;
                 break;
             case OPTIONS.aristocrat:
                 startingHunger = 25000;
                 speed *= 0.5f;
                 tokensDropped = 150;
-                level = 20;
+                level = 15;
                 damage = 39;
                 break;
         }
