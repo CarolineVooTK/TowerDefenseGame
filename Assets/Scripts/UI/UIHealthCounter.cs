@@ -9,7 +9,7 @@ public class UIHealthCounter : MonoBehaviour
     [SerializeField] private string prefix;
 
     // At the start, start coroutine to update values
-    private void Start()
+    private void Update()
     {
         StartCoroutine(Animate());
     }
