@@ -37,7 +37,7 @@ public class Chef : MonoBehaviour{
         InvokeRepeating ("UpdateTarget",0f,0.5f);
         ResetChef();
     }
-public void ResetChef()
+    public void ResetChef()
     {
         this.range = 15f;
         this.fireRate = 3f;

@@ -118,7 +118,7 @@ public class Enemy : MonoBehaviour
                 startingHunger = 10000;
                 speed *= 0.8f;
                 tokensDropped = 100;
-                level = 15;
+                level = 10;
                 damage = 15;
                 break;
             case OPTIONS.aristocrat:

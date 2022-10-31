@@ -8,6 +8,7 @@ public class Node : MonoBehaviour {
     public GameObject turret;
     public Vector3 positionOffset;
     [SerializeField] private ParticleSystem collisionParticles;
+    public GameObject explosive;
 
     private Color startColour;
     BuildManager buildManager;
@@ -41,6 +42,11 @@ public class Node : MonoBehaviour {
     }
     public void Sell(){
         GameManager.AddToken(turret.gameObject.GetComponent<Chef>().GetSellAmount());
+
+        // Seperate sound effect 
+        var soundEffect = Instantiate(this.explosive);
+        soundEffect.transform.position = transform.position + new Vector3(0f, 1.6f, 0f);
+
         var particles = Instantiate(this.collisionParticles);
         particles.transform.position = transform.position + new Vector3(0f, 2f, 0f);
         Destroy(turret);
