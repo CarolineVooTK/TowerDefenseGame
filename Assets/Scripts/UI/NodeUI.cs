@@ -9,9 +9,11 @@ public class NodeUI : MonoBehaviour{
     public Text upgradeLvlTxt;
 
     public GameObject ui;
+    // Hide UI
     public void Start(){
         ui.SetActive(false);
     }
+    // Set UI upgrade sell to the according chef
     public void SetTarget(Node _target){
         target= _target;
         Chef chef = _target.turret.gameObject.GetComponent<Chef>();
@@ -28,15 +30,17 @@ public class NodeUI : MonoBehaviour{
         ui.SetActive(true);
 
     }
+    // Hide the UI
     public void Hide(){
-        // Debug.Log("Hidden");
-
         ui.SetActive(false);
     }
+
+    // Sell the chef
     public void Sell(){
         target.Sell();
         BuildManager.instance.DeselectNode();
     }
+    // Upgrade the chef
     public void Upgrade(){
         target.UpgradeChef();
         BuildManager.instance.DeselectNode();

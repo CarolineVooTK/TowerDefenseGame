@@ -28,6 +28,7 @@ public class Bullet : MonoBehaviour {
         InvokeRepeating ("ShelfLife",0f,1f);
         LevelMultiplier();
     }
+    // Upgrade damage and radius accordingly
     public void LevelMultiplier(){
         if (level==1) {
             changedDamage=damage;
@@ -37,6 +38,7 @@ public class Bullet : MonoBehaviour {
         changedDamage=damage*(1.5f*((float)(level-1)));
         changedExplosionRadius = explosionRadius*(1.3f*((float)(level-1)));
     }
+    // Sets bullet damage and stats accordingly
     public void ResetBullet()
     {
         this.fireSpeed = 7f;
@@ -105,6 +107,7 @@ public class Bullet : MonoBehaviour {
                 break;
         }
     }
+    // If food has been on the ground for too long, expireee
     public void ShelfLife(){
         float distance = Vector3.Distance(shootPosition,transform.position);
         if (distance>=shootRange){
@@ -118,6 +121,7 @@ public class Bullet : MonoBehaviour {
             Destroy(gameObject);
         }
     }
+    // Seek bullet from chef position
     public void Seek(Transform _target,Vector3 _shootPosition,float _range,int _level) {
         ResetBullet();
         target = _target;
@@ -148,6 +152,7 @@ public class Bullet : MonoBehaviour {
         }
     }
 
+    // Bullet on collision with enemy
     private void OnTriggerEnter(Collider col)
     {
         
@@ -156,7 +161,7 @@ public class Bullet : MonoBehaviour {
             LevelMultiplier();
             // Damage enemy
             var enemy = col.gameObject.GetComponent<Enemy>();
-            // Slow if farmer
+            // Apply bullet effects
             if (changedExplosionRadius >0){
                 Explode();
             } else{
@@ -171,6 +176,7 @@ public class Bullet : MonoBehaviour {
             Destroy(gameObject);
         }
     }
+    // Apply slow if enemies favourite foood
     void ApplySlow(Enemy enemy){
         if (type == OPTIONS.farmer){
                 if (enemy.type==Enemy.OPTIONS.averageJoe) enemy.Slow(slowpct,shootPosition);
@@ -204,6 +210,7 @@ public class Bullet : MonoBehaviour {
             }
 
     }
+    // Explodes, hitting other enemies in the radius
     void Explode(){
         Collider[] collider = Physics.OverlapSphere(transform.position,explosionRadius);
         foreach(Collider collider1 in collider){

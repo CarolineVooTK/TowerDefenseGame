@@ -9,6 +9,7 @@
 
 <!-- Fill this section by Milestone 1 (see specification for details) -->
 
+#### Members responsibilities
 | Name            | Responsibility                  |
 | :-------------- | :------------------------------ |
 | Caroline Voo    | Procedural Generation Map       |
@@ -17,10 +18,28 @@
 |                 | Model Chefs, Citizen, Foods     |
 |                 | Audio and Sound Effect          |
 |                 | Implement Citizens              |
+|                 | Bullet enemy collision          |
 |                 | Shaders                         |
-| Yuji Nojima     | Procedural Generation Citizen   |
-|                 | Implement Chefs and Gacha       |
-|                 | Manage bullet effects (slow,dmg)|
+| Yuji Nojima     | Implementing Chefs Logic        |
+|                 | Implement Shop Gacha Logic      |
+|                 | Implement Chef Bullet Logic     |
+|                 | Manage bullet effects (slow,aoe)|
+|                 | Balancing of Chef + Enemies     |
+|                 | Procedural generation of enemies|
+|                 | Upgrading of enemies round based|
+|                 | Upgrading and Selling logic+ UI |
+
+#### Meetings conducted
+
+| Date            | Responsibility                  |
+| :-------------- | :------------------------------ |
+| 13 September    | Initial Planning                |
+| 15 September    | Role Assignments                |
+| 13 October      | Video Planning + Progress update|
+| 15 October      | Video Editing                   |
+| 20 October      | Progress update                 |
+| 27 October      | Progress update                 |
+| 31 October      | Final preperation               |
 
 <!-- [[EndTeamworkPlan]] PLEASE LEAVE THIS LINE UNTOUCHED -->
 
@@ -118,7 +137,7 @@ Many factors need to be taken into consideration to keep the game challenging an
 | Enemy  | Hunger  | Multiplier   | Every N Levels  | 
 | :----  | :----------- |:------------- |:-- |
 | Average Joe     | 50   | 200% | 3 |
-|  Marathon Cindy | 70   | 200%| 7 | 3
+|  Marathon Cindy | 70   | 200%| 3 | 3
 | Sumo            | 4500  | 200%| 5
 |  Mukbang Kim Jong Duos     | 6500   |170% | (wave-5) / 10|
 |  Critique Anton Ego      | 10000  | 150% | (wave-15) / 10

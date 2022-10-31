@@ -64,7 +64,7 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    // Reset values when start
+    // Reset values when start + store material colours
     void Start()
     {
         ResetEnemy();
@@ -135,7 +135,7 @@ public class Enemy : MonoBehaviour
         usedSpeed = speed;
     }
 
-    // Reset the statistics of the enemies
+    // Buff the enemy according to wave
     public void BuffEnemy()
     {
         int wave = GameManager.waveNum;
@@ -184,6 +184,7 @@ public class Enemy : MonoBehaviour
     {
         CurrentHunger -= damage;
     }
+    // Slow enemy - pink loooove effects
     public void Slow(float pct,Vector3 _hit){
         isSlowed=true;
         currentSlowDuration=slowDuration;
@@ -191,6 +192,7 @@ public class Enemy : MonoBehaviour
         hit = _hit;
         isLegend=false;
     }
+    // Slow enemy - golden loooove effects
     public void Slow(float pct,Vector3 _hit,bool Legendary){
         isSlowed=true;
         currentSlowDuration=slowDuration;
@@ -198,6 +200,7 @@ public class Enemy : MonoBehaviour
         hit = _hit;
         isLegend=true;
     }
+    // Applies Color to enemy if slowed
     private void IsSlowed(){
         int i=0;
         if (isSlowed==false || currentSlowDuration==0){
@@ -219,9 +222,7 @@ public class Enemy : MonoBehaviour
 
         }
     }
-    private Color ColorAvg(Color a, Color b){
-        return new Color(a.r+(int)((b.r-a.r)/2),a.g+(int)((b.g-a.g)/2),a.b+(int)((b.b-a.b/2)));
-    }
+    // Reduces slow duration by seconds
     private void reduceSlowDuration(){
         if (isSlowed==true){
             currentSlowDuration-=1;

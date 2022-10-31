@@ -138,6 +138,8 @@ public class Chef : MonoBehaviour{
         }
         this.upgradeAmount=(int)Mathf.Ceil(sellAmount/2.0f);
     }
+
+    // Updates the current target if within range
     void UpdateTarget () {
         GameObject[] enemies = GameObject.FindGameObjectsWithTag(enemyTag);
         float shortestDistance = Mathf.Infinity;
@@ -156,6 +158,7 @@ public class Chef : MonoBehaviour{
         }
     }
 
+    // Updates look direction and shoot
     void Update() {
         if (target == null) return;
         Vector3 dir = target.position - transform.position;
@@ -175,6 +178,8 @@ public class Chef : MonoBehaviour{
         }
         fireCountdown -= Time.deltaTime;
     }
+
+    // Shoots bullet, if more then one ammo randomly decide
     void Shoot()
     {   
 
@@ -183,40 +188,41 @@ public class Chef : MonoBehaviour{
         if (bulletPrefab3 == null && bulletPrefab2)  index = Random.Range(0,1);
         if (bulletPrefab2 && bulletPrefab3) index = Random.Range(0,3);
         switch(index){
+            // bullet 2;
             case 1:
             GameObject bullet2 = Instantiate(bulletPrefab2, firePoint.position,firePoint.rotation);
             bullet2.GetComponent<Bullet>().Seek(target,transform.position,range,level);
-            // bullet;
             return;
+            // bullet 3;
             case 2:
             GameObject bullet3 = Instantiate(bulletPrefab3, firePoint.position,firePoint.rotation);
             bullet3.GetComponent<Bullet>().Seek(target,transform.position,range,level);
-            // bullet;
             return;
+            // bullet 1;
             default:
             GameObject bullet1 = Instantiate(bulletPrefab, firePoint.position,firePoint.rotation);
             bullet1.GetComponent<Bullet>().Seek(target,transform.position,range,level);
-            // bullet;
            
             return;
         }
-
-        // if (bullet!=null){
-        // }
     }
+    // shows radius of range;
     void OnDrawGizmosSelected () {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position,range);
     }
+    // returns sell amount;
     public int GetSellAmount(){
         if (level ==1) return sellAmount;
         return sellAmount + baseUpgradeAmount*level;
     }
+    // returns upgrade cost;
     public int GetUpgradeAmount(){
         if (level ==1) return sellAmount + baseUpgradeAmount*level;
         return sellAmount+baseUpgradeAmount*(level*3);
     }
     
+    // Adds upgrade effects;
     public void Upgrade(){
         switch (level){
             case (1):

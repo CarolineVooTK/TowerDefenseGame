@@ -12,14 +12,20 @@ public class Node : MonoBehaviour {
 
     private Color startColour;
     BuildManager buildManager;
+
+    // Set basis
     void Start (){
         rend = GetComponent<Renderer>();
         startColour = rend.material.color;
         buildManager = BuildManager.instance;
     }
+
+    // Get offset position to place chef ontop of the node
     public Vector3 GetBuildPosition(){
         return transform.position +positionOffset;
     }
+    
+    // Apply buy/sell or building of chef
     public void OnMouseDown(){
 
         if (turret!=null){
@@ -32,6 +38,8 @@ public class Node : MonoBehaviour {
         // build a turret
         buildManager.BuildTurretOn(this);
     }
+
+    // Let the user know can place chef on this node
     public void OnMouseEnter (){
         if (!buildManager.CanBuild) return;
         rend.material.color = hoverColor;
@@ -40,6 +48,8 @@ public class Node : MonoBehaviour {
     public void OnMouseExit (){
         rend.material.color = startColour;
     }
+
+    // Sell the chef on the node
     public void Sell(){
         GameManager.AddToken(turret.gameObject.GetComponent<Chef>().GetSellAmount());
 
@@ -52,6 +62,7 @@ public class Node : MonoBehaviour {
         Destroy(turret);
         turret= null;
     }
+    // Upgrade the chef on the node
     public void UpgradeChef(){
         Chef chef = turret.gameObject.GetComponent<Chef>();
         if (chef.fullyUpgraded) return;

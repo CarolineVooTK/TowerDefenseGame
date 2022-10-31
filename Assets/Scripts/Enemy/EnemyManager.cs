@@ -37,6 +37,7 @@ public class EnemyManager : MonoBehaviour
     };
     public Transform ParentEnemy;
 
+    // Adds enemy spacing to roster
     private void Start(){
         enemySpacingList.Add((int)spacing.Wide,0.6f);
         enemySpacingList.Add((int)spacing.Close,0.4f);
@@ -44,9 +45,9 @@ public class EnemyManager : MonoBehaviour
         enemySpacingList.Add((int)spacing.SuperTight,0.1f);
 
     }
-    // Generate enemies when update
     
     
+    // Adds new enemies to roster
     private void updateEnemy(int waveNum){
         if (GameManager.waveNum == 0 ) enemyList.TryAdd((int)enemy.Joe,10);
         if (GameManager.waveNum == 3 ) enemyList.TryAdd((int)enemy.Cindy,20);
@@ -56,12 +57,10 @@ public class EnemyManager : MonoBehaviour
         if (GameManager.waveNum == 20) enemyList.TryAdd((int)enemy.Aristocrat,1000);
     }
 
+    // Manages waves
     private void Update()
     {
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        // enemySpacingList.TryAdd((int)spacing.Wide,0.6f);
-        // enemySpacingList.TryAdd((int)spacing.Close,0.4f);
-        // enemySpacingList.TryAdd((int)spacing.Closer,0.3f);
         if (countdown <= 0 && enemies.Length==0)
         {
             updateEnemy(GameManager.waveNum);
@@ -84,7 +83,7 @@ public class EnemyManager : MonoBehaviour
 
     }
 
-    // Generate enemy based on waves
+    // Generate Joe
     private IEnumerator GenerateJoe(int multiple, float gap)
     {
         for (int i = 0; i < multiple; i++){
@@ -93,6 +92,7 @@ public class EnemyManager : MonoBehaviour
         }
     }
 
+    // Generate Cindy
     private IEnumerator GenerateMarathonRunner(int multiple, float gap)
     {
         for (int i = 0; i < multiple; i++){
@@ -101,6 +101,7 @@ public class EnemyManager : MonoBehaviour
         }
     }
 
+    // Generate Kim Jung Duos
     private IEnumerator GenerateMukBanger(int multiple, float gap)
     {
         for (int i = 0; i < multiple; i++){
@@ -109,6 +110,7 @@ public class EnemyManager : MonoBehaviour
         }
     }
 
+    // Generate MIYAMA
     private IEnumerator GenerateSumo(int multiple, float gap)
     {
         for (int i = 0; i < multiple; i++){
@@ -117,6 +119,7 @@ public class EnemyManager : MonoBehaviour
         }
     }
 
+    // Generate ratatioulie
     private IEnumerator GenerateCritic(int multiple, float gap)
     {
         for (int i = 0; i < multiple; i++){
@@ -125,6 +128,7 @@ public class EnemyManager : MonoBehaviour
         }
     }
 
+    // Generate Bill fences
     private IEnumerator GenerateAristocrat(int multiple, float gap)
     {
         for (int i = 0; i < multiple; i++){
@@ -134,6 +138,7 @@ public class EnemyManager : MonoBehaviour
     }
 
 
+    // Generate waves + procedural wave generation
     private IEnumerator GenerateWaveFor(int wave){
         switch (wave)
         {

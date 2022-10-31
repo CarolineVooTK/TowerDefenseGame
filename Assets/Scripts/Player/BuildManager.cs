@@ -48,6 +48,8 @@ public class BuildManager : MonoBehaviour {
     [SerializeField] private Text textDisplay;
     [SerializeField] private string prefix;
     [SerializeField] private string sufix;
+
+    // attempt building chef
     public void BuildTurretOn (Node node){
         if (scrollInt == 2) return;
          if (scrollInt == 1)
@@ -79,7 +81,10 @@ public class BuildManager : MonoBehaviour {
         node.turret = turret;
         Debug.Log("Money Left " + GameManager.tokenBank);
     }
+    // If can build chef
     public bool CanBuild { get {return turretToBuild != null;}}
+    
+    // Select the node
     public void SelectNode(Node node){
         if (selectedNode == node){
             DeselectNode();
@@ -91,18 +96,14 @@ public class BuildManager : MonoBehaviour {
 
         nodeUI.SetTarget(node);
     }
-    public void SetTurretToBuild(TurretBluePrint turret){
-        DeselectNode();
-        turretToBuild = turret;
-    }
-    public GameObject GetTurretToBuild(){
-        return turretToBuild.prefab;
-    }
-
+    
+    // unselects node
     public void DeselectNode(){
         selectedNode = null;
         nodeUI.Hide();
     }
+
+    // purchases premium chest
     public void PurchasePremiumChest(){
         int roll = Random.Range(0,100);
         switch(roll){
@@ -125,8 +126,8 @@ public class BuildManager : MonoBehaviour {
         }
         Debug.Log("Premium Purchased");
         turretToBuild.SetCost(premiumCost);
-        // SetScroll(1);
     }
+    // purchases standard chest
     public void PurchaseStandardChest(){
         int roll = Random.Range(0,100);
         switch(roll){
@@ -149,26 +150,29 @@ public class BuildManager : MonoBehaviour {
         }
         Debug.Log("Standard Purchased");
         turretToBuild.SetCost(standardCost);
-        // SetScroll(0);
     }
+    // returns random raare chef
     public TurretBluePrint ChooseRareTurret(){
         int roll = Random.Range(0,3);
         if (roll==0) return coffee;
         if (roll==1) return doughnuts;
         return sandwich;
     }
+    // returns random ultraraare chef
     public TurretBluePrint ChooseUltraRareTurret(){
         int roll = Random.Range(0,3);
         if (roll==0) return boba;
         if (roll==1) return korean;
         return pizza;
     }
+    // returns random legendary chef
     public TurretBluePrint ChooseLegendaryTurret(){
         int roll = Random.Range(0,3);
         if (roll==0) return laksa;
         if (roll==1) return sushi;
         return indomie;
     }
+    // updates cheff
     private void UpdateText(string displayText)
     {
         textDisplay.text = this.prefix + displayText + this.sufix;
