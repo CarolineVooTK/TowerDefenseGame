@@ -165,9 +165,9 @@ For the light, we calculate if the pixel is lit or its a shadow by doing dot pro
 // Calculate item's light to be distinct
 float3 normal = normalize(i.worldNormal);
 float NdotL = dot(_WorldSpaceLightPos0, normal);
-float shadow = SHADOW_ATTENUATION(i); 
+float shadow = SHADOW_ATTENUATION(i);
 float lightIntensity = smoothstep(0, 0.01, NdotL * shadow);
-float4 light = lightIntensity * _LightColor0; 
+float4 light = lightIntensity * _LightColor0;
 ```
 
 For specular reflection of the pixel, we implemented Blinn-Phong reflection model. Calculating the half vector between the light vector and the view vector, using the formula $H = {L + V \over || L + V ||}$. Then dot product the result with the normal of the item to calculate intensity of specular reflection. After calculate the size of the specular by multipy the result with light intensity of the pixel and power it to the glossiness variable. Lastly utilize "smoothstep" again to intensify the difference between pixel colors.
@@ -175,9 +175,9 @@ For specular reflection of the pixel, we implemented Blinn-Phong reflection mode
 ```c#
 // Calculate Blinn-Phong specular reflection  
 float3 viewDir = normalize(i.viewDir);
-float3 halfVector = normalize(_WorldSpaceLightPos0 + viewDir); 
-float NdotH = dot(normal, halfVector); 
-float specularIntensity = pow(NdotH * lightIntensity, _Glossiness * _Glossiness); 
+float3 halfVector = normalize(_WorldSpaceLightPos0 + viewDir);
+float NdotH = dot(normal, halfVector);
+float specularIntensity = pow(NdotH * lightIntensity, _Glossiness * _Glossiness);
 float specularIntensitySmooth = smoothstep(0.005, 0.01, specularIntensity);
 float4 specular = specularIntensitySmooth * _SpecularColor;
 ```
@@ -186,7 +186,7 @@ For rim lighting, it gives an illumination effect at the edges of the item. Firs
 
 ```c#
 // Illumination to the edges (rim lighting)
-float4 rimDot = 1 - dot(viewDir, normal); 
+float4 rimDot = 1 - dot(viewDir, normal);
 float rimIntensity = rimDot * pow(NdotL, _RimThreshold);
 float rimIntensitySmooth = smoothstep(_RimAmount - 0.01, _RimAmount + 0.01, rimIntensity);
 float4 rim = rimIntensitySmooth * _RimColor;
@@ -201,20 +201,20 @@ When analysing which shader we should create, we noticed that all 3 maps have on
 To implement this we used textures from Perlin Noise and red-green distortion textures. The textures' color would then be added to the water color to add a wave like effect.
 
 ```c#
-float2 distortSample = (tex2D(_SurfaceDistortion, i.distortUV).xy * 2 - 1) * _SurfaceDistortionAmount; 
+float2 distortSample = (tex2D(_SurfaceDistortion, i.distortUV).xy * 2 - 1) * _SurfaceDistortionAmount;
 ```
 
 For the animation, we shift the texture by a certain x and y in respect to time. This will then loop as the game runs creating a movement effect.
 
 ```c#
 float2 noiseUV = float2((i.noiseUV.x + _Time.y * _SurfaceNoiseScroll.x) + distortSample.x, (i.noiseUV.y + _Time.y * _SurfaceNoiseScroll.y) + distortSample.y);
-float surfaceNoiseSample = tex2D(_SurfaceNoise, noiseUV).r; 
+float surfaceNoiseSample = tex2D(_SurfaceNoise, noiseUV).r;
 ```
 
 Lastly, to create a cartoon effect also on the water to fit the game theme, we implement smoothstep again for a distinct difference.
 
 ```c#
-float surfaceNoise = smoothstep(surfaceNoiseCutoff - SMOOTHSTEP_AA, surfaceNoiseCutoff + SMOOTHSTEP_AA, surfaceNoiseSample); 
+float surfaceNoise = smoothstep(surfaceNoiseCutoff - SMOOTHSTEP_AA, surfaceNoiseCutoff + SMOOTHSTEP_AA, surfaceNoiseSample);
 ```
 
 * Code snippets from <https://github.com/COMP30019/project-2-laksa-novona/blob/main/Assets/Shader/water.shader>
@@ -277,9 +277,7 @@ It was observed that some players thought the colour for the Path and Attack Til
 For the query part, we generated some questions for the interview. The first questions was "Do they like the overall aesthetic of the game?". Most players liked the colours and design of the game except for one who thought the colour for the path in Map2 was too similar to the colour of the ground. However, he said that it did not effect his gameplay. The second question was "Were they aware that everytime they start the game, the path and design of the map were different?". The results from this was a 50/50 response. Some did not realize, but others did and liked it a lot. The third question was "Was the controls of the game easy to understand?". All players did not find the controls confusing and the instructions in the how to play guide was clear. The third question was "Were there moments in the game that you did not know what to do?". Some players did not have any issues while some were confused where to put the "chefs". They did not understand where the attack tiles were and that they could only place it on those certain tiles. All players did not know they should press on the shop to buy the "chefs" and felt that it would be better if this was explained. One player that had never played Tower Defense Games thought the how to play instructions were confusing. The final question for the interview was "Do you find the game engaging". All players liked the game but felt that it needed to be more challenging.
 
 #### Changes Made
-
-After the query and observation, we made some changes to the game to make it more challenging. We added in a functionality that increase the health of the weaker enemies every 3 rounds during the game so that they get harder to eliminate. We also added procedural generation for the "attack tiles" so that it is different everytime players start the game and only certain areas can be placed instead of generating it beside the path everytime. We also changed the colour of the map 2 "attack tiles" and "path" so that it does not blend with the ground. We also added a notification popup at the bottom left to make it clear what chef was bought to make it clearer.
-
+After the query and observation, we made some changes to the game to make it more challenging. We added in a functionality that increase the health of the weaker enemies every 3 rounds during the game so that they get harder to eliminate. We also added procedural generation for the "attack tiles" so that it is different everytime players start the game and only certain areas can be placed instead of generating it beside the path everytime. We also changed the colour of the map 2 "attack tiles" and "path" so that it does not blend with the ground. We also added a notification popup at the bottom left to make it clear what chef was bought to make it clearer. We also added text on the screen when players start the game so that they are clear on how to use gatcha to buy the chef and to place onto the path.
 ### References
 
 #### Audio
