@@ -46,7 +46,6 @@ public class Map1Generator : MonoBehaviour
     }
 
     //functions for moving the direction of the tile 
-
     private void moveUp(){
         currentIndex = mapTiles.IndexOf(currentTile);
 

@@ -5,13 +5,13 @@ using UnityEngine.Events;
 
 public class Map2Generator : MonoBehaviour
 {
+    //the tiles for the map
     public GameObject mapTile;
     public GameObject pathTile;
     public GameObject attackTile;
     public GameObject point;
-    public GameObject pondTile;
 
-
+    //the objects that are instantiated
     public GameObject aloe;
     public GameObject stone;
     public GameObject cactus;
@@ -44,44 +44,38 @@ public class Map2Generator : MonoBehaviour
     {
         generateMap();
     }
+    
+    //functions for moving the direction of the tile 
     private void moveUp(){
         currentIndex = mapTiles.IndexOf(currentTile);
 
         nextIndex = currentIndex+48;
-        if (pathTiles.Contains(mapTiles[nextIndex])){
-
-        }
+        //if the tile is on the path, do not move that direction
+        if (pathTiles.Contains(mapTiles[nextIndex])){}
         else{
             pathTilesRandom.Add(mapTiles[nextIndex]);
             count +=1;
         }
-
     }
     
     private void moveDown(){
         currentIndex = mapTiles.IndexOf(currentTile);
         nextIndex = currentIndex-48;
-        if (pathTiles.Contains(mapTiles[nextIndex])){
-
-        }
+        if (pathTiles.Contains(mapTiles[nextIndex])){}
         else{
             pathTilesRandom.Add(mapTiles[nextIndex]);
             count +=1;
         }
-
     }
     
     private void moveLeft(){
         currentIndex = mapTiles.IndexOf(currentTile);
         nextIndex = currentIndex-1;
-        if (pathTiles.Contains(mapTiles[nextIndex])){
-
-        }
+        if (pathTiles.Contains(mapTiles[nextIndex])){}
         else{
             pathTilesRandom.Add(mapTiles[nextIndex]);
             count +=1;
         }
-
     }
 
    private void generateMap()
@@ -90,6 +84,7 @@ public class Map2Generator : MonoBehaviour
         int y = mapHeight;
         int x = 11;
         while (z <= mapLength){
+            //generate ground tiles for the map 
             while(x <= mapWidth){
                 GameObject newTile = Instantiate(mapTile, ParentNodes);
                 mapTiles.Add(newTile);
@@ -101,24 +96,28 @@ public class Map2Generator : MonoBehaviour
             x = 11;
             z += 4;
         }
+        //starting and end tile of the enemies
         GameObject startTile =  mapTiles[609];
         GameObject endTile = mapTiles[585];
 
         currentTile = startTile;
 
         int loopCount = 0;
-
+        //generate path and attack tiles until it reaches the enemies ending point
         while(reachedX == false){
             if (loopCount>0 && count!= 0){
                 int rand = Random.Range(0,count);
 
                 count = 0;
+                //choose a random tile from the list of movable direction and set as current tile
                 currentTile = pathTilesRandom[rand];
                 pathTilesRandom = new List<GameObject>();
                 pathTiles.Add(currentTile);
 
                 currentIndex = mapTiles.IndexOf(currentTile);
+                //random number used to choose from a set of configurations
                 int randAtt = Random.Range(1,10);
+                //different amount of attack tiles
                 if (randAtt == 1){
                     attackTiles.Add(mapTiles[currentIndex+1]);
                 }
@@ -155,6 +154,7 @@ public class Map2Generator : MonoBehaviour
                 }
 
             }
+            //if starting point just add into into path
             else if (loopCount == 0){
                 pathTiles.Add(currentTile);
             }
@@ -162,12 +162,12 @@ public class Map2Generator : MonoBehaviour
             if(loopCount > 400){
                 break;
             }
+            //check if tile is in preset boundary of path before moving
             if(currentTile.transform.position.x >47 ){
                if(currentTile.transform.position.x >= 47&&currentTile.transform.position.x <=63  ){
                     if(currentTile.transform.position.z >= -86 ){
                         moveLeft();
                     }
-
                 }
                 else{
                     moveLeft();
@@ -201,13 +201,14 @@ public class Map2Generator : MonoBehaviour
                     moveUp();
                 }
             }
+            //check if reached ending point
             if(currentTile.transform.position.z == endTile.transform.position.z && currentTile.transform.position.x == endTile.transform.position.x){
                 reachedX = true;
             }
 
 
         }
-
+        //destroy ground tile and generate path tiles
         foreach(GameObject obj in pathTiles){
             Destroy(obj);
             GameObject newPathTile = Instantiate(pathTile, ParentPath);
@@ -219,10 +220,10 @@ public class Map2Generator : MonoBehaviour
             newPoint.transform.position = new Vector3(obj.transform.position.x, obj.transform.position.y, obj.transform.position.z);
 
         }
+        //destroy ground tile and generate attack tiles
         foreach(GameObject obj in attackTiles){
-            if(pathTiles.Contains(obj)){
-
-            }
+            //if attack tile is already a path tile do not generate
+            if(pathTiles.Contains(obj)){}
             else{
                 Destroy(obj);
                 GameObject newAttackTile = Instantiate(attackTile, ParentAttack);
@@ -231,15 +232,17 @@ public class Map2Generator : MonoBehaviour
 
             }
         }
+        //functions to generate random objects on map
         int itemCount = 0;
+        //generating different objects using different ranges
         while (itemCount < 40){
+            //generate random tile number to place object
             int randTile = Random.Range(0,tilesNum);
-            if(itemTiles.Contains(randTile)){
-
-            }
-            else if((pathTiles.Contains(mapTiles[randTile])) || (attackTiles.Contains(mapTiles[randTile]))){
-        
-            }
+            //if tile contains item already skip
+            if(itemTiles.Contains(randTile)){}
+            //if tile is a path or attack tile skip
+            else if((pathTiles.Contains(mapTiles[randTile])) || (attackTiles.Contains(mapTiles[randTile]))){}
+            //check if tile is in preset boundary
             else{
                 if ((((mapTiles[randTile]).transform.position.x) >47) &&((mapTiles[randTile]).transform.position.x<139)){
                     GameObject newItem= Instantiate(cactus);
@@ -252,12 +255,8 @@ public class Map2Generator : MonoBehaviour
         }
         while (itemCount < 70){
             int randTile = Random.Range(50,tilesNum);
-            if(itemTiles.Contains(randTile)){
-
-            }
-            else if((pathTiles.Contains(mapTiles[randTile])) || (attackTiles.Contains(mapTiles[randTile]))){
-        
-            }
+            if(itemTiles.Contains(randTile)){}
+            else if((pathTiles.Contains(mapTiles[randTile])) || (attackTiles.Contains(mapTiles[randTile]))){}
             else{
                 if ((((mapTiles[randTile]).transform.position.x) >47) &&((mapTiles[randTile]).transform.position.x<139)){
                     GameObject newItem= Instantiate(stone);
@@ -271,12 +270,8 @@ public class Map2Generator : MonoBehaviour
 
         while (itemCount < 120){
             int randTile = Random.Range(70,tilesNum);
-            if(itemTiles.Contains(randTile)){
-
-            }
-            else if((pathTiles.Contains(mapTiles[randTile])) || (attackTiles.Contains(mapTiles[randTile]))){
-        
-            }
+            if(itemTiles.Contains(randTile)){}
+            else if((pathTiles.Contains(mapTiles[randTile])) || (attackTiles.Contains(mapTiles[randTile]))){}
             else{
                 if ((((mapTiles[randTile]).transform.position.x) >47) &&((mapTiles[randTile]).transform.position.x<139)){
                     GameObject newItem= Instantiate(aloe);
